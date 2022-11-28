@@ -1,4 +1,5 @@
 const autoCompleteInputEl = document.querySelector('#autocomplete-input');
+// TODO: get kunnat from api
 // This is only mockup data!
 const kunnat = ["Helsinki","Vantaa","Espoo","Joensuu","Rovaniemi", "Hamina", "Elojärvi"];
 

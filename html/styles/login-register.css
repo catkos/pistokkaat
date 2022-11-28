@@ -1,6 +1,20 @@
+/* styles for login.html and register.html */
+/* TODO: move general styling to main.css */
+
+@font-face {
+    font-family: 'Fredoka One';
+    src: url(../assets/fonts/FredokaOne-Regular.ttf);
+}
+
+
 * {box-sizing: border-box;}
 
+*:focus {
+    outline: 2px solid rgb(58, 116, 87);
+}
+
 body {
+    font-family: "Open Sans", sans-serif;
     background-color: rgb(58, 116, 87);
     color: rgb(26, 26, 26);
     margin: 0;
@@ -11,7 +25,24 @@ main {
     display: flex;
 }
 
-button {cursor: pointer;}
+button {
+    cursor: pointer;
+    border-radius: 2rem;
+}
+
+button:hover {
+    background-color: rgb(41, 81, 61);
+}
+
+button:focus {
+    outline: 3px solid rgb(160, 207, 184);
+}
+
+h2 {
+    font-family: 'Fredoka One', serif;
+    font-size: 2rem;
+    margin: 0;
+}
 
 a {color: rgb(58, 116, 87);}
 
@@ -42,25 +73,38 @@ a {color: rgb(58, 116, 87);}
     font-size: 1rem;
 }
 
-.input-wrapper label {margin-bottom: 0.5em;}
+.input-wrapper label {
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
 
 .input-field {
     height: 3rem;
     font-size: 0.875rem;
+    border-radius: 0.25rem;
+    border: 1px solid rgb(204, 204, 204);
+    padding: 0 0.5rem;
 }
 
 .input-field:focus {
-    outline: 2px solid rgb(58, 116, 87);
+    border: 1px solid rgb(230, 112, 57);
+    outline: 3px solid rgb(244, 189, 164);
 }
 
 .input-field:focus-visible {
-    outline: 2px solid rgb(58, 116, 87);
+    border: 1px solid rgb(230, 112, 57);
+    outline: 3px solid rgb(244, 189, 164);
 }
 
 .autocomplete-list {
     list-style: none;
     padding: unset;
     margin: unset;
+    position: absolute;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
 }
 
 .autocomplete-list button {
@@ -69,29 +113,35 @@ a {color: rgb(58, 116, 87);}
     width: 100%;
     text-align: left;
     padding: 1em 0.5em;
+    border-radius: unset;
 }
 
-.autocomplete-list button:hover {
-    background-color: lightgray;
-}
+.autocomplete-list button:hover {background-color: rgb(204, 204, 204);}
 
 .autocomplete-list li {
-    border: 1px solid grey;
+    border: 1px solid rgb(204, 204, 204);
     border-top: unset;
     background-color: rgb(252, 252, 252);
 }
 
-#login-form, #register-form {width: 100%;}
+#autocomplete-wrapper {position: relative;}
+
+#login-form, #register-form {
+    width: 100%;
+    margin-top: 2rem;
+}
 
 @media only screen and (min-width: 800px) {
+
     main {
         align-items: center;
         justify-content: center;
     }
 
     .login-register-wrapper {
-        width: 478px;
-        padding: 2rem;
+        width: 30rem;
+        padding: 2.5rem;
+        border-radius: 1rem;
     }
 
     .form-button {

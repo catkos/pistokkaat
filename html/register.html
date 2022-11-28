@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pistokkaat - Rekisteröidy</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/login-register.css">
     <script src="scripts/register.js" defer></script>
+    <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
     <main>
         <section class="login-register-wrapper">
             <h2>Rekisteröidy</h2>
+            <!-- TODO: post form to api -->
             <form id="register-form" action="" method="post" autocomplete="off">
                 <div class="input-wrapper">
                     <label for="username">Käyttäjätunnus:</label>
@@ -27,12 +29,13 @@
                 </div>
                 <div class="input-wrapper">
                     <label for="password">Salasana:</label>
-                    <input class="input-field" type="password" name="password" pattern="(?=.*[\p{Lu}]).{8,}" required>
+                    <input class="input-field" type="password" name="password" pattern="(?=.*\p{Lu}).{8,}" required>
+                    <small>Vähintään 8 merkkiä, joista vähintään yhden täytyy olla isokirjain.</small>
                 </div>
                 <button class="form-button" type="submit">Liity</button>
             </form>
             <p>
-                <span>Onko jo käyttäjätunnus? <a href="login.html">Kirjaudu sisään</a></span>
+                Onko jo käyttäjätunnus? <a href="login.html">Kirjaudu sisään</a>
             </p>
         </section>
     </main>
