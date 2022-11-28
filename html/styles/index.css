@@ -1,29 +1,64 @@
+/***
+
+ Stylesheet for index/frontpage
+
+ ***/
+
 .searchDiv{
     display: flex;
     justify-content: center;
-    padding-top: 20%;
-    padding-bottom: 20%;
-    background-color: #3A7457;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-color: grey;
 }
 /* form styling */
 #searchtxt{
-    height:35px;
+    height: 35px;
+    width: 300px;
     font-family: "Open Sans",sans-serif;
+    background-color: #FCFCFC;
+    border:0;
+    border-radius: 5px;
 }
 #submit{
-    height:40px;
+    height:37px;
+    width:37px;
     font-family: "Open Sans",sans-serif;
+    background-color: #3A7457;
+    color: #FCFCFC;
+    border:0;
+    border-radius: 5px;
+    transition: 200ms ease-out 200ms;
 }
 
-.listingsDiv{
+#submit:hover{
+    background-color:#E67039;
+}
+
+.newestListingsDiv{
     background-color: #FCFCFC;
 }
 
-.listing{
-    background:grey;
-    width:350px;
+#uusimmatIlmoituksetTxt{
+    text-align: center;
+    padding-top:20px;
+}
+
+.listingsDiv{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.listing {
+    width: 400px;
     display: flex;
     align-content: center;
+    margin: 20px;
+    transition: 200ms ease-out 200ms;
+    border: 1px solid #3A7457;
+    border-radius: 5px;
+    overflow:hidden;
 }
 
 .listingImg img{
@@ -32,6 +67,19 @@
     object-fit: cover;
 }
 
-.listingInfo{
-    padding: 3%;
+.listingInfo {
+    border-radius: 0 5px 5px 0;
+    padding: 10px 10px 10px 20px;
+    width: 100%;
+}
+
+.listing:hover{
+    border: 1px solid #E67039;
+}
+.listingInfo:hover{
+    border: 0 solid;
+}
+
+.listingInfo i{
+    color:#3A7457;
 }

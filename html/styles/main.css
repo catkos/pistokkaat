@@ -25,13 +25,40 @@ h2{font-family: "FredokaOne", serif; font-size: 20px}
     justify-content: space-between;
     align-items: center;
     background-color: #1A1A1A;
-    padding:5%;
-    text-indent:15px;
 }
-#mainNav a{color: #FCFCFC; text-decoration: none}
+#mainNav a{
+    color: #FCFCFC;
+    text-decoration: none;
+    padding:20px;
+    transition: 200ms ease-out 200ms;
+}
 #logo{font-family: "FredokaOne", serif; font-size: 30px;}
+/* add txt for larger screen */
+@media only screen and (min-width: 750px){
+    #haku::after{
+        content: " Haku";
+    }
+    #uusiIlmoitus::after{
+        content: " Uusi ilmoitus";
+    }
+    #suosikit::after{
+        content: " Suosikit";
+    }
+    #profiili::after{
+        content: " username23"; /* TODO: change username to match login user */
+    }
+}
+
+/* on hover */
+#mainNav .navlinks a:hover{
+    color:#E67039;
+    border-bottom: 4px solid #E67039;
+}
 
 /* Mobile rule */
 @media only screen and (max-width: 600px) {
-    
+    #mainNav{
+        flex-direction: column;
+        padding-bottom:20px;
+    }
 }

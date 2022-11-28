@@ -19,13 +19,13 @@
 
     <nav id="mainNav">
         <a href="" id="logo">Pistokkaat</a>
-        <!-- TODO: Change href links AND add icons, show icons only for mobile -->
+        <!-- TODO: Change href links -->
         <div class="navlinks">
-            <a href="" id="haku"><i class="fa-solid fa-magnifying-glass"></i> Haku</a>
+            <a href="" id="haku"><i class="fa-solid fa-magnifying-glass" title="Haku"></i></a>
             <!-- TODO: Show below only to login users -->
-            <a href="" id="uusiIlmoitus"><i class="fa-solid fa-plus"></i> Uusi ilmoitus</a>
-            <a href="" id="suosikit"><i class="fa-solid fa-heart"></i> Suosikit</a>
-            <a href="" id="profiili"><i class="fa-solid fa-user"></i> username23</a> <!-- TODO: change username to match login user's name -->
+            <a href="" id="uusiIlmoitus"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a>
+            <a href="" id="suosikit"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a>
+            <a href="" id="profiili"><i class="fa-solid fa-user" title="Oma profiili"></i></a>
         </div>
     </nav>
 
@@ -39,17 +39,37 @@
             <label for="searchtxt" hidden>Hae pistokkaita</label>
             <input type="text" id="searchtxt" name="searchtxt" placeholder="Hae pistokkaita">
             <!-- TODO: change "Lähetä" to search-icon -->
-            <input type="submit" name="submit" id="submit" value="Lähetä">
+            <button type="submit" id="submit">
+                <i class="fa-solid fa-magnifying-glass" title="Haku"></i>
+            </button>
         </form>
 
     </div>
 
-    <!-- TODO: print listings from js -->
-    <div class="listingsDiv">
 
-        <h2>Uusimmat ilmoitukset</h2>
+    <div class="newestListingsDiv">
 
-        <div class="listing">
+        <h2 id="uusimmatIlmoituksetTxt">Uusimmat ilmoitukset</h2>
+
+        <!-- TODO: print listings from js -->
+        <div class="listingsDiv">
+
+            <div class="listing">
+
+                <div class="listingImg">
+                    <img src="assets/img/plant.jpg">
+                </div>
+                <div class="listingInfo">
+                    <p class="listingName">Peikonlehti</p>
+                    <p class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</p>
+                    <p class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</p>
+                    <p class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</p>
+                    <p class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</p>
+                </div>
+
+            </div>
+
+            <div class="listing">
 
             <div class="listingImg">
                 <img src="assets/img/plant.jpg">
@@ -64,6 +84,37 @@
 
         </div>
 
+            <div class="listing">
+
+                <div class="listingImg">
+                    <img src="assets/img/plant.jpg">
+                </div>
+                <div class="listingInfo">
+                    <p class="listingName">Peikonlehti</p>
+                    <p class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</p>
+                    <p class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</p>
+                    <p class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</p>
+                    <p class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</p>
+                </div>
+
+            </div>
+
+            <div class="listing">
+
+                    <div class="listingImg">
+                        <img src="assets/img/plant.jpg">
+                    </div>
+                    <div class="listingInfo">
+                        <p class="listingName">Peikonlehti</p>
+                        <p class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</p>
+                        <p class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</p>
+                        <p class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</p>
+                        <p class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</p>
+                    </div>
+
+                </div>
+
+        </div>
     </div>
 
 </body>
