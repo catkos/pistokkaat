@@ -1,0 +1,33 @@
+/***
+
+    Styling for hae-page
+
+ ***/
+
+#searchtxt{
+    font-family: "Open Sans",sans-serif;
+    background-color: #FCFCFC;
+    border:1px solid #3A7457;
+    border-radius: 5px;
+}
+
+#maakunnat{
+    font-family: "Open Sans",sans-serif;
+    background-color: #FCFCFC;
+    border:1px solid #3A7457;
+    border-radius: 5px;
+}
+
+#price{
+    font-family: "Open Sans",sans-serif;
+    background-color: #FCFCFC;
+    border:1px solid #3A7457;
+    border-radius: 5px;
+}
+
+#mailing{
+    font-family: "Open Sans",sans-serif;
+    background-color: #FCFCFC;
+    border:1px solid #3A7457;
+    border-radius: 5px;
+}
