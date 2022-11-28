@@ -1,0 +1,37 @@
+.searchDiv{
+    display: flex;
+    justify-content: center;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    background-color: #3A7457;
+}
+/* form styling */
+#searchtxt{
+    height:35px;
+    font-family: "Open Sans",sans-serif;
+}
+#submit{
+    height:40px;
+    font-family: "Open Sans",sans-serif;
+}
+
+.listingsDiv{
+    background-color: #FCFCFC;
+}
+
+.listing{
+    background:grey;
+    width:350px;
+    display: flex;
+    align-content: center;
+}
+
+.listingImg img{
+    width: 150px;
+    height:100%;
+    object-fit: cover;
+}
+
+.listingInfo{
+    padding: 3%;
+}

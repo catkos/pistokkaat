@@ -1,0 +1,37 @@
+/***
+
+ Main stylesheet, includes fontface, body, text and navigation style
+
+ ***/
+
+@font-face {
+    font-family: FredokaOne;
+    src: url(../assets/fonts/FredokaOne-Regular.ttf);
+}
+
+body{
+    margin:0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: #1A1A1A
+}
+
+h1{font-family: "FredokaOne", serif; font-size: 25px}
+h2{font-family: "FredokaOne", serif; font-size: 20px}
+
+/* Main navigation */
+#mainNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1A1A1A;
+    padding:5%;
+    text-indent:15px;
+}
+#mainNav a{color: #FCFCFC; text-decoration: none}
+#logo{font-family: "FredokaOne", serif; font-size: 30px;}
+
+/* Mobile rule */
+@media only screen and (max-width: 600px) {
+    
+}
