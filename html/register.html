@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistokkaat - Rekisteröidy</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/register.js" defer></script>
+</head>
+<body>
+    <main>
+        <section class="login-register-wrapper">
+            <h2>Rekisteröidy</h2>
+            <form id="register-form" action="" method="post" autocomplete="off">
+                <div class="input-wrapper">
+                    <label for="username">Käyttäjätunnus:</label>
+                    <input class="input-field" type="text" name="username" minlength="3" required>
+                </div>
+                <div class="input-wrapper">
+                    <label for="email">Sähköposti:</label>
+                    <input class="input-field" type="email" name="email" required>
+                </div>
+                <div id="autocomplete-wrapper" class="input-wrapper">
+                    <label for="location">Kunta:</label>
+                    <input id="autocomplete-input" class="input-field" type="text" name="location" required>
+                </div>
+                <div class="input-wrapper">
+                    <label for="password">Salasana:</label>
+                    <input class="input-field" type="password" name="password" pattern="(?=.*[\p{Lu}]).{8,}" required>
+                </div>
+                <button class="form-button" type="submit">Liity</button>
+            </form>
+            <p>
+                <span>Onko jo käyttäjätunnus? <a href="login.html">Kirjaudu sisään</a></span>
+            </p>
+        </section>
+    </main>
+</body>
+</html>
