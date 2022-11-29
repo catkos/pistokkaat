@@ -5,26 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pistokkaat - Kirjaudu</title>
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/login-register.css">
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
     <main>
-        <section class="login-register-wrapper">
+        <section class="loginRegisterWrapper">
             <h2>Kirjaudu sisään</h2>
             <!-- TODO: post form to api -->
-            <form id="login-form" action="" method="post">
-                <div class="input-wrapper">
+            <form id="loginForm" action="" method="post">
+                <div class="inputWrapper">
                     <label for="email">Sähköposti:</label>
-                    <input class="input-field" type="email" name="email">
+                    <input class="inputField" type="email" name="email">
                 </div>
-                <div class="input-wrapper">
+                <div class="inputWrapper">
                     <label for="password">Salasana:</label>
-                    <input class="input-field" type="password" name="password">
+                    <input class="inputField" type="password" name="password">
                 </div>
-                <button class="form-button" type="submit">Kirjaudu</button>
+                <button class="primaryButton formButton" type="submit">Kirjaudu</button>
             </form>
-            <p>
+            <p class="helpText">
                 Ei käyttäjätunnusta? <a href="register.html">Rekisteröidy käyttäjäksi</a>
             </p>
         </section>

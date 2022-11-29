@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Fredoka One';
+    src: url(../assets/fonts/FredokaOne-Regular.ttf);
+}
+
+* {box-sizing: border-box;}
+
+*:focus {
+    outline: 2px solid rgb(58, 116, 87);
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    color: rgb(26, 26, 26);
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Fredoka One', serif;
+    font-size: 2rem;
+    margin: 0;
+}
+
+a {color: rgb(58, 116, 87);}
+
+button {cursor: pointer;}
+
+.primaryButton {
+    background-color: rgb(58, 116, 87);
+    height: 3em;
+    border: 0;
+    color: rgb(252, 252, 252);
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 200ms ease-out 200ms;
+    transition: transform 75ms;
+}
+
+.primaryButton:hover {
+    background-color: rgb(41, 81, 61);
+}
+
+.primaryButton:active {
+    background-color: rgb(41, 81, 61);
+    transform: scale(0.95);
+}
+
+.primaryButton:focus {
+    outline: 3px solid rgb(160, 207, 184);
+}
+
+.helpText {font-size: 0.875rem;}
