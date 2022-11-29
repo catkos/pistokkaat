@@ -4,6 +4,10 @@
 
  ***/
 
+* {
+    box-sizing: border-box;
+}
+
 @font-face {
     font-family: FredokaOne;
     src: url(../assets/fonts/FredokaOne-Regular.ttf);
@@ -16,8 +20,8 @@ body{
     color: #1A1A1A
 }
 
-h1{font-family: "FredokaOne", serif; font-size: 25px}
-h2{font-family: "FredokaOne", serif; font-size: 20px}
+h1{font-family: "FredokaOne", serif; font-size: 25px; margin:0; padding-top: 35px; padding-bottom: 35px;}
+h2{font-family: "FredokaOne", serif; font-size: 20px; margin:0; padding-top: 35px; padding-bottom: 35px;}
 
 /* Main navigation */
 #mainNav{

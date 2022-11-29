@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/hae.css">
+    <link rel="stylesheet" href="styles/listing.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -15,10 +16,10 @@
 <body>
 
 <nav id="mainNav">
-    <a href="" id="logo">Pistokkaat</a>
+    <a href="index.html" id="logo">Pistokkaat</a>
     <!-- TODO: Change href links -->
     <div class="navlinks">
-        <a href="/hae" id="haku"><i class="fa-solid fa-magnifying-glass" title="Haku"></i></a>
+        <a href="hae.html" id="haku"><i class="fa-solid fa-magnifying-glass" title="Haku"></i></a>
         <!-- TODO: Show below only to login users -->
         <a href="" id="uusiIlmoitus"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a>
         <a href="" id="suosikit"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a>
@@ -26,6 +27,7 @@
     </div>
 </nav>
 
+<!-- SEARCH FORM -->
 <div class="searchDiv">
 
     <form method="get">
@@ -35,22 +37,68 @@
         <label for="maakunnat" hidden>Valitse maakunta</label>
         <!-- TODO: get all provinces from database -->
         <select id="maakunnat" name="maakunnat">
+            <option value="" disabled selected>Sijainti</option>
             <option value="uusimaa">Uusimaa</option>
             <option value="lappi">Lappi</option>
         </select>
         <label for="price" hidden>Hinta</label>
-        <input type="number" name="price" id="price" min="0" max="100" placeholder="0">€
+        <div class="priceAndMailingDiv">
+        <input type="number" name="price" id="price" min="0" max="100" placeholder="Max">€
         <label for="mailing" hidden>Valitse toimitustapa</label>
         <select id="mailing" name="mailing">
+            <option value="" disabled selected>Toimitustapa</option>
             <option value="posti">Posti</option>
             <option value="nouto">Nouto</option>
             <option value="postiTaiNouto">Posti tai nouto</option>
         </select>
+        </div>
         <button type="submit" id="submit">
-            <i class="fa-solid fa-magnifying-glass" title="Haku"></i>
+            <i class="fa-solid fa-magnifying-glass" title="Haku"></i> Hae
         </button>
 
     </form>
+
+</div>
+
+<!-- PRINT OUT RESULTS -->
+<div class="listingsDivWrapper">
+
+    <h2>Hakutuloksia: 2</h2>
+
+    <!-- TODO: print listings from database w/ js -->
+    <div class="listingsDiv">
+
+        <div class="listing">
+
+            <div class="listingImg">
+                <img src="assets/img/plant.jpg">
+            </div>
+            <div class="listingInfo">
+                <p class="listingName">Peikonlehti</p>
+                <p class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</p>
+                <p class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</p>
+                <p class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</p>
+                <p class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</p>
+            </div>
+
+        </div>
+
+        <div class="listing">
+
+            <div class="listingImg">
+                <img src="assets/img/plant.jpg">
+            </div>
+            <div class="listingInfo">
+                <p class="listingName">Peikonlehti</p>
+                <p class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</p>
+                <p class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</p>
+                <p class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</p>
+                <p class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</p>
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 

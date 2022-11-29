@@ -4,11 +4,38 @@
 
  ***/
 
+h2{
+    text-align: center;
+}
+
+.searchDiv{
+    padding:50px;
+    background-color: #FCFCFC;
+    height:350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listingsDivWrapper{
+    background-color: #F5F5F5;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
 #searchtxt{
     font-family: "Open Sans",sans-serif;
     background-color: #FCFCFC;
     border:1px solid #3A7457;
     border-radius: 5px;
+    height:50px;
+    width:300px;
 }
 
 #maakunnat{
@@ -16,6 +43,13 @@
     background-color: #FCFCFC;
     border:1px solid #3A7457;
     border-radius: 5px;
+    height:50px;
+}
+
+.priceAndMailingDiv{
+    display: flex;
+    align-items: center;
+    gap:10px;
 }
 
 #price{
@@ -23,6 +57,8 @@
     background-color: #FCFCFC;
     border:1px solid #3A7457;
     border-radius: 5px;
+    height:50px;
+    width:50px;
 }
 
 #mailing{
@@ -30,4 +66,19 @@
     background-color: #FCFCFC;
     border:1px solid #3A7457;
     border-radius: 5px;
+    height:50px;
+    width: 100%;
+}
+
+#submit{
+    background-color: #3A7457;
+    color: #FCFCFC;
+    border:0;
+    border-radius: 5px;
+    transition: 200ms ease-out 200ms;
+    height:50px;
+    font-size:20px;
+}
+#submit:hover{
+    background-color:#E67039;
 }

@@ -6,6 +6,7 @@
     <!-- TODO: add fonts -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/listing.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -18,7 +19,7 @@
         <a href="" id="logo">Pistokkaat</a>
         <!-- TODO: Change href links -->
         <div class="navlinks">
-            <a href="/hae" id="haku"><i class="fa-solid fa-magnifying-glass" title="Haku"></i></a>
+            <a href="hae.html" id="haku"><i class="fa-solid fa-magnifying-glass" title="Haku"></i></a>
             <!-- TODO: Show below only to login users -->
             <a href="" id="uusiIlmoitus"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a>
             <a href="" id="suosikit"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a>
@@ -28,11 +29,8 @@
 
     <div class="searchDiv">
 
-        <!--
-            TODO: add action to go to "Haku" page
-            Form doesnt work atm
-                                        -->
-        <form action="" method="get">
+        <!-- TODO: make form functional -->
+        <form action="hae.html" method="get">
             <label for="searchtxt" hidden>Hae pistokkaita</label>
             <input type="text" id="searchtxt" name="searchtxt" placeholder="Hae pistokkaita">
             <button type="submit" id="submit">
