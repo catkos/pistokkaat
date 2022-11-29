@@ -3,6 +3,13 @@
     src: url(../assets/fonts/FredokaOne-Regular.ttf);
 }
 
+/* TODO: delete dummyNav */
+.dummyNav {
+    background-color: rgb(252, 252, 252);
+    border-bottom: 1px solid rgb(204, 204, 204);
+    height: 60px;
+}
+
 * {box-sizing: border-box;}
 
 *:focus {
@@ -10,10 +17,13 @@
 }
 
 body {
+    background-color: rgb(252, 252, 252);
     font-family: "Open Sans", sans-serif;
     color: rgb(26, 26, 26);
     margin: 0;
 }
+
+main {padding: 1rem;}
 
 h2 {
     font-family: 'Fredoka One', serif;
@@ -27,7 +37,7 @@ button {cursor: pointer;}
 
 .primaryButton {
     background-color: rgb(58, 116, 87);
-    height: 3em;
+    height: 3rem;
     border: 0;
     color: rgb(252, 252, 252);
     font-size: 1rem;
@@ -47,6 +57,30 @@ button {cursor: pointer;}
 
 .primaryButton:focus {
     outline: 3px solid rgb(160, 207, 184);
+}
+
+.secondaryButton {
+    background-color: rgb(230, 112, 57);
+    height: 2.5rem;
+    width: 2.5rem;
+    border: 0;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 200ms ease-out 200ms;
+    transition: transform 75ms;
+}
+
+.secondaryButton:hover {
+    background-color: rgb(200, 80, 25);
+}
+
+.secondaryButton:active {
+    background-color: rgb(200, 80, 25);
+    transform: scale(0.95);
+}
+
+.secondaryButton:focus {
+    outline: 3px solid rgb(244, 189, 164);
 }
 
 .helpText {font-size: 0.875rem;}

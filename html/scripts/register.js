@@ -3,6 +3,7 @@
 const municipalities = ["Helsinki","Vantaa","Espoo","Joensuu","Rovaniemi", "Hamina", "Elojärvi"];
 
 const autoCompleteInputEl = document.querySelector('#autocompleteInput');
+const autoCompleteIcon = document.querySelector('#autoCompleteIcon');
 
 const onInputChange = () => {
     removeAutocompleteDropdown();
@@ -65,5 +66,10 @@ const removeAutocompleteDropdown = () => {
     if (listEl) listEl.remove();
 }
 
+const addFocusToInputEl = () => {
+    autoCompleteInputEl.focus();
+}
+
 autoCompleteInputEl.addEventListener('input', onInputChange);
 autoCompleteInputEl.addEventListener('focusin', onInputChange);
+autoCompleteIcon.addEventListener('click', addFocusToInputEl);

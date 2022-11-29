@@ -1,15 +1,12 @@
 /* styles for login.html and register.html */
 /* TODO: move general styling to main.css */
 
-body {background-color: rgb(58, 116, 87);}
-
 main {
     height: 100vh;
     display: flex;
 }
 
 .loginRegisterWrapper {
-    padding: 1rem;
     width: 100%;
     background-color: rgb(252, 252, 252);
     display: flex;
@@ -113,7 +110,15 @@ main {
 
 #autocompleteWrapper:focus-within .autocompleteList {display: block;}
 
+#autoCompleteIcon {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+}
+
 @media only screen and (min-width: 768px) {
+
+    body {background-color: rgb(58, 116, 87);}
 
     main {
         align-items: center;

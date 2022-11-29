@@ -1,0 +1,60 @@
+.infoList {
+    list-style: none;
+    padding: 0;
+    /* background-color: rgb(245, 236, 227);
+    border-radius: 0.5rem;
+    padding: 0.5rem; */
+}
+
+.infoList li {
+    padding-bottom: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.infoList i {
+    color:rgb(58, 116, 87);
+    width: 2rem;
+}
+
+#editDeleteButtonWrapper {
+    float: right;
+    margin-bottom: 1rem;
+}
+
+#editDeleteButtonWrapper button:first-of-type {
+    margin-right: 0.5rem;
+}
+
+#imgWrapper{
+    margin: 0;
+    margin-bottom: 1rem;
+    clear: both;
+    position: relative;
+    box-shadow: 0 0 8px rgba(26, 26, 26, 0.2);
+    border-radius: 0.5rem;
+}
+
+#plantImg {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    vertical-align: top;
+}
+
+#likeButton {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    height: 3rem;
+    width: 3rem;
+    border: 0;
+    background-color: rgb(252, 252, 252);
+    font-size: 1.25rem;
+    border-radius: 5rem;
+    box-shadow: 0 0 8px rgba(26, 26, 26, 0.2);
+    color: rgb(58, 116, 87);
+}
+
+section h2 {
+    text-align: center;
+}
