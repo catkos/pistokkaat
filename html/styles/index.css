@@ -4,7 +4,7 @@
 
  ***/
 
-.searchDiv{
+.search{
     display: flex;
     justify-content: center;
     padding-top: 150px;
@@ -50,7 +50,7 @@ form{
     background-color:#E67039;
 }
 
-.newestListingsDiv{
+.newestListings{
     background-color: #FCFCFC;
     padding-bottom:20px;
 }

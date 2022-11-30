@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Etusivu</title>
-    <!-- TODO: add fonts -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/listing.css">
@@ -15,6 +14,7 @@
 </head>
 <body>
 
+    <!-- NAVIGATION TODO: change outside of <body>? -->
     <nav id="mainNav">
         <a href="" id="logo">Pistokkaat</a>
         <!-- TODO: Change href links -->
@@ -27,89 +27,94 @@
         </div>
     </nav>
 
-    <div class="searchDiv">
+    <main>
 
-        <!-- TODO: make form functional -->
-        <form action="hae.html" method="get">
-            <label for="searchtxt" hidden>Hae pistokkaita</label>
-            <input type="text" id="searchtxt" name="searchtxt" placeholder="Hae pistokkaita">
-            <button type="submit" id="submit">
-                <i class="fa-solid fa-magnifying-glass" title="Haku"></i>
-            </button>
-        </form>
+        <section class="search">
 
-    </div>
+            <!-- TODO: make form functional -->
+            <form action="hae.html" method="get">
+                <label for="searchtxt" hidden>Hae pistokkaita</label>
+                <input type="text" id="searchtxt" name="searchtxt" placeholder="Hae pistokkaita" pattern="[a-zA-ZäåöÄÅÖ]" title="Hae pistokkaita (Vain kirjaimet sallittu)">
+                <button type="submit" id="submit">
+                    <i class="fa-solid fa-magnifying-glass" title="Haku"></i>
+                </button>
+            </form>
+
+        </section>
 
 
-    <div class="newestListingsDiv">
+        <section class="newestListings">
 
-        <h2 id="uusimmatIlmoituksetTxt">Uusimmat ilmoitukset</h2>
+            <h2 id="uusimmatIlmoituksetTxt">Uusimmat ilmoitukset</h2>
 
-        <!-- TODO: print listings from js -->
-        <div class="listingsDiv">
+            <!-- TODO: print listings from js -->
+            <div class="listings">
 
-            <div class="listing">
+                <article class="listing">
 
-                <div class="listingImg">
-                    <img src="assets/img/plant.jpg">
-                </div>
-                <div class="listingInfo">
-                    <p class="listingName">Peikonlehti</p>
-                    <p class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</p>
-                    <p class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</p>
-                    <p class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</p>
-                    <p class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</p>
-                </div>
+                    <figure class="listingImg">
+                        <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
+                    </figure>
+                    <ul class="listingInfo">
+                        <li class="listingName"><h3>Peikonlehti</h3></li>
+                        <li class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</li>
+                        <li class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</li>
+                        <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
+                        <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
+                    </ul>
+
+                </article>
+
+                <article class="listing">
+
+                    <figure class="listingImg">
+                        <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
+                    </figure>
+                    <ul class="listingInfo">
+                        <li class="listingName"><h3>Peikonlehti</h3></li>
+                        <li class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</li>
+                        <li class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</li>
+                        <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
+                        <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
+                    </ul>
+
+                </article>
+
+                <article class="listing">
+
+                    <figure class="listingImg">
+                        <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
+                    </figure>
+                    <ul class="listingInfo">
+                        <li class="listingName"><h3>Peikonlehti</h3></li>
+                        <li class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</li>
+                        <li class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</li>
+                        <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
+                        <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
+                    </ul>
+
+                </article>
+
+                <article class="listing">
+
+                    <figure class="listingImg">
+                        <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
+                    </figure>
+                    <ul class="listingInfo">
+                        <li class="listingName"><h3>Peikonlehti</h3></li>
+                        <li class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</li>
+                        <li class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</li>
+                        <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
+                        <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
+                    </ul>
+
+                </article>
 
             </div>
 
-            <div class="listing">
+        </section>
 
-            <div class="listingImg">
-                <img src="assets/img/plant.jpg">
-            </div>
-            <div class="listingInfo">
-                <p class="listingName">Peikonlehti</p>
-                <p class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</p>
-                <p class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</p>
-                <p class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</p>
-                <p class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</p>
-            </div>
-
-        </div>
-
-            <div class="listing">
-
-                <div class="listingImg">
-                    <img src="assets/img/plant.jpg">
-                </div>
-                <div class="listingInfo">
-                    <p class="listingName">Peikonlehti</p>
-                    <p class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</p>
-                    <p class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</p>
-                    <p class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</p>
-                    <p class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</p>
-                </div>
-
-            </div>
-
-            <div class="listing">
-
-                    <div class="listingImg">
-                        <img src="assets/img/plant.jpg">
-                    </div>
-                    <div class="listingInfo">
-                        <p class="listingName">Peikonlehti</p>
-                        <p class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</p>
-                        <p class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</p>
-                        <p class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</p>
-                        <p class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</p>
-                    </div>
-
-                </div>
-
-        </div>
-    </div>
+    </main>
 
 </body>
 </html>

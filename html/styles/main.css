@@ -28,7 +28,8 @@ h2{font-family: "FredokaOne", serif; font-size: 20px; margin:0; padding-top: 35p
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1A1A1A;
+    background-color: #3A7457;
+    height:65px;
 }
 #mainNav a{
     color: #FCFCFC;
@@ -36,7 +37,24 @@ h2{font-family: "FredokaOne", serif; font-size: 20px; margin:0; padding-top: 35p
     padding:20px;
     transition: 200ms ease-out 200ms;
 }
+/* OR: White bg with green border?
+#mainNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FCFCFC;
+    height:65px;
+    border-top: 10px solid #3A7457;
+}
+#mainNav a{
+    color: #3A7457;
+    text-decoration: none;
+    padding:20px;
+    transition: 200ms ease-out 200ms;
+}
+*/
 #logo{font-family: "FredokaOne", serif; font-size: 30px;}
+
 /* add txt for larger screen */
 @media only screen and (min-width: 750px){
     #haku::after{
@@ -59,10 +77,7 @@ h2{font-family: "FredokaOne", serif; font-size: 20px; margin:0; padding-top: 35p
     border-bottom: 4px solid #E67039;
 }
 
-/* Mobile rule */
+/* Mobile rule, smaller logo */
 @media only screen and (max-width: 600px) {
-    #mainNav{
-        flex-direction: column;
-        padding-bottom:20px;
-    }
+    #logo{font-size: 20px;}
 }
