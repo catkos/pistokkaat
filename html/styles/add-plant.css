@@ -1,0 +1,108 @@
+main {padding: 2rem 1rem;}
+
+#dropdownIcon {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+}
+
+.addNewSection {
+    width: 100%;
+    background-color: rgb(252, 252, 252);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+#addNewForm {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#addNewForm .inputWrapper {
+    max-width: 400px;
+    width: 100%;
+}
+
+#addNewForm .textAreaWrapper {
+    max-width: 400px;
+    width: 100%;
+}
+
+.addFile {
+    border: 2px dashed rgb(209, 204, 199);
+    font-size: 0.875rem;
+    font-weight: 400;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.addFile:hover {
+    border: 2px dashed rgb(58, 116, 87);
+    outline: 3px solid rgb(160, 207, 184);
+    background-color: rgb(228, 241, 235);
+}
+
+.addFile:focus {
+    border: 2px dashed rgb(58, 116, 87);
+    outline: 3px solid rgb(160, 207, 184);
+    background-color: rgb(228, 241, 235);
+}
+
+.addFile:focus-visible {
+    border: 2px dashed rgb(58, 116, 87);
+    outline: 3px solid rgb(160, 207, 184);
+    background-color: rgb(228, 241, 235);
+}
+
+#fileName {
+    margin-top: 1rem;
+    font-weight: 400;
+}
+
+.addFile i {
+    font-size: 4rem;
+    color: rgb(58, 116, 87);
+}
+
+.priceMailingInputWrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.buttonWrapper {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    gap: 1rem;
+}
+
+.buttonWrapper button {flex-grow: 1;}
+
+.wordCounter {float:right};
+
+.inputWrapper p {position:absolute;}
+
+#priceWrapper {position:relative;}
+
+#priceWrapper p {
+    position: absolute;
+    right: 1rem;
+    top: 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#dropdownWrapper {position: relative;};
+
+#mailinInput {cursor: pointer;}

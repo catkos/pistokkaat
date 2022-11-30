@@ -17,20 +17,21 @@
             <!-- TODO: post form to api -->
             <form id="registerForm" action="" method="post" autocomplete="off">
                 <div class="inputWrapper">
-                    <label for="username">Käyttäjätunnus:</label>
+                    <label for="username">Käyttäjätunnus: *</label>
                     <input class="inputField" type="text" name="username" minlength="3" required>
+                    <small>Vähintään 3 merkkiä.</small>
                 </div>
                 <div class="inputWrapper">
-                    <label for="email">Sähköposti:</label>
+                    <label for="email">Sähköposti: *</label>
                     <input class="inputField" type="email" name="email" required>
                 </div>
                 <div id="autocompleteWrapper" class="inputWrapper">
-                    <label for="location">Kunta:</label>
+                    <label for="location">Kunta: *</label>
                     <i id="autoCompleteIcon" class="fa-solid fa-chevron-down"></i>
                     <input id="autocompleteInput" class="inputField" type="text" name="location" required>
                 </div>
                 <div class="inputWrapper">
-                    <label for="password">Salasana:</label>
+                    <label for="password">Salasana: *</label>
                     <input class="inputField" type="password" name="password" pattern="(?=.*\p{Lu}).{8,}" required>
                     <small>Vähintään 8 merkkiä ja yksi iso kirjain.</small>
                 </div>

@@ -1,4 +1,4 @@
-.infoList {
+.infoList, .userInfoList {
     list-style: none;
     padding: 0;
     /* background-color: rgb(245, 236, 227);
@@ -6,28 +6,33 @@
     padding: 0.5rem; */
 }
 
-.infoList li {
-    padding-bottom: 0.75rem;
+.infoList {border-bottom: 1px solid rgb(230, 112, 57);}
+
+.infoList li, .userInfoList li {
+    padding-bottom: 1rem;
     font-size: 0.875rem;
 }
 
-.infoList i {
+.infoList i, .userInfoList i {
     color:rgb(58, 116, 87);
     width: 2rem;
 }
 
 #editDeleteButtonWrapper {
     float: right;
-    margin-bottom: 1rem;
+    padding: 1rem;
 }
 
 #editDeleteButtonWrapper button:first-of-type {
     margin-right: 0.5rem;
 }
 
+#infoWrapper {
+    margin: 1rem;
+}
+
 #imgWrapper{
     margin: 0;
-    margin-bottom: 1rem;
     clear: both;
     position: relative;
     box-shadow: 0 0 8px rgba(26, 26, 26, 0.2);
@@ -43,8 +48,8 @@
 
 #likeButton {
     position: absolute;
-    right: 8px;
-    top: 8px;
+    right: 16px;
+    top: 16px;
     height: 3rem;
     width: 3rem;
     border: 0;
@@ -52,9 +57,44 @@
     font-size: 1.25rem;
     border-radius: 5rem;
     box-shadow: 0 0 8px rgba(26, 26, 26, 0.2);
-    color: rgb(58, 116, 87);
+}
+
+#instructionWrapper {
+    margin: 1rem;
+}
+
+#userWrapper {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 0 1rem;
+    background-color: rgb(245, 236, 227);
+}
+
+.collapsible {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 0;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0.5rem;
+    background-color: rgb(245, 236, 227);
+}
+
+.collapsibleContent {
+    background-color: rgb(245, 236, 227);
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.collapsibleContent p {
+    margin: 0;
 }
 
 section h2 {
     text-align: center;
+}
+
+p {
+    font-size: 0.875rem;
 }

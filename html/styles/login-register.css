@@ -4,6 +4,7 @@
 main {
     height: 100vh;
     display: flex;
+    padding: 1rem;
 }
 
 .loginRegisterWrapper {
@@ -14,35 +15,6 @@ main {
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-}
-
-.inputWrapper {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-}
-
-.inputWrapper label {
-    font-weight: 600;
-    margin-bottom: 0.5em;
-}
-
-.inputField {
-    height: 3rem;
-    font-size: 0.875rem;
-    border-radius: 0.25rem;
-    border: 1px solid rgb(204, 204, 204);
-    padding: 0 0.5rem;
-}
-
-.inputField:focus {
-    border: 1px solid rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
-}
-
-.inputField:focus-visible {
-    border: 1px solid rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
 }
 
 .autocompleteList {
@@ -56,17 +28,17 @@ main {
     right: 0;
     max-height: 12.6rem;
     overflow-y: auto;
-    border: 1px solid rgb(204, 204, 204);
+    border: 1px solid rgb(209, 204, 199);
     border-radius: 0.25rem;
     display: none;
-}
-
-.autocompleteList:hover {display: block;}
-
-.autocompleteList li {
-    border-top: unset;
     background-color: rgb(252, 252, 252);
 }
+
+.autocompleteList:hover {
+    display: block;
+}
+
+.autocompleteList li {border-top: unset;}
 
 .autocompleteList button {
     height: 2.5rem;
@@ -133,7 +105,6 @@ main {
 
     .formButton {
         width: auto;
-        padding: 0 4rem;
         margin: auto;
         display: block;
     }

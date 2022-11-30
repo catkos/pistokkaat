@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistokkaat - Lisää pistokas</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/add-plant.css">
+    <script src="scripts/add-plant.js" defer></script>
+    <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
+    <main>
+        <section class="addNewSection">
+            <h2>Lisää uusi pistokas</h2>
+                <form id="addNewForm" action="" method="post">
+                    <div class="inputWrapper">
+                        <label for="image">Kuva: *</label>
+                        <input id="fileInput" type="image" name="image" accept="image/*" hidden required>
+                        <label id="addFile" class="addFile" for="image" tabindex="0">
+                            <i class="fa-solid fa-camera"></i>
+                            <span id="fileName">Valitse kuva</span>
+                        </label>
+                    </div>
+                    <div class="inputWrapper">
+                        <label for="name">Kasvin nimi: *</label>
+                        <input class="inputField" id="nameInput" type="text" name="name" minlength="3" required>
+                        <small>Vähintään 3 merkkiä.</small>
+                    </div>
+                    <div id="priceWrapper" class="inputWrapper">
+                        <label for="price">Hinta: *</label>
+                        <p>€</p>
+                        <input class="inputField" id="priceInput" type="number" name="price" min="0" required>
+                    </div>
+                    <div id="dropdownWrapper" class="inputWrapper">
+                        <label for="mailing">Toimitustapa: *</label>
+                        <i id="dropdownIcon" class="fa-solid fa-chevron-down"></i>
+                        <input class="inputField" id="mailingInput" type="text" name="mailing" readonly required>
+                    </div>
+                    <div class="textAreaWrapper">
+                        <label for="description">Kuvaus: *</label>
+                        <textarea class="textArea" id="descriptionInput" name="description" rows="4" cols="50" minlength="30" maxlength="300"></textarea>
+                        <div>
+                            <small>Vähintään 30 merkkiä.</small>
+                            <small id="descriptionWordCounter" class="wordCounter">0/280</small>
+                        </div>
+                    </div>
+                    <div class="textAreaWrapper">
+                        <label for="instruction">Hoito-ohjeet: *</label>
+                        <textarea class="textArea" id="instructionInput" name="instruction" rows="4" cols="50" minlength="30" maxlength="300"></textarea>
+                        <div>
+                            <small>Vähintään 30 merkkiä.</small>
+                            <small id="instructionWordCounter" class="wordCounter">0/280</small>
+                        </div>
+                    </div>
+                    <div class="buttonWrapper">
+                        <button class="primaryButton" type="submit">Tallenna</button>
+                        <button class="secondaryButton" type="button" action="#">Peruuta</button>
+                    </div>
+                    
+                </form>
+        </section>
+    </main>
+</body>
+</html>

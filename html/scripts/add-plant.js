@@ -1,19 +1,21 @@
-// TODO: get municipalities from api
+// TODO: get mailingOptions from api
 // This is only mockup data!
-const municipalities = ["Helsinki","Vantaa","Espoo","Joensuu","Rovaniemi", "Hamina", "Elojärvi"];
+const mailingOptions = ["Nouto", "Postitus"];
 
-const autoCompleteInputEl = document.querySelector('#autocompleteInput');
-const autoCompleteIcon = document.querySelector('#autoCompleteIcon');
+const addFileEl = document.querySelector('#addFile');
+const fileInput = document.querySelector('#fileInput');
+const multiSelectionInputEl = document.querySelector('#mailingInput');
+const multiSelectionIcon = document.querySelector('#multiSelectionIcon');
 
 const onInputChange = (array) => {
     removeAutocompleteDropdown();
 
     // Get value from input
-    const value = autoCompleteInputEl.value.toLowerCase();
+    const value = multiSelectionInputEl.value.toLowerCase();
 
     // If input's value's length is 0, create autocomplete drowdown with array
     if (value.length === 0) {
-        createAutoCompleteDropDown(array);
+        createMultiSelectionDropDown(array);
         return;
     }
 
@@ -22,7 +24,7 @@ const onInputChange = (array) => {
         return item.toLowerCase().startsWith(value);
     });
 
-    createAutoCompleteDropDown(filteredArray)
+    createMultiSelectionDropDown(filteredArray)
 }
 
 const onButtonClick = (e) => {
@@ -33,12 +35,12 @@ const onButtonClick = (e) => {
     const buttonEl = e.target;
 
     // Add buttonEl's innerHTML to input's value
-    autoCompleteInputEl.value = buttonEl.innerHTML;
+    multiSelectionInputEl.value = buttonEl.innerHTML;
 
     removeAutocompleteDropdown();
 }
 
-const createAutoCompleteDropDown = (array) => {
+const createMultiSelectionDropDown = (array) => {
     // Create ul for dropdown
     const listEl = document.createElement('ul');
     listEl.className = 'autocompleteList';
@@ -54,8 +56,8 @@ const createAutoCompleteDropDown = (array) => {
         listEl.appendChild(listItem);
     });
 
-    // Append ul list to autocompleteWrapper
-    document.querySelector('#autocompleteWrapper').appendChild(listEl);
+    // Append ul list to multiSelectionWrapper
+    document.querySelector('#multiSelectionWrapper').appendChild(listEl);
 }
 
 const removeAutocompleteDropdown = () => {
@@ -67,15 +69,25 @@ const removeAutocompleteDropdown = () => {
 }
 
 const addFocusToInputEl = () => {
-    autoCompleteInputEl.focus();
+    multiSelectionInputEl.focus();
 }
 
-autoCompleteInputEl.addEventListener('input', () => {
-    onInputChange(municipalities);
-});
+// // Click file input when clicking addFileEl
+// addFileEl.addEventListener('click', () => {
+//     addFileInput.click()
+// });
 
-autoCompleteInputEl.addEventListener('focusin',  () => {
-    onInputChange(municipalities);
-});
+// // Add file's name no HTML
+// addFileInput.addEventListener('change', () => {
+//     document.querySelector('#fileName').innerHTML = addFileInput.files[0].name;
+// });
 
-autoCompleteIcon.addEventListener('click', addFocusToInputEl);
+// multiSelectionInputEl.addEventListener('input', () => {
+//     onInputChange(mailingOptions);
+// });
+
+// multiSelectionInputEl.addEventListener('focusin',  () => {
+//     onInputChange(mailingOptions);
+// });
+
+// multiSelectionIcon.addEventListener('click', addFocusToInputEl);
