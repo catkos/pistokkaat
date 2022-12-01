@@ -1,0 +1,81 @@
+/***
+ Main stylesheet, includes fontface, body, text and navigation style
+ ***/
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: FredokaOne;
+    src: url(../assets/fonts/FredokaOne-Regular.ttf);
+}
+
+body{
+    margin:0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: #1A1A1A
+}
+
+h1{font-family: "FredokaOne", serif; font-size: 25px; margin:0; padding-top: 35px; padding-bottom: 35px;}
+h2{font-family: "FredokaOne", serif; font-size: 20px; margin:0; padding-top: 35px; padding-bottom: 35px;}
+
+/* Main navigation */
+#mainNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3A7457;
+    height:65px;
+}
+#mainNav a{
+    color: #FCFCFC;
+    text-decoration: none;
+    padding:20px;
+    transition: 200ms ease-out 200ms;
+}
+/* OR: White bg with green border?
+#mainNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FCFCFC;
+    height:65px;
+    border-top: 10px solid #3A7457;
+}
+#mainNav a{
+    color: #3A7457;
+    text-decoration: none;
+    padding:20px;
+    transition: 200ms ease-out 200ms;
+}
+*/
+#logo{font-family: "FredokaOne", serif; font-size: 30px;}
+
+/* add txt for larger screen */
+@media only screen and (min-width: 750px){
+    #haku::after{
+        content: " Haku";
+    }
+    #uusiIlmoitus::after{
+        content: " Uusi ilmoitus";
+    }
+    #suosikit::after{
+        content: " Suosikit";
+    }
+    #profiili::after{
+        content: " username23"; /* TODO: change username to match login user */
+    }
+}
+
+/* on hover */
+#mainNav .navlinks a:hover{
+    color:#E67039;
+    border-bottom: 4px solid #E67039;
+}
+
+/* Mobile rule, smaller logo */
+@media only screen and (max-width: 600px) {
+    #logo{font-size: 20px;}
+}
