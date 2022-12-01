@@ -1,9 +1,6 @@
 .infoList, .userInfoList {
     list-style: none;
     padding: 0;
-    /* background-color: rgb(245, 236, 227);
-    border-radius: 0.5rem;
-    padding: 0.5rem; */
 }
 
 .infoList {border-bottom: 1px solid rgb(230, 112, 57);}

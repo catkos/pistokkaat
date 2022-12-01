@@ -7,7 +7,7 @@ main {
     padding: 1rem;
 }
 
-.loginRegisterWrapper {
+.loginRegisterSection {
     width: 100%;
     background-color: rgb(252, 252, 252);
     display: flex;
@@ -16,49 +16,6 @@ main {
     align-items: center;
     font-size: 1rem;
 }
-
-.autocompleteList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    z-index: 99;
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-height: 12.6rem;
-    overflow-y: auto;
-    border: 1px solid rgb(209, 204, 199);
-    border-radius: 0.25rem;
-    display: none;
-    background-color: rgb(252, 252, 252);
-}
-
-.autocompleteList:hover {
-    display: block;
-}
-
-.autocompleteList li {border-top: unset;}
-
-.autocompleteList button {
-    height: 2.5rem;
-    border: 0;
-    background: 0;
-    width: 100%;
-    text-align: left;
-    padding: 0 0.5rem;
-    border-radius: 0;
-    font-size: 0.875rem;
-}
-
-.autocompleteList button:hover {background-color: rgb(187, 221, 204);}
-
-.autocompleteList button:focus {
-    background-color: rgb(187, 221, 204);
-    outline: 1px solid rgb(187, 221, 204);
-}
-
-.autocompleteList button:active {background-color: rgb(187, 221, 204);}
 
 .formButton {
     width: 100%;
@@ -73,19 +30,9 @@ main {
     align-items: center;
 }
 
-#loginForm .inputWrapper, #registerForm .inputWrapper {
+.inputWrapper {
     max-width: 400px;
     width: 100%;
-}
-
-#autocompleteWrapper {position: relative;}
-
-#autocompleteWrapper:focus-within .autocompleteList {display: block;}
-
-#autoCompleteIcon {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -97,7 +44,7 @@ main {
         justify-content: center;
     }
 
-    .loginRegisterWrapper {
+    .loginRegisterSection {
         width: 30rem;
         padding: 2.5rem;
         border-radius: 0.5rem;

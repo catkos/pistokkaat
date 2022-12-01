@@ -1,17 +1,18 @@
-// TODO: get municipalities from api
+// TODO: get mailingOptions from api
 // This is only mockup data!
-const municipalities = ["Helsinki","Vantaa","Espoo","Joensuu","Rovaniemi", "Hamina", "Elojärvi"];
+const mailingOptions = ["Nouto", "Postitus"];
 
 const dropdownInput = document.querySelector('#dropdownInput');
 const dropdownIcon = document.querySelector('#dropdownIcon');
 const dropdownWrapper = document.querySelector('#dropdownWrapper');
+let selectedMailingOptions = [];
 
 dropdownInput.addEventListener('input', () => {
-    onInputChange(dropdownWrapper, dropdownInput, municipalities);
+    onInputChange(dropdownInput, dropdownWrapper, mailingOptions, selectedMailingOptions);
 });
 
 dropdownInput.addEventListener('focusin',  () => {
-    onInputChange(dropdownWrapper, dropdownInput, municipalities);
+    onInputChange(dropdownInput, dropdownWrapper, mailingOptions, selectedMailingOptions);
 });
 
 dropdownIcon.addEventListener('click', () => {

@@ -4,90 +4,65 @@ const mailingOptions = ["Nouto", "Postitus"];
 
 const addFileEl = document.querySelector('#addFile');
 const fileInput = document.querySelector('#fileInput');
-const multiSelectionInputEl = document.querySelector('#mailingInput');
-const multiSelectionIcon = document.querySelector('#multiSelectionIcon');
+const descriptionInput = document.querySelector('#descriptionInput');
+const descriptionCharCounterText = document.querySelector('#descriptionCharCounter');
+const instructionInput = document.querySelector('#instructionInput');
+const instructionCharCounterText = document.querySelector('#instructionCharCounter');
+const dropdownInput = document.querySelector('#dropdownInput');
+const dropdownIcon = document.querySelector('#dropdownIcon');
+const dropdownWrapper = document.querySelector('#dropdownWrapper');
+let selectedMailingOptions = [];
 
-const onInputChange = (array) => {
-    removeAutocompleteDropdown();
+// Count characters and add under input
+const charCounter = (input, counterText) => {
+    const count = input.value.length;
+    counterText.innerHTML = count + '/280';
+}
 
-    // Get value from input
-    const value = multiSelectionInputEl.value.toLowerCase();
+// Click file input when clicking addFileEl
+addFileEl.addEventListener('click', () => {
+    console.log(fileInput);
+    fileInput.click();
+});
 
-    // If input's value's length is 0, create autocomplete drowdown with array
-    if (value.length === 0) {
-        createMultiSelectionDropDown(array);
+// Add file's name to HTML
+fileInput.addEventListener('change', () => {
+    document.querySelector('#fileName').innerHTML = fileInput.files[0].name;
+});
+
+descriptionInput.addEventListener('keyup', () => {
+    charCounter(descriptionInput, descriptionCharCounterText);
+});
+
+descriptionInput.addEventListener('keydown', () => {
+    charCounter(descriptionInput, descriptionCharCounterText);
+});
+
+instructionInput.addEventListener('keyup', () => {
+    charCounter(instructionInput, instructionCharCounterText);
+});
+
+instructionInput.addEventListener('keydown', () => {
+    charCounter(instructionInput, instructionCharCounterText);
+});
+
+dropdownInput.addEventListener('input', () => {
+    onInputChange(dropdownInput, dropdownWrapper, mailingOptions, selectedMailingOptions);
+});
+
+dropdownInput.addEventListener('focusin',  () => {
+    onInputChange(dropdownInput, dropdownWrapper, mailingOptions, selectedMailingOptions);
+});
+
+dropdownIcon.addEventListener('click', () => {
+    // Get ul list
+    const listEl = document.querySelector('#dropdownList');
+
+    // If it exists, remove it
+    if (listEl) {
+        listEl.remove();
         return;
     }
 
-    // Create list from array with values that start the same as input's value
-    const filteredArray = array.filter((item) => {
-        return item.toLowerCase().startsWith(value);
-    });
-
-    createMultiSelectionDropDown(filteredArray)
-}
-
-const onButtonClick = (e) => {
-    // Prevent default event
-    e.preventDefault();
-
-    // Get the button that is the target of the click event
-    const buttonEl = e.target;
-
-    // Add buttonEl's innerHTML to input's value
-    multiSelectionInputEl.value = buttonEl.innerHTML;
-
-    removeAutocompleteDropdown();
-}
-
-const createMultiSelectionDropDown = (array) => {
-    // Create ul for dropdown
-    const listEl = document.createElement('ul');
-    listEl.className = 'autocompleteList';
-    listEl.id = 'autocompleteList';
-
-    // Foreach array to button's inside list
-    array.forEach((item) => {
-        const listItem = document.createElement('li');
-        const button = document.createElement('button');
-        button.innerHTML = item;
-        button.addEventListener('click', onButtonClick);
-        listItem.appendChild(button);
-        listEl.appendChild(listItem);
-    });
-
-    // Append ul list to multiSelectionWrapper
-    document.querySelector('#multiSelectionWrapper').appendChild(listEl);
-}
-
-const removeAutocompleteDropdown = () => {
-    // Get ul list
-    const listEl = document.querySelector('#autocompleteList');
-
-    // If it exists, remove it
-    if (listEl) listEl.remove();
-}
-
-const addFocusToInputEl = () => {
-    multiSelectionInputEl.focus();
-}
-
-// // Click file input when clicking addFileEl
-// addFileEl.addEventListener('click', () => {
-//     addFileInput.click()
-// });
-
-// // Add file's name no HTML
-// addFileInput.addEventListener('change', () => {
-//     document.querySelector('#fileName').innerHTML = addFileInput.files[0].name;
-// });
-
-// multiSelectionInputEl.addEventListener('input', () => {
-//     onInputChange(mailingOptions);
-// });
-
-// multiSelectionInputEl.addEventListener('focusin',  () => {
-//     onInputChange(mailingOptions);
-// });
-
-// multiSelectionIcon.addEventListener('click', addFocusToInputEl);
+    addFocusToInputEl(dropdownInput);
+});

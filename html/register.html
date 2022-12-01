@@ -7,12 +7,13 @@
     <title>Pistokkaat - Rekisteröidy</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/login-register.css">
+    <script src="scripts/autocomplete-dropdown.js" defer></script>
     <script src="scripts/register.js" defer></script>
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
     <main>
-        <section class="loginRegisterWrapper">
+        <section class="loginRegisterSection">
             <h2>Rekisteröidy</h2>
             <!-- TODO: post form to api -->
             <form id="registerForm" action="" method="post" autocomplete="off">
@@ -25,10 +26,10 @@
                     <label for="email">Sähköposti: *</label>
                     <input class="inputField" type="email" name="email" required>
                 </div>
-                <div id="autocompleteWrapper" class="inputWrapper">
+                <div id="dropdownWrapper" class="inputWrapper">
                     <label for="location">Kunta: *</label>
-                    <i id="autoCompleteIcon" class="fa-solid fa-chevron-down"></i>
-                    <input id="autocompleteInput" class="inputField" type="text" name="location" required>
+                    <i id="dropdownIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
+                    <input id="dropdownInput" class="inputField" type="text" name="location" required>
                 </div>
                 <div class="inputWrapper">
                     <label for="password">Salasana: *</label>
