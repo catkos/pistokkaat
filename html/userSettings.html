@@ -1,0 +1,88 @@
+<!-- TODO: don't show this page to non-logged in users -->
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Pistokkaat - Käyttäjäasetukset</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/userSettings.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<!-- NAVIGATION TODO: change outside of <body>? -->
+<nav id="mainNav">
+  <a href="index.html" id="logo">Pistokkaat</a>
+  <!-- TODO: Change href links -->
+  <div class="navlinks">
+    <a href="search.html" id="haku"><i class="fa-solid fa-magnifying-glass" title="Haku"></i></a>
+    <!-- TODO: Show below only to login users -->
+    <a href="" id="uusiIlmoitus"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a>
+    <a href="userFavourites.html" id="suosikit"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a>
+    <a href="userProfile.html" id="profiili"><i class="fa-solid fa-user" title="Oma profiili"></i></a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="settings">
+
+    <form method="get" id="settingsForm">
+
+      <div class="inputWrapper">
+        <label for="username">Käyttäjätunnus</label>
+        <input type="text" id="username" name="username" placeholder="username23">
+      </div>
+      <div class="inputWrapper">
+        <label for="email">Sähköposti</label>
+        <input type="text" id="email" name="email" placeholder="sahkoposti@mail.fi">
+      </div>
+      <div class="inputWrapper">
+        <!-- TODO: use same autocomplete input field from register form -->
+        <label for="maakunnat">Sijainti</label>
+        <select id="maakunnat" name="maakunnat">
+          <option value="" disabled selected>Sijainti</option>
+          <option value="uusimaa">Uusimaa</option>
+          <option value="lappi">Lappi</option>
+        </select>
+      </div>
+      <!-- TODO: script to toggle hide/show -->
+      <div class="changePasswordToggle">
+        <div class="inputWrapper" id="changePasswordTxtWrapper">
+          <span>Vaihda salasana</span>
+          <span><i class="fa-solid fa-arrow-down-long"></i></span>
+        </div>
+        <div class="changePasswordShow">
+          <div class="inputWrapper">
+            <!-- TODO: make inputting old password a requirement -->
+            <label for="oldPass">Vanha salasana</label>
+            <input type="password" id="oldPass" name="oldPass">
+          </div>
+          <div class="inputWrapper">
+            <label for="newPass">Uusi salasana</label>
+            <input type="password" id="newPass" name="newPass">
+          </div>
+        </div>
+      </div>
+      <div id="btnWrapper">
+        <button type="submit" id="save">
+          Tallenna
+        </button>
+        <button type="submit" id="back">
+          Peruuta
+        </button>
+      </div>
+
+    </form>
+
+  </section>
+
+
+</main>
+
+</body>
+</html>
