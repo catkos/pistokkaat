@@ -15,54 +15,54 @@ let selectedMailingOptions = [];
 
 // Count characters and add under input
 const charCounter = (input, counterText) => {
-  const count = input.value.length;
-  counterText.innerHTML = count + '/280';
+    const count = input.value.length;
+    counterText.innerHTML = count + '/280';
 }
 
 // Click file input when clicking addFileEl
 addFileEl.addEventListener('click', () => {
-  console.log(fileInput);
-  fileInput.click();
+    console.log(fileInput);
+    fileInput.click();
 });
 
 // Add file's name to HTML
 fileInput.addEventListener('change', () => {
-  document.querySelector('#fileName').innerHTML = fileInput.files[0].name;
+    document.querySelector('#fileName').innerHTML = fileInput.files[0].name;
 });
 
 descriptionInput.addEventListener('keyup', () => {
-  charCounter(descriptionInput, descriptionCharCounterText);
+    charCounter(descriptionInput, descriptionCharCounterText);
 });
 
 descriptionInput.addEventListener('keydown', () => {
-  charCounter(descriptionInput, descriptionCharCounterText);
+    charCounter(descriptionInput, descriptionCharCounterText);
 });
 
 instructionInput.addEventListener('keyup', () => {
-  charCounter(instructionInput, instructionCharCounterText);
+    charCounter(instructionInput, instructionCharCounterText);
 });
 
 instructionInput.addEventListener('keydown', () => {
-  charCounter(instructionInput, instructionCharCounterText);
+    charCounter(instructionInput, instructionCharCounterText);
 });
 
 dropdownInput.addEventListener('input', () => {
-  onInputChange(dropdownInput, dropdownWrapper, mailingOptions, selectedMailingOptions);
+    onMailingInputChange(dropdownInput, dropdownWrapper, mailingOptions, selectedMailingOptions);
 });
 
 dropdownInput.addEventListener('focusin',  () => {
-  onInputChange(dropdownInput, dropdownWrapper, mailingOptions, selectedMailingOptions);
+    onMailingInputChange(dropdownInput, dropdownWrapper, mailingOptions, selectedMailingOptions);
 });
 
 dropdownIcon.addEventListener('click', () => {
-  // Get ul list
-  const listEl = document.querySelector('#dropdownList');
+    // Get ul list
+    const listEl = document.querySelector('#dropdownList');
 
-  // If it exists, remove it
-  if (listEl) {
-    listEl.remove();
-    return;
-  }
+    // If it exists, remove it
+    if (listEl) {
+        listEl.remove();
+        return;
+    }
 
-  addFocusToInputEl(dropdownInput);
+    addFocusToMailingInputEl(dropdownInput);
 });

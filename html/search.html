@@ -2,13 +2,16 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Pistokkaat</title>
+    <title>Pistokkaat - Hae</title>
+
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/search.css">
     <link rel="stylesheet" href="styles/listing.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <script src="scripts/autocomplete-dropdown.js" defer></script>
+    <script src="scripts/multiselect-dropdown.js" defer></script>
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
 
 </head>
@@ -28,60 +31,50 @@
 
 <main>
 
+    <!-- SEARCH FORM -->
     <section class="search">
 
-            <!-- TODO: make form functional -->
-            <form action="search.html" method="get" id="searchForm">
-                <label for="searchtxt" hidden>Hae pistokkaita</label>
-                <input type="text" class="inputField" id="searchtxt" name="searchtxt" placeholder="Hae pistokkaita" pattern="[a-zA-ZäåöÄÅÖ]" title="Hae pistokkaita (Vain kirjaimet sallittu)">
-                <button type="submit" id="submit" class="primaryButton">
-                    <i class="fa-solid fa-magnifying-glass" title="Haku"></i>
-                </button>
-            </form>
+        <form method="get" id="searchForm">
+
+            <div class="inputWrapper">
+                <label for="searchtxt">Nimi:</label>
+                <input class="inputField" type="text" id="searchtxt" name="searchtxt" placeholder="Nimi" pattern="[a-zA-ZäåöÄÅÖ]" title="Hae pistokkaita (Vain kirjaimet sallittu)">
+            </div>
+            <div class="inputWrapper">
+                <div id="dropdownWrapper" class="inputWrapper">
+                    <label for="location">Kaupunki:</label>
+                    <i id="dropdownIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
+                    <input id="dropdownInput" class="inputField" type="text" name="location" required>
+                </div>
+            </div>
+            <div class="priceMailingInputWrapper">
+
+                <div id="priceWrapper" class="inputWrapper">
+                    <label for="price">Hinta:</label>
+                    <p class="symbolOnInput">€</p>
+                    <input class="inputField" type="number" name="price" min="0" required>
+                </div>
+                <div id="dropdownMailingWrapper" class="inputWrapper">
+                    <label for="mailing">Toimitustapa:</label>
+                    <i class="dropdownMailingIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
+                    <input id="dropdownMailingInput" class="inputField" type="text" name="mailing" readonly required>
+                </div>
+
+            <button type="submit" id="submit" class="primaryButton">
+                <i class="fa-solid fa-magnifying-glass" title="Haku"></i> Hae
+            </button>
+
+        </form>
 
     </section>
 
+    <!-- PRINT OUT RESULTS -->
+    <section class="newestListings" id="tulokset">
 
-    <section class="newestListings">
-
-        <h2 id="uusimmatIlmoituksetTxt">Uusimmat ilmoitukset</h2>
+        <h2>Hakutuloksia: 2</h2>
 
         <!-- TODO: print listings from js -->
         <div class="listings">
-
-            <article class="listing">
-
-
-                <figure class="listingImg">
-                    <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
-                </figure>
-                <ul class="listingInfo">
-                    <li class="listingName"><h3>Peikonlehti</h3></li>
-                    <li class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</li>
-                    <li class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</li>
-                    <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
-                    <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
-                </ul>
-
-
-            </article>
-
-            <article class="listing">
-
-
-                <figure class="listingImg">
-                    <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
-                </figure>
-                <ul class="listingInfo">
-                    <li class="listingName"><h3>Peikonlehti</h3></li>
-                    <li class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</li>
-                    <li class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</li>
-                    <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
-                    <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
-                </ul>
-
-
-            </article>
 
             <article class="listing">
 
@@ -122,6 +115,7 @@
     </section>
 
 </main>
+
 
 </body>
 </html>

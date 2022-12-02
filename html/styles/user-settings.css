@@ -1,0 +1,87 @@
+/* Styling for user settings */
+
+/* TODO: fix height / vertical and horizontal centering issue */
+.settings{
+    height:90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputWrapper{
+    display: flex;
+    flex-direction: column;
+    padding:4%;
+}
+
+input, select{
+    font-family: "Open Sans",sans-serif;
+    background-color: #FCFCFC;
+    margin-top:2%;
+    border:1px solid #3A7457;
+    border-radius: 5px;
+    height:50px;
+    width:300px;
+}
+
+#settingsForm{
+    padding:50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+#changePasswordTxtWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.changePasswordToggle{
+    margin-top:5%;
+    padding-bottom:5%;
+    background-color: #F5ECE3;
+}
+
+#btnWrapper{
+    padding:5%;
+    margin-top:2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#save{
+    background-color: #3A7457;
+    color: #FCFCFC;
+    border:0;
+    margin-top:2%;
+    border-radius: 5px;
+    transition: 200ms ease-out 200ms;
+    height:50px;
+    font-size:20px;
+    width:45%;
+}
+#save:hover{
+    background-color:#E67039;
+}
+
+#back{
+    background-color: #FCFCFC;
+    color: #3A7457;
+    border:1px solid;
+    margin-top:2%;
+    border-color: #3A7457;
+    border-radius: 5px;
+    transition: 200ms ease-out 200ms;
+    height:50px;
+    font-size:20px;
+    width:45%;
+}
+#back:hover{
+    border-color: #E67039;
+    color: #F5ECE3;
+    background-color:#E67039;
+}

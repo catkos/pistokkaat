@@ -1,0 +1,13 @@
+.hero{
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background: #F5ECE3;
+    height:350px;
+}
+
+.newestListings{
+    padding-top:5%;
+    padding-bottom: 5%;
+}

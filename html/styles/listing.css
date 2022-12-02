@@ -31,14 +31,16 @@ figure {
     object-fit: cover;
 }
 
-h3{font-family: "Open Sans", sans-serif; font-size: 16px; font-weight: normal;margin-top:0;}
-
 .listingInfo {
     border-radius: 0 5px 5px 0;
     padding: 10px 10px 10px 20px;
     width: 100%;
     list-style:none;
     line-height: 30px;
+}
+
+.listingName{
+    padding-bottom: 5%;
 }
 
 .listing:hover{
