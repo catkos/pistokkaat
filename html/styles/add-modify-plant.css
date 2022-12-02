@@ -1,6 +1,5 @@
 main {
     padding: 2rem 1rem;
-    min-height: 100vh;
 }
 
 .addNewSection, .modifySection {
@@ -28,19 +27,19 @@ main {
 
 .addFile:hover {
     border: 2px dashed rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
+    outline: 3px solid rgb(187, 221, 204);
     background-color: rgb(228, 241, 235);
 }
 
 .addFile:focus {
     border: 2px dashed rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
+    outline: 3px solid rgb(187, 221, 204);
     background-color: rgb(228, 241, 235);
 }
 
 .addFile:focus-visible {
     border: 2px dashed rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
+    outline: 3px solid rgb(187, 221, 204);
     background-color: rgb(228, 241, 235);
 }
 
@@ -105,12 +104,12 @@ main {
 }
 
 @media only screen and (min-width: 900px) {
-    main {background-color: rgb(245, 236, 227);}
+    body {background-color: rgb(245, 236, 227);}
 
-    .addNewSection, .modifySection {
-        width: 800px;
-        padding: 2.5rem;
-        border-radius: 0.5rem;
+    main {
         background-color: rgb(252, 252, 252);
+        width: 900px;
+        margin: 2rem auto;
+        border-radius: 0.5rem;
     }
 }

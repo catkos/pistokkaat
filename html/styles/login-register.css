@@ -51,7 +51,7 @@ main {
     }
 
     .formButton {
-        width: auto;
+        width: 50%;
         margin: auto;
         display: block;
     }

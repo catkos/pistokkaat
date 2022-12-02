@@ -3,18 +3,9 @@
     src: url(../assets/fonts/FredokaOne-Regular.ttf);
 }
 
-/* TODO: delete dummyNav */
-.dummyNav {
-    background-color: rgb(252, 252, 252);
-    border-bottom: 1px solid rgb(209, 204, 199);
-    height: 60px;
-}
-
 * {box-sizing: border-box;}
 
-*:focus {
-    outline: 2px solid rgb(58, 116, 87);
-}
+*:focus-visible {outline: 2px solid rgb(58, 116, 87);}
 
 body {
     background-color: rgb(252, 252, 252);
@@ -29,12 +20,19 @@ h2 {
     margin: 0;
 }
 
+h3, h4 {font-weight: 600;}
+
 h3 {
     margin: 0;
     font-size: 1rem;
 }
 
-a {color: rgb(58, 116, 87);}
+a {
+    color: rgb(58, 116, 87);
+    text-decoration: none;
+}
+
+a:hover {text-decoration: underline;}
 
 button {
     cursor: pointer;
@@ -78,20 +76,15 @@ input[type=number] {
 
 .inputField, .textArea {
     font-size: 0.875rem;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     border: 1px solid rgb(209, 204, 199);
     background-color: rgb(252, 252, 252);
     font-family: "Open Sans", sans-serif;
 }
 
-.inputField:focus, .textArea:focus {
-    border: 1px solid rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
-}
-
 .inputField:focus-visible, .textArea:focus-visible {
     border: 1px solid rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
+    outline: 3px solid rgb(187, 221, 204);
 }
 
 .symbolOnInput {
@@ -108,8 +101,7 @@ input[type=number] {
     color: rgb(252, 252, 252);
     font-size: 1rem;
     border-radius: 0.25rem;
-    transition: background-color 200ms ease-out 200ms;
-    transition: transform 75ms;
+    transition: background-color 200ms ease-out 200ms, transform 75ms;
     padding: 0 2rem;
 }
 
@@ -120,7 +112,7 @@ input[type=number] {
     transform: scale(0.95);
 }
 
-.primaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
+.primaryButton:focus-visible {outline: 3px solid rgb(187, 221, 204);}
 
 .secondaryButton {
     background-color: rgb(252, 252, 252);
@@ -130,19 +122,18 @@ input[type=number] {
     font-size: 1rem;
     color: rgb(58, 116, 87);
     border-radius: 0.25rem;
-    transition: background-color 200ms ease-out 200ms;
-    transition: transform 75ms;
+    transition: background-color 200ms ease-out 200ms, transform 75ms;
     padding: 0 2rem;
 }
 
-.secondaryButton:hover {background-color: rgb(160, 207, 184);}
+.secondaryButton:hover {background-color: rgb(187, 221, 204);}
 
 .secondaryButton:active {
-    background-color: rgb(160, 207, 184);
+    background-color: rgb(187, 221, 204);
     transform: scale(0.95);
 }
 
-.secondaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
+.secondaryButton:focus-visible {outline: 3px solid rgb(187, 221, 204);}
 
 .dropdownList {
     list-style: none;
@@ -180,7 +171,7 @@ input[type=number] {
 
 .dropdownList button:hover {background-color: rgb(187, 221, 204);}
 
-.dropdownList button:focus {
+.dropdownList button:focus-visible {
     background-color: rgb(187, 221, 204);
     outline: 1px solid rgb(187, 221, 204);
 }

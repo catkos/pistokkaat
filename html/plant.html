@@ -7,78 +7,128 @@
     <title>Pistokkaat - Ilmoitus</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/plant.css">
+    <script src="scripts/plant.js" defer></script>
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
-    <!-- TODO: Remove dummyNav -->
-    <nav class="dummyNav">
-        Dummy nav
-    </nav>
     <main>
-        <div id="editDeleteButtonWrapper">
-            <button class="primaryButton" title="Muokkaa"><i class="fa-regular fa-pen-to-square fa-lg"></i></button>
-            <button class="primaryButton" title="Poista"><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
+        <div class="editDeleteButtonWrapper">
+            <button class="primaryButton" id="editButton" title="Muokkaa"><i class="fa-solid fa-pen fa-lg"></i></button>
+            <button class="primaryButton" id="deleteButton" title="Poista"><i class="fa-solid fa-trash fa-lg"></i></button>
         </div>
-        <figure id="imgWrapper">
-            <img id="plantImg" src="./assets/img/plant.jpg" alt="Kasvi">
-            <button id="likeButton"><i class="fa-regular fa-heart fa-lg"></i></button>
+        <figure class="imgWrapper">
+            <img class="plantImg" id="plantImg" src="./assets/img/plant.jpg" alt="Kasvi">
+            <button class="likeButton" id="likeButton" title="Tykkää"><i id="heartIcon" class="fa-regular fa-heart fa-lg"></i></button>
         </figure>
-        <section id="infoWrapper">
-            <h2>Peikonlehti</h2>
-            <ul class="infoList">
-                <li>
-                    <span id="infoPrice"><i class="fa-solid fa-tag fa-xl"></i> 10 €</span>
-                </li>
-                <li>
-                    <span id="infoLocation"><i class="fa-solid fa-location-dot fa-xl"></i> Kristiinankaupunki</span>
-                </li>
-                <li>
-                    <span id="infoMailing"><i class="fa-solid fa-truck fa-xl"></i> Postitus, Nouto</span>
-                </li>
-                <li>
-                    <span id="infoDate"><i class="fa-solid fa-calendar-days fa-xl"></i> 28.11.2022 | Muokattu 30.11.2022</span>
-                </li>
-                <li>
-                    <span id="infoLikes"><i class="fa-solid fa-heart fa-xl"></i></i> 25</span>
-                </li>
-            </ul>
-            <h3>Kuvaus</h3>
-            <p class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, unde repellat. 
-                Ad praesentium doloribus ratione voluptates non tempora obcaecati deleniti vero 
-                molestias quae at, eos reprehenderit nulla voluptas eum dolores.
-            </p>
-        </section>
-        <section id="instructionWrapper">
-            <button type="button" class="collapsible">
-                <h3>Hoito-ohjeet</h3>
-                <i id="dropdownIcon" class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div id="instruction" class="collapsibleContent">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+        <div class="desktopWrapper">
+            <div id="desktopLeftSide">
+                <section class="infoSection">
+                    <h2>Peikonlehti</h2>
+                    <ul class="infoList">
+                        <li>
+                            <span id="infoPrice"><i class="fa-solid fa-tag fa-xl"></i> 10 €</span>
+                        </li>
+                        <li>
+                            <span id="infoLocation"><i class="fa-solid fa-location-dot fa-xl"></i> Kristiinankaupunki</span>
+                        </li>
+                        <li>
+                            <span id="infoMailing"><i class="fa-solid fa-truck fa-xl"></i> Postitus, Nouto</span>
+                        </li>
+                        <li>
+                            <span id="infoDate"><i class="fa-solid fa-calendar-days fa-xl"></i> 28.11.2022 | Muokattu 30.11.2022</span>
+                        </li>
+                        <li>
+                            <span id="infoLikes"><i class="fa-solid fa-heart fa-xl"></i></i> 25</span>
+                        </li>
+                    </ul>
+                    <h3>Kuvaus</h3>
+                    <p id="description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, unde repellat. 
+                        Ad praesentium doloribus ratione voluptates non tempora obcaecati deleniti vero 
+                        molestias quae at, eos reprehenderit nulla voluptas eum dolores.
+                    </p>
+                </section>
+                <section class="instructionSection">
+                    <details>
+                        <summary>
+                            <h3>Hoito-ohjeet</h3>
+                            <i id="dropdownIcon" class="fa-solid fa-chevron-down"></i>
+                        </summary>
+                        <p id="instruction">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                    </details>
+                </section>
+                <!-- Hidden on desktop -->
+                <section id="mobileUserSection" class="userSection">
+                    <h3 id="username">
+                        <a href="#">username2022</a>
+                    </h3>
+                    <ul class="userInfoList">
+                        <li>
+                            <span id="userEmail"><i class="fa-solid fa-envelope fa-xl"></i> username2022@mail.fi</span>
+                        </li>
+                        <li>
+                            <span id="userLikes"><i class="fa-solid fa-thumbs-up fa-xl"></i> 14 tykkäystä</span>
+                        </li>
+                        <li>
+                            <span id="userLocation"><i class="fa-solid fa-location-dot fa-xl"></i> Kristiinankaupunki</span>
+                        </li>
+                    </ul>
+                </section>
+                <section class="commentsSection">
+                    <h3>Kommentit</h3>
+                    <div class="comments">
+                        <article class="comment">
+                            <div class="commentTop">
+                                <h4 id="commentAuthor">
+                                    <a href="#">username23</a>
+                                </h4>
+                                <p class="commentTime" id="commentTime"><time timedate="12.11.2022 11:35">12.11.2022 11:35</time></p>
+                            </div>
+                            <p id="comment">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eum saepe nostrum sequi dicta.
+                            </p>
+                        </article>
+                        <article class="comment">
+                            <div class="commentTop">
+                                <h4 id="commentAuthor">
+                                    <a href="#">username23</a>
+                                </h4>
+                                <p class="commentTime" id="commentTime"><time timedate="12.11.2022 11:35">12.11.2022 11:35</time></p>
+                            </div>
+                            <p id="comment">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eum saepe nostrum sequi dicta.
+                            </p>
+                        </article>
+                        <form id="sendCommentForm" action="#">
+                            <label for="comment" hidden>Kommentti:</label>
+                            <textarea id="commentTextArea" class="textArea" type="text" name="comment" row="1" cols="1" maxlength="280" placeholder="Kirjoita kommentti..."></textarea>
+                            <button id="sendCommentButton" class="primaryButton" type="submit" title="Lähetä"><i class="fa-solid fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </section>
             </div>
-        </section>
-        <section id="userWrapper">
-            <h3><a href="#">username2022</a></h3>
-            <ul class="userInfoList">
-                <li>
-                    <span id="userEmail"><i class="fa-solid fa-envelope fa-xl"></i> username2022@mail.fi</span>
-                </li>
-                <li>
-                    <span id="userLikes"><i class="fa-solid fa-thumbs-up fa-xl"></i> 14 tykkäystä</span>
-                </li>
-                <li>
-                    <span id="userLocation"><i class="fa-solid fa-location-dot fa-xl"></i> Kristiinankaupunki</span>
-                </li>
-            </ul>
-        </section>
-        <section>
-            <h3>Kommentit</h3>
-        </section>
+            <!-- Hidden on mobile -->
+            <section id="desktopUserSection" class="userSection">
+                <h3 id="username">
+                    <a href="#">username2022</a>
+                </h3>
+                <ul class="userInfoList">
+                    <li>
+                        <span id="userEmail"><i class="fa-solid fa-envelope fa-xl"></i> username2022@mail.fi</span>
+                    </li>
+                    <li>
+                        <span id="userLikes"><i class="fa-solid fa-thumbs-up fa-xl"></i> 14 tykkäystä</span>
+                    </li>
+                    <li>
+                        <span id="userLocation"><i class="fa-solid fa-location-dot fa-xl"></i> Kristiinankaupunki</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
     </main>
 </body>
 </html>
