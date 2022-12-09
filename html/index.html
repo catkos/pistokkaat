@@ -56,7 +56,6 @@
 
             <article class="listing">
 
-
                 <figure class="listingImg">
                     <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
                 </figure>
@@ -67,13 +66,11 @@
                     <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
                     <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
                 </ul>
-
 
             </article>
 
             <article class="listing">
 
-
                 <figure class="listingImg">
                     <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
                 </figure>
@@ -84,13 +81,11 @@
                     <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
                     <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
                 </ul>
-
 
             </article>
 
             <article class="listing">
 
-
                 <figure class="listingImg">
                     <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
                 </figure>
@@ -101,13 +96,11 @@
                     <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
                     <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
                 </ul>
-
 
             </article>
 
             <article class="listing">
 
-
                 <figure class="listingImg">
                     <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
                 </figure>
@@ -118,7 +111,6 @@
                     <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
                     <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
                 </ul>
-
 
             </article>
 
@@ -132,4 +124,14 @@
 <footer></footer>
 
 </body>
+
+<!-- TODO: delete script below, this is for testing/demo -->
+<script>
+    const listing = document.getElementsByClassName("listing");
+    for(let i = 0; i < listing.length; i++){
+        listing[i].addEventListener("click",goToListing);
+    }
+
+    function goToListing(){window.location.href = "/pistokkaat/html/plant.html";}
+</script>
 </html>

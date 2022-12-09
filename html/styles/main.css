@@ -28,7 +28,6 @@ body,html{
 
 body{
     position: relative; /* for footer */
-    height:100vh;
 }
 
 h1{font-family: "FredokaOne", serif; font-size: 25px; margin:0; padding-top: 35px; padding-bottom: 35px;}
