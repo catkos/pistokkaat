@@ -1,12 +1,6 @@
 /* styles for login.html and register.html */
 /* TODO: move general styling to main.css */
 
-main {
-    height: 100vh;
-    display: flex;
-    padding: 1rem;
-}
-
 .loginRegisterSection {
     width: 100%;
     background-color: rgb(252, 252, 252);
@@ -15,24 +9,6 @@ main {
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-}
-
-.formButton {
-    width: 100%;
-    max-width: 400px;
-}
-
-#loginForm, #registerForm {
-    width: 100%;
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.inputWrapper {
-    max-width: 400px;
-    width: 100%;
 }
 
 @media only screen and (min-width: 768px) {

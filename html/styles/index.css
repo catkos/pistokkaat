@@ -5,27 +5,25 @@
     justify-content: center;
     background: url("../assets/img/hero_img.jpg");
     background-position-y: 65%;
-    padding-top: 150px;
-    padding-bottom: 150px;
     height:350px;
 }
 
-#searchForm{
+.searchFrontInputWrapper {
+    max-width: 400px;
+    width: 100%;
+}
+
+#searchFrontForm{
     display: flex;
-    align-content: center;
-    justify-content: center;
-    gap:10px;
+    align-items: center;
 }
 
-#searchtxt{
-    width:30vh;
-}
-
-.newestListings{
-    background-color: #FCFCFC;
-    padding-bottom:20px;
+#searchFormDiv{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 #uusimmatIlmoituksetTxt{
-    text-align: center;
+text-align: center;
 }

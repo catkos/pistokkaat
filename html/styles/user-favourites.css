@@ -1,13 +1,5 @@
-.hero{
-    display: flex;
-    justify-content: center;
-    padding-top: 150px;
-    padding-bottom: 150px;
-    background: #F5ECE3;
-    height:350px;
-}
+/* style for user favourites html */
 
-.newestListings{
-    padding-top:5%;
-    padding-bottom: 5%;
+.userFavourites h2{
+    text-align: center;
 }

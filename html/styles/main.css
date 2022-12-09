@@ -15,19 +15,37 @@
     outline: 2px solid rgb(58, 116, 87);
 }
 
-body{
+*,*:before,*:after { -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box; }
+
+body,html{
     margin:0;
+    padding:0;
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
     color: rgb(38, 32, 28);
     background-color: rgb(252, 252, 252);
 }
 
+body{
+    position: relative; /* for footer */
+    height:100vh;
+}
+
 h1{font-family: "FredokaOne", serif; font-size: 25px; margin:0; padding-top: 35px; padding-bottom: 35px;}
 h2{font-family: "FredokaOne", serif; font-size: 20px; margin:0; padding-top: 35px; padding-bottom: 35px; font-size: 1.5rem;}
-h3 {margin: 0; font-size: 1rem;}
+h3{margin: 0; font-size: 1rem;}
 
 a {color: rgb(58, 116, 87);}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contentPadding{
+    padding:1rem;
+}
 
 /* MAIN NAVIGATION STYLE */
 #mainNav{
@@ -35,10 +53,9 @@ a {color: rgb(58, 116, 87);}
     justify-content: space-between;
     align-items: center;
     background-color: #3A7457;
-    padding-left:6%;
-    padding-right: 6%;
-    padding-top:20px;
-    padding-bottom: 20px;
+    padding: 1rem;
+    height:10vh;
+    width: auto;
 }
 #mainNav a{
     color: #FCFCFC;
@@ -72,6 +89,12 @@ a {color: rgb(58, 116, 87);}
     color: rgb(38, 32, 28);
 }
 .BtnNav:hover{
+    border-bottom: 4px solid rgb(26,26,26);
+}
+
+/* active/selected page nav indication */
+.active i{
+    color:rgb(26,26,26);
     border-bottom: 4px solid rgb(26,26,26);
 }
 
@@ -132,6 +155,15 @@ a {color: rgb(58, 116, 87);}
 
 /* FORM STYLE */
 
+#loginForm, #registerForm, #searchForm {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /** Remove number spinners from type=number **/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -141,6 +173,11 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+.inputWrapper {
+    max-width: 400px;
+    width: 100%;
 }
 
 .inputWrapper, .textAreaWrapper {
@@ -190,10 +227,27 @@ input[type=number] {
     bottom: 1rem;
 }
 
+/* search form styles */
+.priceAndMailingWrapper{
+    display:flex;
+    width:100%;
+    justify-content: center;
+}
 
+/* TODO: fix issue if screen smaller than 400px */
+#dropdownPriceWrapper{
+    width:100px;
+}
+#dropdownMailingWrapper{
+    width:300px;
+}
+
+.formButton {
+    width: 100%;
+    max-width: 400px;
+}
 
 /* dropdown list style */
-
 #dropdownInput {cursor: pointer;}
 
 .dropdownList{
@@ -252,6 +306,14 @@ input[type=number] {
     font-weight: 600;
 }
 
+/* hide the default marker from detail summary */
+details > summary {
+    list-style: none;
+}
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
 /* BUTTON STYLE */
 
 button {
@@ -282,6 +344,11 @@ button {
 
 .primaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
 
+
+.primaryButton a{
+    color:#FCFCFC;
+}
+
 .secondaryButton {
     background-color: rgb(252, 252, 252);
     height: 3rem;
@@ -303,3 +370,12 @@ button {
 }
 
 .secondaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
+
+/* FOOTER STYLE */
+footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: rgb(26,26,26);
+    padding:0.5rem;
+}

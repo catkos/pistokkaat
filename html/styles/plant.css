@@ -5,6 +5,10 @@
 
 .infoList {border-bottom: 1px solid rgb(230, 112, 57);}
 
+.infoList, .userInfoList{
+    padding-top:1rem;
+}
+
 .infoList li, .userInfoList li {
     padding-bottom: 1rem;
     font-size: 0.875rem;
@@ -15,20 +19,17 @@
     width: 2rem;
 }
 
-#editDeleteButtonWrapper {
-    float: right;
-    padding: 1rem;
+.editDeleteButtonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 1rem 0;
 }
 
-#editDeleteButtonWrapper button:first-of-type {
+.editDeleteButtonWrapper button:first-of-type {
     margin-right: 0.5rem;
 }
 
-#infoWrapper {
-    margin: 1rem;
-}
-
-#imgWrapper{
+.imgWrapper{
     margin: 0;
     clear: both;
     position: relative;
@@ -36,17 +37,19 @@
     border-radius: 0.5rem;
 }
 
-#plantImg {
+.plantImg {
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
     vertical-align: top;
 }
 
-#likeButton {
+.imgWrapper #likeButton{
     position: absolute;
-    right: 16px;
-    top: 16px;
+    transform: translate(-100%, -0%);
+    -ms-transform: translate(-100%, -0%);
+    margin-top: 2%;
+    margin-left: -2%;
     height: 3rem;
     width: 3rem;
     border: 0;
@@ -56,42 +59,26 @@
     box-shadow: 0 0 8px rgba(26, 26, 26, 0.2);
 }
 
-#instructionWrapper {
-    margin: 1rem;
-}
-
-#userWrapper {
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    margin: 0 1rem;
-    background-color: rgb(245, 236, 227);
-}
-
-.collapsible {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 0;
-    border-radius: 0.5rem 0.5rem 0 0;
-    padding: 0.5rem;
-    background-color: rgb(245, 236, 227);
-}
-
-.collapsibleContent {
-    background-color: rgb(245, 236, 227);
-    padding: 0 0.5rem 0.5rem 0.5rem;
-    border-radius: 0 0 0.5rem 0.5rem;
-}
-
-.collapsibleContent p {
-    margin: 0;
-}
-
 section h2 {
     text-align: center;
 }
 
-p {
-    font-size: 0.875rem;
+.userSection{
+    background: #F5ECE3;
+    padding: 1rem;
+    margin-top:1rem;
+    margin-bottom:1rem;
+}
+
+/* hide on mobile */
+@media only screen and (max-width: 820px){
+    #desktopUserSection {
+        display:none;
+    }
+}
+/* hide on desktop */
+@media only screen and (min-width: 820px){
+    #mobileUserSection {
+        display:none;
+    }
 }

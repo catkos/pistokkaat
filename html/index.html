@@ -31,22 +31,27 @@
     <section class="search">
 
             <!-- TODO: make form functional -->
-            <form action="search.html" method="get" id="searchForm">
-                <label for="searchtxt" hidden>Hae pistokkaita</label>
-                <input type="text" class="inputField" id="searchtxt" name="searchtxt" placeholder="Hae pistokkaita" pattern="[a-zA-ZäåöÄÅÖ]" title="Hae pistokkaita (Vain kirjaimet sallittu)">
+            <form action="search.html" method="get" id="searchFrontForm">
+
+                <div id="searchFormDiv">
+                <div class="searchFrontInputWrapper">
+                    <label for="searchtxt" hidden>Hae pistokkaita</label>
+                    <input class="inputField" type="text" id="searchtxt" name="searchtxt" placeholder="Hae pistokkaita" pattern="[a-zA-ZäåöÄÅÖ]" title="Hae pistokkaita (Vain kirjaimet sallittu)">
+                </div>
+                <div class="searchFrontInputWrapper">
                 <button type="submit" id="submit" class="primaryButton">
                     <i class="fa-solid fa-magnifying-glass" title="Haku"></i>
                 </button>
+                </div>
+                </div>
             </form>
 
     </section>
 
-
-    <section class="newestListings">
+    <section class="newestListings contentPadding">
 
         <h2 id="uusimmatIlmoituksetTxt">Uusimmat ilmoitukset</h2>
 
-        <!-- TODO: print listings from js -->
         <div class="listings">
 
             <article class="listing">
@@ -122,6 +127,9 @@
     </section>
 
 </main>
+
+
+<footer></footer>
 
 </body>
 </html>

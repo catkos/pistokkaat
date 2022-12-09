@@ -10,8 +10,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="scripts/autocomplete-dropdown.js" defer></script>
-    <script src="scripts/multiselect-dropdown.js" defer></script>
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
 
 </head>
@@ -21,7 +19,7 @@
     <a href="index.html" id="logo">Pistokkaat</a>
     <!-- TODO: Change href links -->
     <div class="navlinks">
-        <button class="BtnNav" id="haku"><a href="search.html"><i class="fa-solid fa-magnifying-glass" title="Haku" id="hakuicon"></i></a></button>
+        <button class="BtnNav active" id="haku"><a href="search.html"><i class="fa-solid fa-magnifying-glass" title="Haku" id="hakuicon"></i></a></button>
         <!-- TODO: Show uusiIlmoitas and suosikit only to login users -->
         <button class="BtnNav" id="uusiIlmoitus"><a href="add-plant.html"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a></button>
         <button class="BtnNav" id="suosikit"><a href="user-favourites.html"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a></button>
@@ -29,39 +27,43 @@
     </div>
 </nav>
 
-<main>
+<main class="contentPadding">
 
     <!-- SEARCH FORM -->
     <section class="search">
 
+        <h1>Hae pistokkaita</h1>
+
         <form method="get" id="searchForm">
 
             <div class="inputWrapper">
-                <label for="searchtxt">Nimi:</label>
+                <label for="searchtxt">Nimi</label>
                 <input class="inputField" type="text" id="searchtxt" name="searchtxt" placeholder="Nimi" pattern="[a-zA-ZäåöÄÅÖ]" title="Hae pistokkaita (Vain kirjaimet sallittu)">
             </div>
             <div class="inputWrapper">
-                <div id="dropdownWrapper" class="inputWrapper">
-                    <label for="location">Kaupunki:</label>
-                    <i id="dropdownIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
-                    <input id="dropdownInput" class="inputField" type="text" name="location" required>
-                </div>
+                <label for="maakunnat">Valitse maakunta</label>
+                <!-- TODO: use same autocomplete input field from register form -->
+                <select class="inputField" id="maakunnat" name="maakunnat">
+                    <option value="" disabled selected>Sijainti</option>
+                    <option value="uusimaa">Uusimaa</option>
+                    <option value="lappi">Lappi</option>
+                </select>
             </div>
-            <div class="priceMailingInputWrapper">
 
-                <div id="priceWrapper" class="inputWrapper">
-                    <label for="price">Hinta:</label>
-                    <p class="symbolOnInput">€</p>
-                    <input class="inputField" type="number" name="price" min="0" required>
+            <div class="priceAndMailingWrapper">
+                <div id="dropdownPriceWrapper" class="inputWrapper">
+                    <label for="price">Hinta</label>
+                    <div id="priceNumberInput">
+                        <input class="inputField" type="number" name="price" id="price" min="0" max="100" placeholder="Max" pattern="[0-9]"> €
+                    </div>
                 </div>
                 <div id="dropdownMailingWrapper" class="inputWrapper">
-                    <label for="mailing">Toimitustapa:</label>
-                    <i class="dropdownMailingIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
-                    <input id="dropdownMailingInput" class="inputField" type="text" name="mailing" readonly required>
+                    <label for="mailing">Valitse toimitustapa</label>
+                    <input class="inputField" type="text" name="mailing" id="mailing">
                 </div>
-
-            <button type="submit" id="submit" class="primaryButton">
-                <i class="fa-solid fa-magnifying-glass" title="Haku"></i> Hae
+            </div>
+            <button class="primaryButton formButton" type="submit" id="submit">
+                Hae
             </button>
 
         </form>
@@ -69,7 +71,7 @@
     </section>
 
     <!-- PRINT OUT RESULTS -->
-    <section class="newestListings" id="tulokset">
+    <section class="searchResults">
 
         <h2>Hakutuloksia: 2</h2>
 
@@ -116,6 +118,6 @@
 
 </main>
 
-
+<footer></footer>
 </body>
 </html>

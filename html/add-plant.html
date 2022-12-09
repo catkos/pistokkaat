@@ -12,58 +12,71 @@
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
-    <main>
-        <section class="addNewSection">
-            <h2>Lisää uusi pistokas</h2>
-                <form id="addNewForm" action="" method="post">
-                    <div class="inputWrapper">
-                        <label for="image">Kuva: *</label>
-                        <input id="fileInput" type="file" name="image" accept="image/*" hidden required>
-                        <label id="addFile" class="addFile" for="image" tabindex="0">
-                            <i class="fa-solid fa-camera"></i>
-                            <span id="fileName">Valitse kuva</span>
-                        </label>
-                    </div>
-                    <div class="inputWrapper">
-                        <label for="name">Kasvin nimi: *</label>
-                        <input class="inputField" type="text" name="name" minlength="3" required>
-                        <small>Vähintään 3 merkkiä.</small>
-                    </div>
-                    <div class="priceMailingInputWrapper">
-                        <div id="priceWrapper" class="inputWrapper">
-                            <label for="price">Hinta: *</label>
-                            <p class="symbolOnInput">€</p>
-                            <input class="inputField" type="number" name="price" min="0" required>
-                        </div>
-                        <div id="dropdownWrapper" class="inputWrapper">
-                            <label for="mailing">Toimitustapa: *</label>
-                            <i id="dropdownIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
-                            <input id="dropdownInput" class="inputField" type="text" name="mailing" readonly required>
-                        </div>
-                    </div>
-                    <div class="textAreaWrapper">
-                        <label for="description">Kuvaus: *</label>
-                        <textarea class="textArea" id="descriptionInput" name="description" rows="5" cols="50" minlength="30" maxlength="280"></textarea>
-                        <div>
-                            <small>Vähintään 30 merkkiä.</small>
-                            <small id="descriptionCharCounter">0/280</small>
-                        </div>
-                    </div>
-                    <div class="textAreaWrapper">
-                        <label for="instruction">Hoito-ohjeet: *</label>
-                        <textarea class="textArea" id="instructionInput" name="instruction" rows="5" cols="50" minlength="30" maxlength="280"></textarea>
-                        <div>
-                            <small>Vähintään 30 merkkiä.</small>
-                            <small id="instructionCharCounter">0/280</small>
-                        </div>
-                    </div>
-                    <div class="buttonWrapper">
-                        <button class="primaryButton" type="submit">Tallenna</button>
-                        <button class="secondaryButton" type="button" action="#">Peruuta</button>
-                    </div>
-                    
-                </form>
-        </section>
-    </main>
+
+<nav id="mainNav">
+    <a href="index.html" id="logo">Pistokkaat</a>
+    <!-- TODO: Change href links -->
+    <div class="navlinks">
+        <button class="BtnNav" id="haku"><a href="search.html"><i class="fa-solid fa-magnifying-glass" title="Haku" id="hakuicon"></i></a></button>
+        <!-- TODO: Show uusiIlmoitas and suosikit only to login users -->
+        <button class="BtnNav" id="uusiIlmoitus"><a href="add-plant.html"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a></button>
+        <button class="BtnNav" id="suosikit"><a href="user-favourites.html"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a></button>
+        <button class="BtnNav" id="profiili"><a href="user-profile.html"><i class="fa-solid fa-user" title="Oma profiili"></i></a></button>
+    </div>
+</nav>
+
+<main class="contentPadding">
+    <section class="addNewSection">
+        <h2>Lisää uusi pistokas</h2>
+        <form id="addNewForm" action="" method="post" autocomplete="off">
+            <div class="inputWrapper">
+                <label for="image">Kuva: *</label>
+                <input id="fileInput" type="file" name="image" accept="image/*" hidden required>
+                <label id="addFile" class="addFile" for="image" tabindex="0">
+                    <i class="fa-solid fa-camera"></i>
+                    <span id="fileName">Valitse kuva</span>
+                </label>
+            </div>
+            <div class="inputWrapper">
+                <label for="name">Kasvin nimi: *</label>
+                <input class="inputField" type="text" name="name" minlength="3" required>
+                <small>Vähintään 3 merkkiä.</small>
+            </div>
+            <div class="priceMailingInputWrapper">
+                <div id="priceWrapper" class="inputWrapper">
+                    <label for="price">Hinta: *</label>
+                    <p class="symbolOnInput">€</p>
+                    <input class="inputField" type="number" name="price" min="0" required>
+                </div>
+                <div id="dropdownWrapper" class="inputWrapper">
+                    <label for="mailing">Toimitustapa: *</label>
+                    <i id="dropdownIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
+                    <input id="dropdownInput" class="inputField" type="text" name="mailing" readonly required>
+                </div>
+            </div>
+            <div class="textAreaWrapper">
+                <label for="description">Kuvaus: *</label>
+                <textarea class="textArea" id="descriptionInput" name="description" rows="5" cols="50" minlength="30" maxlength="280"></textarea>
+                <div>
+                    <small>Vähintään 30 merkkiä.</small>
+                    <small id="descriptionCharCounter">0/280</small>
+                </div>
+            </div>
+            <div class="textAreaWrapper">
+                <label for="instruction">Hoito-ohjeet: *</label>
+                <textarea class="textArea" id="instructionInput" name="instruction" rows="5" cols="50" minlength="30" maxlength="280"></textarea>
+                <div>
+                    <small>Vähintään 30 merkkiä.</small>
+                    <small id="instructionCharCounter">0/280</small>
+                </div>
+            </div>
+            <div class="buttonWrapper">
+                <button class="primaryButton" type="submit">Tallenna</button>
+                <button class="secondaryButton" type="button" action="#">Peruuta</button>
+            </div>
+        </form>
+    </section>
+</main>
+<footer></footer>
 </body>
 </html>

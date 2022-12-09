@@ -1,13 +1,9 @@
-
-
-// multiselect dropdown
-
-const onMailingInputChange = (input, appendEl, array, selectedArray) => {
+const onInputChange = (input, appendEl, array, selectedArray) => {
     removeMultiSelectDropDown();
     createMultiSelectDropDown(input, appendEl, array, selectedArray);
 }
 
-const onMailingButtonClick = (e, input, array) => {
+const onButtonClick = (e, input, array) => {
     // Prevent default event
     e.preventDefault();
 
@@ -25,7 +21,7 @@ const onMailingButtonClick = (e, input, array) => {
     input.value = array.filter((item) => {
         return item;
     }).join(', ');
-    
+
     removeMultiSelectDropDown();
 }
 
@@ -42,7 +38,7 @@ const createMultiSelectDropDown = (input, appendEl, array, selectedArray) => {
         button.innerHTML = item;
 
         button.addEventListener('click', (e) => {
-            onMailingButtonClick(e, input, selectedArray);
+            onButtonClick(e, input, selectedArray);
         });
 
         if (selectedArray.includes(item)) {
@@ -65,38 +61,6 @@ const removeMultiSelectDropDown = () => {
     if (listEl) listEl.remove();
 }
 
-const addFocusToMailingInputEl = (input) => {
+const addFocusToInputEl = (input) => {
     input.focus();
 }
-
-// gsdgsd
-
-// TODO: get mailingOptions from api
-// This is only mockup data!
-const mailingOptions = ["Nouto", "Postitus"];
-
-const dropdownMailingInput = document.querySelector('#dropdownMailingInput');
-const dropdownMailingIcon = document.querySelector('#dropdownMailingIcon');
-const dropdownMailingWrapper = document.querySelector('#dropdownMailingWrapper');
-let selectedMailingOptions = [];
-
-dropdownMailingInput.addEventListener('input', () => {
-    onMailingInputChange(dropdownMailingInput, dropdownMailingWrapper, mailingOptions, selectedMailingOptions);
-});
-
-dropdownMailingInput.addEventListener('focusin',  () => {
-    onMailingInputChange(dropdownMailingInput, dropdownMailingWrapper, mailingOptions, selectedMailingOptions);
-});
-
-dropdownMailingIcon.addEventListener('click', () => {
-    // Get ul list
-    const listEl = document.querySelector('#dropdownList');
-
-    // If it exists, remove it
-    if (listEl) {
-        listEl.remove();
-        return;
-    }
-
-    addFocusToMailingInputEl(dropdownMailingInput);
-});

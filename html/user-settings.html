@@ -9,70 +9,72 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <script src="scripts/user-settings.js" defer></script>
   <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
 
-<!-- NAVIGATION TODO: change outside of <body>? -->
 <nav id="mainNav">
   <a href="index.html" id="logo">Pistokkaat</a>
   <!-- TODO: Change href links -->
   <div class="navlinks">
-    <a href="search.html" id="haku"><i class="fa-solid fa-magnifying-glass" title="Haku"></i></a>
-    <!-- TODO: Show below only to login users -->
-    <a href="" id="uusiIlmoitus"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a>
-    <a href="user-favourites.html" id="suosikit"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a>
-    <a href="user-profile.html" id="profiili"><i class="fa-solid fa-user" title="Oma profiili"></i></a>
+    <button class="BtnNav" id="haku"><a href="search.html"><i class="fa-solid fa-magnifying-glass" title="Haku" id="hakuicon"></i></a></button>
+    <!-- TODO: Show uusiIlmoitas and suosikit only to login users -->
+    <button class="BtnNav" id="uusiIlmoitus"><a href="add-plant.html"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a></button>
+    <button class="BtnNav" id="suosikit"><a href="user-favourites.html"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a></button>
+    <button class="BtnNav active" id="profiili"><a href="user-profile.html"><i class="fa-solid fa-user" title="Oma profiili"></i></a></button>
   </div>
 </nav>
 
-<main>
+<main class="contentPadding">
 
   <section class="settings">
 
+    <h1>Käyttäjäasetukset</h1>
+
+    <!-- TODO: change to post ? -->
     <form method="get" id="settingsForm">
 
       <div class="inputWrapper">
         <label for="username">Käyttäjätunnus</label>
-        <input type="text" id="username" name="username" placeholder="username23">
+        <input class="inputField" type="text" id="username" name="username" placeholder="username23">
       </div>
       <div class="inputWrapper">
         <label for="email">Sähköposti</label>
-        <input type="text" id="email" name="email" placeholder="sahkoposti@mail.fi">
+        <input class="inputField" type="text" id="email" name="email" placeholder="sahkoposti@mail.fi">
+      </div>
+      <!-- TODO: fix location dropdown -->
+      <div id="dropdownWrapper" class="inputWrapper">
+        <label for="location">Sijainti</label>
+        <i id="dropdownLocationIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
+        <input id="dropdownInput" class="inputField" type="text" name="location">
       </div>
       <div class="inputWrapper">
-        <!-- TODO: use same autocomplete input field from register form -->
-        <label for="maakunnat">Sijainti</label>
-        <select id="maakunnat" name="maakunnat">
-          <option value="" disabled selected>Sijainti</option>
-          <option value="uusimaa">Uusimaa</option>
-          <option value="lappi">Lappi</option>
-        </select>
-      </div>
-      <!-- TODO: script to toggle hide/show -->
-      <div class="changePasswordToggle">
-        <div class="inputWrapper" id="changePasswordTxtWrapper">
-          <span>Vaihda salasana</span>
-          <span><i class="fa-solid fa-arrow-down-long"></i></span>
-        </div>
-        <div class="changePasswordShow">
-          <div class="inputWrapper">
-            <!-- TODO: make inputting old password a requirement -->
-            <label for="oldPass">Vanha salasana</label>
-            <input type="password" id="oldPass" name="oldPass">
+        <details>
+          <summary>
+          <div class="inputWrapper" id="changePasswordTxtWrapper">
+            <span><i id="dropdownIcon" class="fa-solid fa-chevron-down"></i>  Vaihda salasana</span>
           </div>
-          <div class="inputWrapper">
-            <label for="newPass">Uusi salasana</label>
-            <input type="password" id="newPass" name="newPass">
-          </div>
+          </summary>
+          <div class="changePasswordShow">
+            <div class="inputWrapper">
+              <!-- TODO: make inputting old password a requirement -->
+              <label for="oldPass">Vanha salasana</label>
+              <input class="inputField" type="password" id="oldPass" name="oldPass">
+            </div>
+            <div class="inputWrapper">
+              <label for="newPass">Uusi salasana</label>
+              <input class="inputField" type="password" id="newPass" name="newPass">
+            </div>
+          </details>
         </div>
       </div>
       <div id="btnWrapper">
-        <button type="submit" id="save">
+        <button class="primaryButton" type="submit" id="save">
           Tallenna
         </button>
-        <button type="submit" id="back">
+        <button class="secondaryButton" type="submit" id="back">
           Peruuta
         </button>
       </div>

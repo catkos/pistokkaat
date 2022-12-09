@@ -8,10 +8,6 @@ figure {
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap:20px;
-    margin-left:6%;
-    margin-right: 6%;
-    padding-bottom: 35px;
 }
 
 .listing {
@@ -23,7 +19,14 @@ figure {
     border-radius: 5px;
     overflow:hidden;
     background-color: #FCFCFC;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
+/* desktop rule, add left-right margins */
+@media only screen and (min-width: 600px) {
+    .listing{margin-left:1rem; margin-right:1rem;}
+}
+
 
 .listingImg img{
     width: 150px;
