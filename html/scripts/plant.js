@@ -32,23 +32,3 @@ commentTextArea.addEventListener('keyup', resizeCommentTextArea);
 commentTextArea.addEventListener('keydown', resizeCommentTextArea);
 
 likeButton.addEventListener('click', changeHeartIcon);
-
-// Change instructionSection -icon arrow when clicked open
-const details = document.querySelector("details");
-const instructionIcon = document.querySelector("#dropdownIcon");
-let clicked = false;
-
-const changeInstructionIcon=()=>{
-    if(!clicked){
-        instructionIcon.classList.remove("fa-chevron-down");
-        instructionIcon.classList.add("fa-chevron-up");
-        clicked = true;
-    }else{
-        instructionIcon.classList.remove("fa-chevron-up");
-        instructionIcon.classList.add("fa-chevron-down");
-        clicked = false;
-    }
-}
-
-details.addEventListener("click", changeInstructionIcon);
-
