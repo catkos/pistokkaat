@@ -31,8 +31,8 @@ body{
     min-height: 100vh;
 }
 
-h1{font-family: "FredokaOne", serif; font-size: 25px; margin:0; padding-top: 35px; padding-bottom: 35px;}
-h2{font-family: "FredokaOne", serif; font-size: 20px; margin:0; padding-top: 35px; padding-bottom: 35px; font-size: 1.5rem;}
+h1{font-family: "FredokaOne", serif; font-size: 1.5rem; margin:0; padding-top: 35px; padding-bottom: 35px;}
+h2{font-family: "FredokaOne", serif; font-size: 1rem; margin:0; padding-top: 35px; padding-bottom: 35px; font-size: 1.5rem;}
 h3{margin: 0; font-size: 1rem;}
 
 a {color: rgb(58, 116, 87);}
@@ -84,10 +84,6 @@ main{
     font-size:20px;
     transition: 200ms ease-out 200ms;
 }
-
-.BtnNav:hover i, #logo:hover{
-    color: rgb(38, 32, 28);
-}
 .BtnNav:hover{
     border-bottom: 4px solid rgb(26,26,26);
 }
@@ -95,7 +91,6 @@ main{
 /* active/selected page nav indication */
 .active i{
     color:rgb(26,26,26);
-    border-bottom: 4px solid rgb(26,26,26);
 }
 
 /* OR: White bg with green border?

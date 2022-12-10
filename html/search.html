@@ -10,6 +10,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <script src="scripts/listings.js" defer></script>
+    <script src="scripts/search.js" defer></script>
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
 
 </head>
@@ -37,8 +39,8 @@
         <form method="get" id="searchForm">
 
             <div class="inputWrapper">
-                <label for="searchtxt">Nimi</label>
-                <input class="inputField" type="text" id="searchtxt" name="searchtxt" placeholder="Nimi" pattern="[a-zA-ZäåöÄÅÖ]" title="Hae pistokkaita (Vain kirjaimet sallittu)">
+                <label for="searchtxt">Kasvilajin nimi</label>
+                <input class="inputField" type="text" id="searchtxt" name="nimi" placeholder="Nimi" title="Hae pistokkaita (Vain kirjaimet sallittu)">
             </div>
             <div class="inputWrapper">
                 <label for="maakunnat">Valitse maakunta</label>
@@ -50,16 +52,15 @@
                 </select>
             </div>
 
-            <div class="priceAndMailingWrapper">
-                <div id="dropdownPriceWrapper" class="inputWrapper">
-                    <label for="price">Hinta</label>
-                    <div id="priceNumberInput">
-                        <input class="inputField" type="number" name="price" id="price" min="0" max="100" placeholder="Max" pattern="[0-9]"> €
-                    </div>
+            <div class="priceMailingInputWrapper">
+                <div id="priceWrapper" class="inputWrapper">
+                    <label for="price">Max hinta</label>
+                    <p class="symbolOnInput">€</p>
+                    <input class="inputField" type="number" name="price" min="0">
                 </div>
-                <div id="dropdownMailingWrapper" class="inputWrapper">
+                <div id="dropdownWrapper" class="inputWrapper">
                     <label for="mailing">Valitse toimitustapa</label>
-                    <input class="inputField" type="text" name="mailing" id="mailing">
+                    <input class="inputField" type="text" name="toimitus" id="mailing">
                 </div>
             </div>
             <button class="primaryButton formButton" type="submit" id="submit">
@@ -70,47 +71,12 @@
 
     </section>
 
-    <!-- PRINT OUT RESULTS -->
+    <!-- TODO: hide this section until search-->
     <section class="searchResults">
 
-        <h2>Hakutuloksia: 2</h2>
+        <h2>Hakutuloksia: <span id="searchResultsCounter"></span></h2>
 
-        <!-- TODO: print listings from js -->
         <div class="listings">
-
-            <article class="listing">
-
-
-                <figure class="listingImg">
-                    <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
-                </figure>
-                <ul class="listingInfo">
-                    <li class="listingName"><h3>Peikonlehti</h3></li>
-                    <li class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</li>
-                    <li class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</li>
-                    <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
-                    <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
-                </ul>
-
-
-            </article>
-
-            <article class="listing">
-
-
-                <figure class="listingImg">
-                    <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
-                </figure>
-                <ul class="listingInfo">
-                    <li class="listingName"><h3>Peikonlehti</h3></li>
-                    <li class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</li>
-                    <li class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</li>
-                    <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
-                    <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
-                </ul>
-
-
-            </article>
 
         </div>
 
