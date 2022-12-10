@@ -1,56 +1,29 @@
 /* Stylesheet for index/frontpage */
 
-.search{
+.search {
     display: flex;
     justify-content: center;
-    padding-top: 150px;
-    padding-bottom: 150px;
     background: url("../assets/img/hero_img.jpg");
     background-position-y: 65%;
     height:350px;
 }
 
-/* form style */
-form{
-    display:flex;
-    gap:10px;
-}
-/* Mobile rule */
-@media only screen and (max-width: 600px) {
-    form{
-        width:80%;
-    }
+.searchFrontInputWrapper {
+    max-width: 400px;
+    width: 100%;
 }
 
-#searchtxt{
-    height:50px;
-    width: 300px;
-    font-family: "Open Sans",sans-serif;
-    background-color: #FCFCFC;
-    border:0;
-    border-radius: 5px;
-}
-#submit{
-    height:50px;
-    width:100px;
-    font-size: 20px;
-    font-family: "Open Sans",sans-serif;
-    background-color: #3A7457;
-    color: #FCFCFC;
-    border:0;
-    border-radius: 5px;
-    transition: 200ms ease-out 200ms;
+#searchFrontForm{
+    display: flex;
+    align-items: center;
 }
 
-#submit:hover{
-    background-color:#E67039;
-}
-
-.newestListings{
-    background-color: #FCFCFC;
-    padding-bottom:20px;
+#searchFormDiv{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 #uusimmatIlmoituksetTxt{
-    text-align: center;
+text-align: center;
 }

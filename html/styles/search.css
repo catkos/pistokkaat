@@ -1,0 +1,25 @@
+/* Styling for search-page */
+
+.search h1, .searchResults h2{
+    text-align: center;
+}
+/* copied from add-modify-plant, add to main? */
+.priceMailingInputWrapper {
+    max-width: 400px;
+    width: 100%;
+}
+@media only screen and (min-width: 768px) {
+
+    .inputWrapper, .textAreaWrapper {max-width: 600px;}
+
+    .priceWrapper, .dropdownWrapper {
+        width: auto;
+        flex-grow: 1;
+    }
+
+    .priceMailingInputWrapper {
+        display: flex;
+        gap: 1rem;
+        max-width: 600px;
+    }
+}

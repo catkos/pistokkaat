@@ -1,40 +1,98 @@
 /***
- Main stylesheet, includes fontface, body, text and navigation style
+ Main stylesheet, includes fontface, body, text, navigation, form style
  ***/
-
-* {
-    box-sizing: border-box;
-}
 
 @font-face {
     font-family: FredokaOne;
     src: url(../assets/fonts/FredokaOne-Regular.ttf);
 }
 
-body{
-    margin:0;
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    color: #1A1A1A
+* {
+    box-sizing: border-box;
 }
 
-h1{font-family: "FredokaOne", serif; font-size: 25px; margin:0; padding-top: 35px; padding-bottom: 35px;}
-h2{font-family: "FredokaOne", serif; font-size: 20px; margin:0; padding-top: 35px; padding-bottom: 35px;}
+*:focus {
+    outline: 2px solid rgb(58, 116, 87);
+}
 
-/* Main navigation */
+*,*:before,*:after { -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box; }
+
+body,html{
+    margin:0;
+    padding:0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: rgb(38, 32, 28);
+    background-color: rgb(252, 252, 252);
+}
+
+body{
+    position: relative; /* for footer */
+    min-height: 100vh;
+}
+
+h1{font-family: "FredokaOne", serif; font-size: 1.5rem; margin:0; padding-top: 35px; padding-bottom: 35px;}
+h2{font-family: "FredokaOne", serif; font-size: 1rem; margin:0; padding-top: 35px; padding-bottom: 35px; font-size: 1.5rem;}
+h3{margin: 0; font-size: 1rem;}
+
+a {color: rgb(58, 116, 87);}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contentPadding{
+    padding:1rem;
+}
+
+/* MAIN NAVIGATION STYLE */
 #mainNav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #3A7457;
-    height:65px;
+    padding: 1rem;
+    height:10vh;
+    width: auto;
 }
 #mainNav a{
     color: #FCFCFC;
     text-decoration: none;
-    padding:20px;
     transition: 200ms ease-out 200ms;
 }
+
+#logo{font-family: "FredokaOne", serif; font-size: 30px;margin:0;padding:0;}
+
+.navlinks{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap:20px;
+}
+
+.BtnNav{
+    color:rgb(252, 252, 252);
+    border: none;
+    background: none;
+    font-size: 16px;
+    transition: 200ms ease-out 200ms;
+}
+
+.BtnNav i{
+    font-size:20px;
+    transition: 200ms ease-out 200ms;
+}
+.BtnNav:hover{
+    border-bottom: 4px solid rgb(26,26,26);
+}
+
+/* active/selected page nav indication */
+.active i{
+    color:rgb(26,26,26);
+}
+
 /* OR: White bg with green border?
 #mainNav{
     display: flex;
@@ -51,31 +109,268 @@ h2{font-family: "FredokaOne", serif; font-size: 20px; margin:0; padding-top: 35p
     transition: 200ms ease-out 200ms;
 }
 */
-#logo{font-family: "FredokaOne", serif; font-size: 30px;}
 
 /* add txt for larger screen */
-@media only screen and (min-width: 750px){
-    #haku::after{
+@media only screen and (min-width: 820px){
+    #hakuicon::after{
         content: " Haku";
+        padding-left:10px;
+        font-size: 16px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: normal;
     }
     #uusiIlmoitus::after{
         content: " Uusi ilmoitus";
+        padding-left:10px;
+        font-size: 16px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: normal;
     }
     #suosikit::after{
         content: " Suosikit";
+        padding-left:10px;font-size: 16px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: normal;
+
     }
     #profiili::after{
-        content: " username23"; /* TODO: change username to match login user */
+        content: " username23";
+        padding-left:10px;font-size: 16px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: normal;
+
     }
 }
 
-/* on hover */
-#mainNav .navlinks a:hover{
-    color:#E67039;
-    border-bottom: 4px solid #E67039;
-}
 
 /* Mobile rule, smaller logo */
 @media only screen and (max-width: 600px) {
-    #logo{font-size: 20px;}
+    #logo{font-size: 25px;}
+}
+
+/* FORM STYLE */
+
+#loginForm, #registerForm, #searchForm {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/** Remove number spinners from type=number **/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.inputWrapper {
+    max-width: 400px;
+    width: 100%;
+}
+
+.inputWrapper, .textAreaWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.inputWrapper label, .textAreaWrapper label {
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+.textAreaWrapper small:nth-child(2) {float:right;}
+
+.inputField {
+    height: 3rem;
+    padding: 0 0.5rem;
+}
+
+.textArea {
+    padding: 0.5rem;
+    resize: none;
+}
+
+.inputField, .textArea {
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(209, 204, 199);
+    background-color: rgb(252, 252, 252);
+    font-family: "Open Sans", sans-serif;
+}
+
+.inputField:focus, .textArea:focus {
+    border: 1px solid rgb(58, 116, 87);
+    outline: 3px solid rgb(160, 207, 184);
+}
+
+.inputField:focus-visible, .textArea:focus-visible {
+    border: 1px solid rgb(58, 116, 87);
+    outline: 3px solid rgb(160, 207, 184);
+}
+
+.symbolOnInput {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+}
+
+/* search form styles */
+.priceAndMailingWrapper{
+    display:flex;
+    width:100%;
+    justify-content: center;
+}
+
+/* TODO: fix issue if screen smaller than 400px */
+#dropdownPriceWrapper{
+    width:100px;
+}
+#dropdownMailingWrapper{
+    width:300px;
+}
+
+.formButton {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* dropdown list style */
+#dropdownInput {cursor: pointer;}
+
+.dropdownList{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 12.6rem;
+    overflow-y: auto;
+    border: 1px solid rgb(209, 204, 199);
+    border-radius: 0.25rem;
+    display: none;
+    background-color: rgb(252, 252, 252);
+}
+
+.dropdownList:hover{display: block;}
+
+.dropdownList li{border-top: unset;}
+
+.dropdownList button{
+    height: 2.5rem;
+    border: 0;
+    background: 0;
+    width: 100%;
+    text-align: left;
+    padding: 0 0.5rem;
+    border-radius: 0;
+    font-size: 0.875rem;
+}
+
+.dropdownList button.selected{background-color: rgb(187, 221, 204);}
+
+.dropdownList button:hover{background-color: rgb(187, 221, 204);}
+
+.dropdownList button:focus{
+    background-color: rgb(187, 221, 204);
+    outline: 1px solid rgb(187, 221, 204);
+}
+
+.dropdownList button:active{background-color: rgb(187, 221, 204);}
+
+.helpText {font-size: 0.875rem;}
+
+#dropdownWrapper, #priceWrapper{position: relative;}
+
+#dropdownWrapper:focus-within .dropdownList{display: block;}
+
+#priceWrapper p {
+    right: 1rem;
+    top: 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* hide the default marker from detail summary */
+details > summary {
+    list-style: none;
+}
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
+/* BUTTON STYLE */
+
+button {
+    cursor: pointer;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+
+.primaryButton {
+    background-color: rgb(58, 116, 87);
+    height: 3rem;
+    min-width: 3rem;
+    border: 0;
+    color: rgb(252, 252, 252);
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 200ms ease-out 200ms;
+    transition: transform 75ms;
+    padding: 0 2rem;
+}
+
+.primaryButton:hover {background-color: rgb(41, 81, 61);}
+
+.primaryButton:active {
+    background-color: rgb(41, 81, 61);
+    transform: scale(0.95);
+}
+
+.primaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
+
+
+.primaryButton a{
+    color:#FCFCFC;
+}
+
+.secondaryButton {
+    background-color: rgb(252, 252, 252);
+    height: 3rem;
+    min-width: 3rem;
+    border: 2px solid rgb(58, 116, 87);
+    font-size: 1rem;
+    color: rgb(58, 116, 87);
+    border-radius: 0.25rem;
+    transition: background-color 200ms ease-out 200ms;
+    transition: transform 75ms;
+    padding: 0 2rem;
+}
+
+.secondaryButton:hover {background-color: rgb(160, 207, 184);}
+
+.secondaryButton:active {
+    background-color: rgb(160, 207, 184);
+    transform: scale(0.95);
+}
+
+.secondaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
+
+/* FOOTER STYLE */
+footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: rgb(26,26,26);
+    padding:0.5rem;
 }

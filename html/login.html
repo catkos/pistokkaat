@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistokkaat - Kirjaudu</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/login-register.css">
+    <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
+
+<nav id="mainNav">
+    <a href="index.html" id="logo">Pistokkaat</a>
+    <!-- TODO: Change href links -->
+    <div class="navlinks">
+        <button class="BtnNav" id="haku"><a href="search.html"><i class="fa-solid fa-magnifying-glass" title="Haku" id="hakuicon"></i></a></button>
+        <!-- TODO: Show uusiIlmoitas and suosikit only to login users -->
+        <button class="BtnNav" id="uusiIlmoitus"><a href="add-plant.html"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a></button>
+        <button class="BtnNav" id="suosikit"><a href="user-favourites.html"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a></button>
+        <button class="BtnNav" id="profiili"><a href="user-profile.html"><i class="fa-solid fa-user" title="Oma profiili"></i></a></button>
+    </div>
+</nav>
+
+<main class="contentPadding">
+    <section class="loginRegisterSection">
+        <h2>Kirjaudu sisään</h2>
+        <form id="loginForm" action="" method="post">
+            <div class="inputWrapper">
+                <label for="email">Sähköposti:</label>
+                <input class="inputField" type="email" name="email">
+            </div>
+            <div class="inputWrapper">
+                <label for="password">Salasana:</label>
+                <input class="inputField" type="password" name="password">
+            </div>
+            <button class="primaryButton formButton" type="submit">Kirjaudu</button>
+        </form>
+        <p class="helpText">
+            Ei käyttäjätunnusta? <a href="register.html">Rekisteröidy käyttäjäksi</a>
+        </p>
+    </section>
+</main>
+</body>
+</html>

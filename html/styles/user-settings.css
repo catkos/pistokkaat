@@ -1,0 +1,21 @@
+/* Styling for user settings html */
+
+.settings h1{
+    text-align: center;
+}
+
+#settingsForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+details{
+    background: rgb(245,236,227);
+    padding:2rem 0.5rem 0 0.5rem;
+}
+
+#btnWrapper{
+    display: flex;
+    gap: 3rem;
+}

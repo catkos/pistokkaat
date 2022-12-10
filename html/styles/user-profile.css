@@ -1,0 +1,61 @@
+/* style for user profile html */
+
+.profile{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background: #F5ECE3;
+    height:350px;
+}
+
+h2{
+    text-align: center;
+}
+
+.profInfoList{
+    list-style: none;
+    display: flex;
+    margin:0;
+    padding:0;
+    justify-content: center;
+    text-align: center;
+}
+
+.profInfoList li{
+    padding:0.5rem;
+}
+
+.profInfoList li i{
+    font-size:25px;
+}
+
+#giveLike, #mailLink{
+    color: #3A7457;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.profileSettings{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top:35px;
+    padding-bottom: 35px;
+}
+#btnWrapper{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+/* desktop rule, add text */
+@media only screen and (min-width: 600px) {
+    #edit::after {
+        content: " Asetukset";
+    }
+    #logout::after {
+        content:" Kirjaudu ulos";
+    }
+}

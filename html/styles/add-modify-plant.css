@@ -1,0 +1,111 @@
+/* style for add and modify plant html */
+
+.addNewSection, .modifySection {
+    width: 100%;
+    background-color: rgb(252, 252, 252);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.addFile {
+    border: 2px dashed rgb(209, 204, 199);
+    font-size: 0.875rem;
+    font-weight: 400;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.addFile:hover {
+    border: 2px dashed rgb(58, 116, 87);
+    outline: 3px solid rgb(160, 207, 184);
+    background-color: rgb(228, 241, 235);
+}
+
+.addFile:focus {
+    border: 2px dashed rgb(58, 116, 87);
+    outline: 3px solid rgb(160, 207, 184);
+    background-color: rgb(228, 241, 235);
+}
+
+.addFile:focus-visible {
+    border: 2px dashed rgb(58, 116, 87);
+    outline: 3px solid rgb(160, 207, 184);
+    background-color: rgb(228, 241, 235);
+}
+
+.addFile i {
+    font-size: 4rem;
+    color: rgb(58, 116, 87);
+}
+
+.buttonWrapper {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    gap: 1rem;
+}
+
+.buttonWrapper button {flex-grow: 1;}
+
+.inputWrapper, .textAreaWrapper {
+    max-width: 400px;
+    width: 100%;
+}
+
+.priceMailingInputWrapper {
+    max-width: 400px;
+    width: 100%;
+}
+
+#addNewForm {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#fileName {
+    margin-top: 1rem;
+    font-weight: 400;
+}
+
+@media only screen and (min-width: 768px) {
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inputWrapper, .textAreaWrapper {max-width: 600px;}
+
+    .priceWrapper, .dropdownWrapper {
+        width: auto;
+        flex-grow: 1;
+    }
+
+    .priceMailingInputWrapper {
+        display: flex;
+        gap: 1rem;
+        max-width: 600px;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    main {background-color: rgb(245, 236, 227);}
+
+    .addNewSection, .modifySection {
+        width: 800px;
+        padding: 2.5rem;
+        border-radius: 0.5rem;
+        background-color: rgb(252, 252, 252);
+    }
+}

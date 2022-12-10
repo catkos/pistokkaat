@@ -8,10 +8,6 @@ figure {
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap:20px;
-    margin-left:6%;
-    margin-right: 6%;
-    padding-bottom: 35px;
 }
 
 .listing {
@@ -23,7 +19,15 @@ figure {
     border-radius: 5px;
     overflow:hidden;
     background-color: #FCFCFC;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
 }
+/* desktop rule, add left-right margins */
+@media only screen and (min-width: 600px) {
+    .listing{margin-left:1rem; margin-right:1rem;}
+}
+
 
 .listingImg img{
     width: 150px;
@@ -31,14 +35,16 @@ figure {
     object-fit: cover;
 }
 
-h3{font-family: "Open Sans", sans-serif; font-size: 16px; font-weight: normal;margin-top:0;}
-
 .listingInfo {
     border-radius: 0 5px 5px 0;
     padding: 10px 10px 10px 20px;
     width: 100%;
     list-style:none;
     line-height: 30px;
+}
+
+.listingName{
+    padding-bottom: 5%;
 }
 
 .listing:hover{
