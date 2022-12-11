@@ -1,19 +1,20 @@
 'use strict';
 // TODO: Change url when uploading to server
 const url = 'http://localhost:3000';
+
 const loginForm = document.querySelector('#loginForm');
 
 // Login
 loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  // Get data from form
+  const formData = new FormData(loginForm);
+  // Create obj for json data and loop form's data to obj
+  const obj = {};
+  formData.forEach((value, key) => obj[key] = value);
+  // Create json data from obj
+  const jsonData = JSON.stringify(obj);
   try {
-    e.preventDefault();
-    // Get data from form
-    const formData = new FormData(loginForm);
-    // Create obj for json data and loop form's data to obj
-    const obj = {};
-    formData.forEach((value, key) => obj[key] = value);
-    // Create json data from obj
-    const jsonData = JSON.stringify(obj);
     // Fetch options
     const options = {
       method: 'POST',

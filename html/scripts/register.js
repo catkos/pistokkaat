@@ -1,7 +1,9 @@
 'use strict';
 // TODO: Change url when uploading to server
 const url = 'http://localhost:3000';
+
 let municipalities = [];
+
 const dropdownInput = document.querySelector('#dropdownInput');
 const dropdownIcon = document.querySelector('#dropdownIcon');
 const dropdownWrapper = document.querySelector('#dropdownWrapper');
@@ -31,50 +33,13 @@ const getMunicipalities = async () => {
             if (nameA > nameB) {
                 return 1;
             }
-            // names must be equal
+            // Names must be equal
             return 0;
         });
-        console.log(municipalities);
     } catch (e) {
         console.log(e.message);
     }
 };
-
-// Register
-registerForm.addEventListener('submit', async (e) => {
-    try {
-        e.preventDefault();
-        // Get data from form
-        const formData = new FormData(registerForm);
-        formData.set('municipality', selectedID);
-          // Create obj for json data and loop form's data to obj
-        const obj = {};
-        formData.forEach((value, key) => obj[key] = value);
-        // Create json data from obj
-        const jsonData = JSON.stringify(obj);
-        // Fetch options
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: jsonData
-        };
-        const response = await fetch(url + '/auth/register', options);
-        const json = await response.json();
-        if(response.status !== 200) {
-            createDialog(json.message);
-            return;
-        }
-        createDialog(json.message);
-        const button = document.querySelector('dialog form button');
-        button.addEventListener('click', () => {
-            location.href = 'login.html';
-        });
-    } catch (e) {
-        console.log(e.message);
-    }
-});
 
 dropdownInput.addEventListener('input', () => {
     onInputChange(dropdownWrapper, dropdownInput, municipalities);
@@ -93,6 +58,45 @@ dropdownIcon.addEventListener('click', () => {
         return;
     }
     addFocusToInputEl(dropdownInput);
+});
+
+// Register
+registerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    // Get data from form
+    const formData = new FormData(registerForm);
+    formData.set('municipality', selectedID);
+    // Create obj for json data and loop form's data to obj
+    const obj = {};
+    formData.forEach((value, key) => obj[key] = value);
+    // Create json data from obj
+    const jsonData = JSON.stringify(obj);
+    try {
+        // Fetch options
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonData
+        };
+        // Fetch and check if status is not OK
+        const response = await fetch(url + '/auth/register', options);
+        const json = await response.json();
+        if(response.status !== 200) {
+            createDialog(json.message);
+            return;
+        } else {
+            // Create dialog and redirect to login.html when user clicks button
+            createDialog(json.message);
+            const button = document.querySelector('dialog form button');
+            button.addEventListener('click', () => {
+                location.href = 'login.html';
+            });
+        }
+    } catch (e) {
+        console.log(e.message);
+    }
 });
 
 getMunicipalities();
