@@ -14,6 +14,7 @@ const dropdownInput = document.querySelector('#dropdownInput');
 const dropdownIcon = document.querySelector('#dropdownIcon');
 const dropdownWrapper = document.querySelector('#dropdownWrapper');
 const addNewForm = document.querySelector('#addNewForm');
+const cancelButton = document.querySelector('#cancel');
 
 // Get delivery options
 const getDeliveryOptions = async () => {
@@ -113,6 +114,11 @@ dropdownInput.addEventListener('input', () => {
 // Add dropdown when focusin on input
 dropdownInput.addEventListener('focusin',  () => {
     onInputChange(dropdownInput, dropdownWrapper, deliveryOptions, selectedDeliveryOptions);
+});
+
+// Go back to index when clicking cancel button
+cancelButton.addEventListener('click', () => {
+    location.href = 'index.html';
 });
 
 // Remove list when clicking dropdown icon, if the list exists

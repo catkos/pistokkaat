@@ -12,6 +12,7 @@ const dropdownInput = document.querySelector('#dropdownInput');
 const dropdownIcon = document.querySelector('#dropdownIcon');
 const dropdownWrapper = document.querySelector('#dropdownWrapper');
 const modifyForm = document.querySelector('#modifyForm');
+const cancelButton = document.querySelector('#cancel');
 
 // Get query params
 const getQueryParam = (param) => {
@@ -111,6 +112,11 @@ dropdownInput.addEventListener('input', () => {
 // Add dropdown when using input
 dropdownInput.addEventListener('focusin',  () => {
     onInputChange(dropdownInput, dropdownWrapper, deliveryOptions, selectedDeliveryOptions);
+});
+
+// Go back to plant's own page when clicking cancel button
+cancelButton.addEventListener('click', () => {
+    location.href = 'plant.html?id=' + plant_id;
 });
 
 // Remove list when clicking dropdown icon, if the list exists
