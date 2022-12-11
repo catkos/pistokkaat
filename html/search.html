@@ -10,7 +10,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="scripts/listings.js" defer></script>
+    <script src="scripts/search-listings.js" defer></script>
     <script src="scripts/search.js" defer></script>
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
 
@@ -56,14 +56,14 @@
                 <div id="priceWrapper" class="inputWrapper">
                     <label for="price">Max hinta</label>
                     <p class="symbolOnInput">€</p>
-                    <input class="inputField" type="number" name="price" min="0">
+                    <input class="inputField" type="number" name="hinta" min="0">
                 </div>
                 <div id="dropdownWrapper" class="inputWrapper">
                     <label for="mailing">Valitse toimitustapa</label>
                     <input class="inputField" type="text" name="toimitus" id="mailing">
                 </div>
             </div>
-            <button class="primaryButton formButton" type="submit" id="submit">
+            <button class="primaryButton formButton" type="submit" id="searchSubmit">
                 Hae
             </button>
 
@@ -74,7 +74,7 @@
     <!-- TODO: hide this section until search-->
     <section class="searchResults">
 
-        <h2>Hakutuloksia: <span id="searchResultsCounter"></span></h2>
+        <h2 id="searchResultsText">Hakutuloksia: <span id="searchResultsCounter"></span></h2>
 
         <div class="listings">
 

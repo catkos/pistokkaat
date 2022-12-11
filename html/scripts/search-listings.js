@@ -3,33 +3,6 @@
 *  */
 const url = 'http://localhost:3000'; // change url when uploading to server
 
-function getData(){
-
-    const getJSON = async url => {
-        const response = await fetch(url);
-        if(!response.ok) // check if response worked (no 404 errors etc...)
-            throw new Error(response.statusText);
-
-        const db = response.json(); // get JSON from the response
-        return db; // returns a promise, which resolves to this data value
-    }
-
-    console.log("Fetching data...");
-
-    getJSON(url+"/plant").then(data => {
-
-        console.log(data); //todo: delete
-
-        //print out data
-        for(const i in data) {
-            printListing(data[i].name, data[i].price, data[i].seller.location, data[i].delivery, data[i].created);
-        }
-
-    }).catch(error => {
-        console.error(error); //todo: change
-    });
-}
-
 function getFilteredData(queryParams){
 
     const getJSON = async url => {
@@ -41,50 +14,30 @@ function getFilteredData(queryParams){
         return db; // returns a promise, which resolves to this data value
     }
 
-    console.log("Fetching data...");
-
-    console.log("annettu query: "+queryParams)
-
     getJSON(url+"/plant?"+queryParams).then(data => {
-
-        console.log(data); //todo: delete
 
         //print out data
         for(const i in data) {
             printListing(data[i].name, data[i].price, data[i].seller.location, data[i].delivery, data[i].created);
         }
 
+        printListingCounter(data.length);
+
     }).catch(error => {
         console.error(error); //todo: change
+        noListings();
     });
+
 
 }
 
-function getNewestData(){
-
-    const getJSON = async url => {
-        const response = await fetch(url);
-        if(!response.ok) // check if response worked (no 404 errors etc...)
-            throw new Error(response.statusText);
-
-        const db = response.json(); // get JSON from the response
-        return db; // returns a promise, which resolves to this data value
-    }
-
-    console.log("Fetching data...");
-    getJSON(url+"/plant/uusimmat").then(data => {
-
-        //only get 3 first
-        data.slice(0,2);
-
-        //print out data
-        for(const i in data) {
-            printListing(data[i].name, data[i].price, data[i].seller.location, data[i].delivery, data[i].created);
-        }
-
-    }).catch(error => {
-        console.error(error); //todo: change
-    });
+function noListings(){
+    //if no listings, add text
+    const text = document.querySelector("#searchResultsCounter");
+    text.innerHTML= "0";
+    //unhide h2s
+    const title = document.querySelector("#searchResultsText");
+    title.style.display="block";
 }
 
 /* dom manipulation */
@@ -130,4 +83,18 @@ function printListing(name, price, location, mailing, date) {
     liMailing.innerHTML = "<i class=\'fa-solid fa-truck\'></i> " + mailing;
     //TODO: delete string trim
     liDate.innerHTML = "<i class=\'fa-solid fa-calendar-days\'></i> " + date.substring(0,10);
+}
+
+//print counter number
+function printListingCounter(dataLength){
+
+    const text = document.querySelector("#searchResultsCounter");
+    if(dataLength<0){
+        text.innerHTML= "Ei hakutuloksia";
+    }else{
+        text.innerHTML= dataLength;
+    }
+    //unhide h2
+    const title = document.querySelector("#searchResultsText");
+    title.style.display="block";
 }

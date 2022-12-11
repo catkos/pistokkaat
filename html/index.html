@@ -32,13 +32,11 @@
 
     <section class="search">
 
-            <!-- TODO: make form functional -->
             <form action="search.html" method="get" id="searchFrontForm">
-
                 <div id="searchFormDiv">
                 <div class="searchFrontInputWrapper">
                     <label for="searchtxt" hidden>Hae pistokkaita</label>
-                    <input class="inputField" type="text" id="searchtxt" name="searchtxt" placeholder="Hae pistokkaita" pattern="[a-zA-ZäåöÄÅÖ]" title="Hae pistokkaita (Vain kirjaimet sallittu)">
+                    <input class="inputField" type="text" id="searchtxt" name="nimi" placeholder="Hae pistokkaita" title="Hae pistokkaita (Vain kirjaimet sallittu)">
                 </div>
                 <div class="searchFrontInputWrapper">
                 <button type="submit" id="submit" class="primaryButton">
@@ -65,14 +63,4 @@
 <footer></footer>
 
 </body>
-
-<!-- TODO: delete script below, this is for testing/demo -->
-<script>
-    const listing = document.getElementsByClassName("listing");
-    for(let i = 0; i < listing.length; i++){
-        listing[i].addEventListener("click",goToListing);
-    }
-
-    function goToListing(){window.location.href = "/pistokkaat/html/plant.html";}
-</script>
 </html>

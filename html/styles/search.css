@@ -3,6 +3,12 @@
 .search h1, .searchResults h2{
     text-align: center;
 }
+
+/* hide Hakutuloksia block, unhide in javascript */
+#searchResultsText{
+    display: none;
+}
+
 /* copied from add-modify-plant, add to main? */
 .priceMailingInputWrapper {
     max-width: 400px;
