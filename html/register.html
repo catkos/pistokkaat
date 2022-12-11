@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/login-register.css">
     <script src="scripts/autocomplete-dropdown.js" defer></script>
+    <script src="scripts/dialog.js" defer></script>
     <script src="scripts/register.js" defer></script>
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous" defer></script>
 </head>
@@ -30,18 +31,18 @@
         <h2>Rekisteröidy</h2>
         <form id="registerForm" action="" method="post" autocomplete="off">
             <div class="inputWrapper">
+                <label for="email">Sähköposti: *</label>
+                <input class="inputField" type="email" name="email" required>
+            </div>
+            <div class="inputWrapper">
                 <label for="username">Käyttäjätunnus: *</label>
                 <input class="inputField" type="text" name="username" minlength="3" required>
                 <small>Vähintään 3 merkkiä.</small>
             </div>
-            <div class="inputWrapper">
-                <label for="email">Sähköposti: *</label>
-                <input class="inputField" type="email" name="email" required>
-            </div>
             <div id="dropdownWrapper" class="inputWrapper">
-                <label for="location">Kunta: *</label>
+                <label for="municipality">Kunta: *</label>
                 <i id="dropdownIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
-                <input id="dropdownInput" class="inputField" type="text" name="location" required>
+                <input id="dropdownInput" class="inputField" type="text" name="municipality" required>
             </div>
             <div class="inputWrapper">
                 <label for="password">Salasana: *</label>
@@ -55,5 +56,6 @@
         </p>
     </section>
 </main>
+
 </body>
 </html>
