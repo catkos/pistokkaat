@@ -84,15 +84,11 @@ registerForm.addEventListener('submit', async (e) => {
         const response = await fetch(url + '/auth/register', options);
         const json = await response.json();
         if(response.status !== 200) {
-            createDialog(json.message);
+            createDialog(json.message, '');
             return;
         } else {
             // Create dialog and redirect to login.html when user clicks button
-            createDialog(json.message);
-            const button = document.querySelector('dialog form button');
-            button.addEventListener('click', () => {
-                location.href = 'login.html';
-            });
+            createDialog(json.message, 'login.html');
         }
     } catch (e) {
         console.log(e.message);

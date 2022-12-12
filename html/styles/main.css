@@ -360,12 +360,20 @@ dialog {
     width: 100%;
     max-width: 300px;
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-dialog p {margin: 0 0 1.5rem 0;}
+dialog p {
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+dialog form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+dialog form button {width: 50%;}
 
 @media only screen and (min-width: 400px) {
     dialog {max-width: 400px;}
