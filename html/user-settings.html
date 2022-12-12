@@ -9,6 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <script src="scripts/navigation.js" defer></script>
   <script src="scripts/user-settings.js" defer></script>
   <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
 
@@ -17,13 +18,37 @@
 
 <nav id="mainNav">
   <a href="index.html" id="logo">Pistokkaat</a>
-  <!-- TODO: Change href links -->
-  <div class="navlinks">
-    <button class="BtnNav" id="haku"><a href="search.html"><i class="fa-solid fa-magnifying-glass" title="Haku" id="hakuicon"></i></a></button>
-    <!-- TODO: Show uusiIlmoitas and suosikit only to login users -->
-    <button class="BtnNav" id="uusiIlmoitus"><a href="add-plant.html"><i class="fa-solid fa-plus" title="Lisää uusi ilmoitus"></i></a></button>
-    <button class="BtnNav" id="suosikit"><a href="user-favourites.html"><i class="fa-solid fa-heart" title="Omat suosikit"></i></a></button>
-    <button class="BtnNav active" id="profiili"><a href="user-profile.html"><i class="fa-solid fa-user" title="Oma profiili"></i></a></button>
+  <div id="navLinks" class="navlinks">
+      <a href="search.html" id="searchLink">
+          <button class="navButton">
+              <i class="fa-solid fa-magnifying-glass" title="Haku" id="hakuicon"></i>
+              <span class="desktopNavText">Haku</span>
+          </button>
+      </a>
+      <a href="add-plant.html" id="addPlantLink">
+          <button class="navButton">
+              <i class="fa-solid fa-plus" title="Lisää uusi pistokas"></i>
+              <span class="desktopNavText">Uusi pistokas</span>
+          </button>
+      </a>
+      <a href="user-favourites.html" id="favouritesLink">
+          <button class="navButton">
+              <i class="fa-solid fa-heart" title="Omat suosikit"></i>
+              <span class="desktopNavText">Suosikit</span>
+          </button>
+      </a>
+      <a href="user-profile.html" id="profileLink">
+          <button class="navButton">
+              <i class="fa-solid fa-user" title="Oma profiili"></i>
+              <span class="desktopNavText">Käyttäjätunnus</span>
+          </button>
+      </a>
+      <a href="login.html" id="loginLink">
+          <button class="navButton">
+              <i class="fa-solid fa-right-to-bracket" title="Kirjaudu sisään" id="kirjauduicon"></i>
+              <span class="desktopNavText">Kirjaudu sisään</span>
+          </button>
+      </a>
   </div>
 </nav>
 

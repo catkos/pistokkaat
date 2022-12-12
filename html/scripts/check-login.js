@@ -6,7 +6,7 @@
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
         location.href = 'index.html';
         return;
-    };
+    }
     // Check if token is valid
     try {
         const options = {
