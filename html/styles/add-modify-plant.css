@@ -107,5 +107,6 @@
         padding: 2.5rem;
         border-radius: 0.5rem;
         background-color: rgb(252, 252, 252);
+        box-shadow: 2px 2px 6px rgba(38, 32, 28, 0.2);
     }
 }

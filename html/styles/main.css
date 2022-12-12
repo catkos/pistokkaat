@@ -29,7 +29,7 @@ body {
 
 h1{font-family: "FredokaOne", serif; font-size: 1.5rem; margin:0; padding-top: 35px; padding-bottom: 35px;}
 h2{font-family: "FredokaOne", serif; font-size: 1rem; margin:0; padding-top: 35px; padding-bottom: 35px; font-size: 1.5rem;}
-h3{margin: 0; font-size: 1rem;}
+h3{margin: 0; font-size: 1rem; line-height: 1.5rem;}
 
 a {color: rgb(58, 116, 87);}
 
@@ -39,23 +39,21 @@ main {
     justify-content: space-between;
 }
 
-.contentPadding {
-    padding: 1rem 1rem 2rem 1rem;
-}
+.contentPadding {padding: 2rem 1rem 2rem 1rem;}
 
 /* MAIN NAVIGATION STYLE */
 #mainNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #3A7457;
+    background-color: rgb(58, 116, 87);
     padding: 1rem;
     height: 60px;
     width: auto;
 }
 
 #mainNav a {
-    color: #FCFCFC;
+    color: rgb(252, 252, 252);
     text-decoration: none;
     transition: 200ms ease-out 200ms;
 }
@@ -72,16 +70,18 @@ main {
     width: 100%;
     justify-content: flex-end;
     gap: 20px;
-    height: 40px;
     align-items: center;
 }
 
 .navButton {
+    display: flex;
+    align-items: center;
     color:rgb(252, 252, 252);
     border: none;
     background: none;
     font-size: 1rem;
     transition: 200ms ease-out 200ms;
+    height: 36px;
 }
 
 .navButton i {
@@ -98,22 +98,24 @@ main {
     font-weight: normal;
 }
 
-#mainNav a:hover {border-bottom: 4px solid rgb(26,26,26);}
+#mainNav a:hover {border-bottom: 4px solid rgb(38, 32, 28);}
 
 /* active/selected page nav indication */
-.active i {color:rgb(26,26,26);}
+.active {color:rgb(38, 32, 28);}
+
+#loginLink {display: none;}
 
 /* OR: White bg with green border?
 #mainNav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FCFCFC;
+    background-color: rgb(252, 252, 252);
     height:65px;
-    border-top: 10px solid #3A7457;
+    border-top: 10px solid rgb(58, 116, 87);
 }
 #mainNav a{
-    color: #3A7457;
+    color: rgb(58, 116, 87);
     text-decoration: none;
     padding:20px;
     transition: 200ms ease-out 200ms;
@@ -137,8 +139,7 @@ main {
 
 #loginForm, #registerForm, #searchForm {
     width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -347,16 +348,25 @@ footer {
     position: absolute;
     width: 100%;
     bottom: 0;
-    background: rgb(26,26,26);
+    background: rgb(38, 32, 28);
     padding:0.5rem;
 }
 
 /* DIALOG STYLE */
 dialog {
     border: 0;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 8px rgba(26, 26, 26, 0.2);
-    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(38, 32, 28, 0.2);
+    width: 100%;
+    max-width: 300px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-dialog p {margin: 0 0 2rem 0;}
+dialog p {margin: 0 0 1.5rem 0;}
+
+@media only screen and (min-width: 400px) {
+    dialog {max-width: 400px;}
+}

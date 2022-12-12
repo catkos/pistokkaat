@@ -8,6 +8,8 @@
         document.querySelector('#addPlantLink').remove();
         document.querySelector('#favouritesLink').remove();
         document.querySelector('#profileLink').remove();
+        // Show login link
+        document.querySelector('#loginLink').style.display = 'block';
         return;
     }
     // Check if token is valid
@@ -18,7 +20,14 @@
             },
         };
         const response = await fetch(url + '/user/token', options);
-        if (response.ok) {
+        if (!response.ok) {
+            // Remove links from navigation
+            document.querySelector('#addPlantLink').remove();
+            document.querySelector('#favouritesLink').remove();
+            document.querySelector('#profileLink').remove();
+            // Show login link
+            document.querySelector('#loginLink').style.display = 'block';
+        } else {
             const json = await response.json();
             sessionStorage.setItem('user', JSON.stringify(json.user));
             // Get user data
