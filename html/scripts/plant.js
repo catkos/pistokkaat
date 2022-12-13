@@ -1,7 +1,344 @@
+'use strict';
+// TODO: Change url when uploading to server
+const url = 'http://localhost:3000';
+
+// Get elements from page
 const commentTextArea = document.querySelector('#commentTextArea');
 const likeButton = document.querySelector('#likeButton');
 const heartIcon = document.querySelector('#heartIcon');
+const title = document.querySelector('#title');
+const infoPrice = document.querySelector('#infoPrice');
+const infoLocation = document.querySelector('#infoLocation');
+const infoMailing = document.querySelector('#infoMailing');
+const infoDate = document.querySelector('#infoDate');
+const infoLikes = document.querySelector('#infoLikes');
+const description = document.querySelector('#description');
+const instruction = document.querySelector('#instruction');
+const userLink = document.querySelectorAll('.username a');
+const userEmail = document.querySelectorAll('.userEmail');
+const userEmailList = document.querySelectorAll('.userEmailList');
+const userLocation = document.querySelectorAll('.userLocation');
+const commentsDiv = document.querySelector('.comments');
+const sendCommentForm = document.querySelector('#sendCommentForm');
+const main = document.querySelector('main');
+
 let liked = false;
+
+// Get query params
+const getQueryParam = (param) => {
+    const queryStr = window.location.search;
+    const urlParams = new URLSearchParams(queryStr);
+    return urlParams.get(param);
+};
+
+// Get id from address
+const plant_id = getQueryParam('id');
+
+// Create user
+let user;
+
+const checkLogin = async () => {
+    // Check session storage
+    if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
+        // Remove comment form
+        sendCommentForm.remove();
+        return;
+    }
+    // Check if token is valid
+    try {
+        const options = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + '/user/token', options);
+        if (!response.ok) {
+            // Remove comment form
+            sendCommentForm.remove();
+            return;
+        }
+        const json = await response.json();
+        sessionStorage.setItem('user', JSON.stringify(json.user));
+        // Set user data
+        user = JSON.parse(sessionStorage.getItem('user'));
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+const getPlant = async () => {
+    try {
+        const options = {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + /plant/ + plant_id, options);
+        // TODO: Redirect to not-found.html
+        if (!response.ok) {
+            location.href = 'index.html';
+            return;
+        }
+        const plant = await response.json();
+        createPlant(plant);
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+const deletePlant = async () => {
+    try {
+        const options = {
+            method: 'DELETE',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + '/plant/' + plant_id, options);
+        const json = await response.json();
+        if (!response.ok) {
+            createDialogWithCancel(json.message, '');
+            return;
+        }
+        location.href = 'index.html';
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+// Get comments and render them to comments
+const getComments = async () => {
+    try {
+        const options = {
+            method: 'GET',
+        };
+        const response = await fetch(url + /plant/ + plant_id + '/comment', options);
+        if (!response.ok) {
+            const paragraph = document.createElement('p');
+            paragraph.innerHTML = 'Ei kommentteja.';
+            commentsDiv.appendChild(paragraph);
+            return;
+        }
+        const comments = await response.json();
+        // Empty commentsDiv before adding comments
+        commentsDiv.innerHTML = '';
+        comments.forEach(comment => {
+            createComment(comment);
+        });
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+const addComment = async () => {
+    // Get data from form
+    const formData = new FormData(sendCommentForm);
+    // Create obj for json data and loop form's data to obj
+    const obj = {};
+    formData.forEach((value, key) => obj[key] = value);
+    // Create json data from obj
+    const jsonData = JSON.stringify(obj);
+    try {
+        // Fetch options
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + sessionStorage.getItem('token')
+            },
+            body: jsonData
+        };
+        // Fetch and check if status is not OK
+        const response = await fetch(url + /plant/ + plant_id + '/comment', options);
+        const json = await response.json();
+        if (!response.ok) {
+            createDialog(json.message, '');
+            return;
+        }
+        // Get comments
+        getComments();
+        // Empty comment textarea
+        document.querySelector('#commentTextArea').value = '';
+    } catch (e) {
+        console.log(e);
+    };
+};
+
+// Create plant
+const createPlant = (plant) => {
+    // Check if user's id matches with plant's seller's id or the user is admin 
+    if (user) {
+        if (plant.seller.user_id === user.user_id || user.role === 0) {
+            createEditDelButtons();
+        }
+    }
+    // TODO: add image
+    if (!plant.name) {
+        title.innerHTML = '-';
+    } else {
+        title.innerHTML = plant.name;
+    }
+    if (!plant.price) {
+        infoPrice.innerHTML += '-';
+    } else {
+        infoPrice.innerHTML += plant.price + ' €';
+    }
+    if (!plant.seller.location) {
+        infoLocation.innerHTML += '-';
+    } else {
+        infoLocation.innerHTML += plant.seller.location;
+    }
+    if (!plant.delivery) {
+        infoMailing.innerHTML += '-';
+    } else {
+        infoMailing.innerHTML += plant.delivery;
+    }
+    if (!plant.created) {
+        infoDate.innerHTML += '-';
+    } else {
+        const createdDate = new Date(plant.created).toLocaleString('fi-FI');
+        infoDate.innerHTML += createdDate.slice(0, createdDate.length-3);
+    }
+    if (plant.edited) {
+        const editedDate = new Date(plant.edited).toLocaleString('fi-FI');
+        infoDate.innerHTML += ' | Muokattu ' + editedDate.slice(0, editedDate.length-3);
+    }
+    if (!plant.favourites) {
+        infoLikes.innerHTML += '0';
+    } else {
+        infoLikes.innerHTML += plant.favourites;
+    }
+    if (!plant.description) {
+        description.innerHTML = '-';
+    } else {
+        description.innerHTML = plant.description;
+    }
+    if (!plant.instruction) {
+        instruction.innerHTML = '-';
+    } else {
+        instruction.innerHTML = plant.instruction;
+    }
+    if (!plant.seller.username) {
+        userLink[0].innerHTML = '-';
+        userLink[1].innerHTML = '-';
+    } else {
+        userLink[0].href = 'user-profile.html?id=' + plant.seller.user_id;
+        userLink[0].innerHTML = plant.seller.username;
+        userLink[1].href = 'user-profile.html?id=' + plant.seller.user_id;
+        userLink[1].innerHTML = plant.seller.username;
+    }
+    if (!plant.seller.email) {
+        userEmailList[0].remove();
+        userEmailList[1].remove();
+    } else {
+        userEmail[0].innerHTML += plant.seller.email;
+        userEmail[1].innerHTML += plant.seller.email;
+    }
+    if (!plant.seller.location) {
+        userLocation[0].innerHTML += '-';
+        userLocation[1].innerHTML += '-';
+    } else {
+        userLocation[0].innerHTML += plant.seller.location;
+        userLocation[1].innerHTML += plant.seller.location;
+    }
+};
+
+// Create comment
+const createComment = (comment) => {
+    const article = document.createElement('article');
+    article.className = 'comment';
+    const commentTopDiv = document.createElement('div');
+    commentTopDiv.className = 'commentTop';
+    const h4 = document.createElement('h4');
+    h4.className = 'commentAuthor';
+    const link = document.createElement('a');
+    link.href = 'user-profile.html?id=' + comment.user_id;
+    link.innerHTML = comment.username;
+    const timeParagraph = document.createElement('p');
+    timeParagraph.className = 'commentTime';
+    timeParagraph.id = 'commentTime';
+    const time = document.createElement('time');
+    const date = new Date(comment.created).toLocaleString('fi-FI');
+    time.timedate = date.slice(0, date.length-3);
+    time.innerHTML = date.slice(0, date.length-3);
+    const commentParagraph = document.createElement('p');
+    commentParagraph.id = 'comment';
+    commentParagraph.innerHTML = comment.comment;
+    h4.appendChild(link);
+    commentTopDiv.appendChild(h4);
+    timeParagraph.appendChild(time);
+    commentTopDiv.appendChild(timeParagraph);
+    article.appendChild(commentTopDiv);
+    article.appendChild(commentParagraph);
+    commentsDiv.appendChild(article);
+};
+
+// Create buttons for edit and delete
+const createEditDelButtons = () => {
+    const editDeleteButtonDiv = document.createElement('div');
+    editDeleteButtonDiv.className = 'editDeleteButtonWrapper';
+
+    // Create edit button
+    const editLink = document.createElement('a');
+    editLink.href = 'modify-plant.html?id=' + plant_id;
+    const editButton = document.createElement('button');
+    editButton.className = 'primaryButton';
+    editButton.id = 'editButton';
+    editButton.title = 'Muokkaa';
+    const editIcon = document.createElement('i');
+    editIcon.className = 'fa-solid fa-pen fa-lg';
+    editButton.append(editIcon);
+    editLink.append(editButton);
+    editDeleteButtonDiv.append(editLink);
+
+    // Create delete button
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'primaryButton';
+    deleteButton.id = 'deleteButton';
+    deleteButton.title = 'Poista';
+    const deleteIcon = document.createElement('i');
+    deleteIcon.className = 'fa-solid fa-trash fa-lg';
+
+    // When clicking deleteButton, open dialog to confirm if user wants to delete plant
+    deleteButton.addEventListener('click', () => {
+        createDialogToDeletePlant();
+    });
+
+    deleteButton.append(deleteIcon);
+    editDeleteButtonDiv.append(deleteButton);
+    main.prepend(editDeleteButtonDiv);
+};
+
+const createDialogToDeletePlant = () => {
+    // Select old dialog and if it exists, remove it
+    const oldDialog = document.querySelector('dialog')
+    if (oldDialog) {oldDialog.remove()};
+
+    const dialog = document.createElement('dialog');
+    const paragraph = document.createElement('p');
+    paragraph.innerHTML = 'Haluatko varmasti poistaa pistokkaan?';
+    const form = document.createElement('form');
+    form.method = 'dialog';
+    const okButton = document.createElement('button');
+    okButton.className = 'primaryButton';
+    okButton.innerHTML = 'OK';
+    const cancelButton = document.createElement('button');
+    cancelButton.className = 'secondaryButton';
+    cancelButton.innerHTML = 'Peruuta';
+
+    // Redirect to given url when clicking okButton
+    okButton.addEventListener('click', () => {
+        deletePlant();
+    });
+
+    dialog.appendChild(paragraph);
+    form.appendChild(okButton);
+    form.appendChild(cancelButton);
+    dialog.appendChild(form);
+    main.appendChild(dialog);
+    dialog.showModal();
+};
 
 // Resize comment textarea
 const resizeCommentTextArea = () => {
@@ -9,7 +346,6 @@ const resizeCommentTextArea = () => {
     if (!commentTextArea.value) {
         commentTextArea.style.height = '3rem';
     }
-
     // Change height according to scrollbar height in textarea
     commentTextArea.style.height = commentTextArea.scrollHeight+'px';
 };
@@ -26,9 +362,20 @@ const changeHeartIcon = () => {
         heartIcon.style.color = 'rgb(38, 32, 28)'
         liked = false;
     }
-}
+};
 
 commentTextArea.addEventListener('keyup', resizeCommentTextArea);
 commentTextArea.addEventListener('keydown', resizeCommentTextArea);
-
 likeButton.addEventListener('click', changeHeartIcon);
+sendCommentForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    addComment();
+});
+
+const start = async () => {
+    await checkLogin();
+    await getPlant();
+    await getComments();
+};
+
+start();
