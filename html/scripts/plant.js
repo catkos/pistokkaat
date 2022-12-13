@@ -4,8 +4,9 @@ const url = 'http://localhost:3000';
 
 // Get elements from page
 const commentTextArea = document.querySelector('#commentTextArea');
-const likeButton = document.querySelector('#likeButton');
+const favouriteButton = document.querySelector('#favouriteButton');
 const heartIcon = document.querySelector('#heartIcon');
+const img = document.querySelector('#plantImg');
 const title = document.querySelector('#title');
 const infoPrice = document.querySelector('#infoPrice');
 const infoLocation = document.querySelector('#infoLocation');
@@ -42,7 +43,7 @@ const checkLogin = async () => {
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
         // Remove comment form and favourite button
         addCommentForm.remove();
-        likeButton.remove();
+        favouriteButton.remove();
         return;
     }
     // Check if token is valid
@@ -56,15 +57,21 @@ const checkLogin = async () => {
         if (!response.ok) {
             // Remove comment form and favourite button
             addCommentForm.remove();
-            likeButton.remove();
+            favouriteButton.remove();
             return;
         }
         const json = await response.json();
         sessionStorage.setItem('user', JSON.stringify(json.user));
         // Set user data
         user = JSON.parse(sessionStorage.getItem('user'));
-        // Set favourite
-        await setFavourite();
+        // Check if user's id matches with plant's seller's id or the user is admin 
+        if (plant.seller.user_id === user.user_id || user.role === 0) {
+            createEditDelButtons();
+            favouriteButton.remove();
+        } else {
+            // Set favourite
+            await setFavourite();
+        }
     } catch (e) {
         console.log(e);
     }
@@ -240,81 +247,38 @@ const deleteFavourite = async () => {
 
 // Create plant
 const createPlant = (plant) => {
-    // Check if user's id matches with plant's seller's id or the user is admin 
-    if (user) {
-        if (plant.seller.user_id === user.user_id || user.role === 0) {
-            createEditDelButtons();
-        }
-    }
-    // TODO: add image
-    if (!plant.name) {
-        title.innerHTML = '-';
-    } else {
-        title.innerHTML = plant.name;
-    }
-    if (!plant.price) {
-        infoPrice.innerHTML += '-';
-    } else {
-        infoPrice.innerHTML += plant.price + ' €';
-    }
-    if (!plant.seller.location) {
-        infoLocation.innerHTML += '-';
-    } else {
-        infoLocation.innerHTML += plant.seller.location;
-    }
-    if (!plant.delivery) {
-        infoDelivery.innerHTML += '-';
-    } else {
-        infoDelivery.innerHTML += plant.delivery;
-    }
-    if (!plant.created) {
-        infoDate.innerHTML += '-';
-    } else {
-        const createdDate = new Date(plant.created).toLocaleString('fi-FI');
-        infoDate.innerHTML += createdDate.slice(0, createdDate.length-3);
-    }
+    img.src = url + '/' + plant.imagename;
+    img.alt = plant.name;
+    title.innerHTML = plant.name;
+    infoPrice.innerHTML = plant.price + ' €';
+    infoLocation.innerHTML = plant.seller.location;
+    infoDelivery.innerHTML = plant.delivery;
+    const createdDate = new Date(plant.created).toLocaleString('fi-FI');
+    infoDate.innerHTML = createdDate.slice(0, createdDate.length-3);
+    
     if (plant.edited) {
         const editedDate = new Date(plant.edited).toLocaleString('fi-FI');
         infoDate.innerHTML += ' | Muokattu ' + editedDate.slice(0, editedDate.length-3);
     }
-    if (!plant.favourites) {
-        infoFavourites.innerHTML += '0';
-    } else {
-        infoFavourites.innerHTML += plant.favourites;
-    }
-    if (!plant.description) {
-        description.innerHTML = '-';
-    } else {
-        description.innerHTML = plant.description;
-    }
-    if (!plant.instruction) {
-        instruction.innerHTML = '-';
-    } else {
-        instruction.innerHTML = plant.instruction;
-    }
-    if (!plant.seller.username) {
-        userLink[0].innerHTML = '-';
-        userLink[1].innerHTML = '-';
-    } else {
-        userLink[0].href = 'user-profile.html?id=' + plant.seller.user_id;
-        userLink[0].innerHTML = plant.seller.username;
-        userLink[1].href = 'user-profile.html?id=' + plant.seller.user_id;
-        userLink[1].innerHTML = plant.seller.username;
-    }
+
+    infoFavourites.innerHTML = plant.favourites;
+    description.innerHTML = plant.description;
+    instruction.innerHTML = plant.instruction;
+    userLink[0].href = 'user-profile.html?id=' + plant.seller.user_id;
+    userLink[0].innerHTML = plant.seller.username;
+    userLink[1].href = 'user-profile.html?id=' + plant.seller.user_id;
+    userLink[1].innerHTML = plant.seller.username;
+    
     if (!plant.seller.email) {
         userEmailList[0].remove();
         userEmailList[1].remove();
     } else {
-        userEmail[0].innerHTML += plant.seller.email;
-        userEmail[1].innerHTML += plant.seller.email;
+        userEmail[0].innerHTML = plant.seller.email;
+        userEmail[1].innerHTML = plant.seller.email;
     }
-    if (!plant.seller.location) {
-        userLocation[0].innerHTML += '-';
-        userLocation[1].innerHTML += '-';
-    } else {
-        userLocation[0].innerHTML += plant.seller.location;
-        userLocation[1].innerHTML += plant.seller.location;
-    }
+
+    userLocation[0].innerHTML = plant.seller.location;
+    userLocation[1].innerHTML = plant.seller.location;
 };
 
 // Create comment
@@ -349,6 +313,10 @@ const createComment = (comment) => {
 
 // Create buttons for edit and delete
 const createEditDelButtons = () => {
+    // If editDeleteButtonDiv already exists, remove it
+    if (document.querySelector('.editDeleteButtonWrapper')) {
+        document.querySelector('.editDeleteButtonWrapper').remove();
+    }
     const editDeleteButtonDiv = document.createElement('div');
     editDeleteButtonDiv.className = 'editDeleteButtonWrapper';
 
@@ -416,8 +384,11 @@ const createDialogToDeletePlant = () => {
 // Check if user has plant already in favourites
 const setFavourite = async () => {
     const favourites = await getFavourites();
-    if(favourites.filter(favourite => favourite && favourite.plant_id === plant_id)) {
+    if (favourites.find(favourite => favourite && favourite.plant_id == plant_id)) {
         favourite = true;
+        changeHeartIcon();
+    } else {
+        favourite = false;
         changeHeartIcon();
     }
 };
@@ -448,7 +419,7 @@ commentTextArea.addEventListener('keyup', resizeCommentTextArea);
 
 commentTextArea.addEventListener('keydown', resizeCommentTextArea);
 
-likeButton.addEventListener('click', () => {
+favouriteButton.addEventListener('click', () => {
     if (!favourite) {
         addFavourite();
     } else {

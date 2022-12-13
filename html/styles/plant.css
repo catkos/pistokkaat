@@ -47,7 +47,7 @@ p {font-size: 0.875rem;}
     vertical-align: top;
 }
 
-.likeButton {
+.favouriteButton {
     position: absolute;
     right: 16px;
     top: 16px;
@@ -61,9 +61,9 @@ p {font-size: 0.875rem;}
     transition: font-size 75ms;
 }
 
-.likeButton:hover {color: rgb(58, 116, 87);}
+.favouriteButton:hover {color: rgb(58, 116, 87);}
 
-.likeButton:active {
+.favouriteButton:active {
     color: rgb(58, 116, 87);
     font-size: 1rem;
 }
