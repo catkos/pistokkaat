@@ -133,12 +133,12 @@ p {font-size: 0.875rem;}
 
 #desktopUserSection {display: none;}
 
-#sendCommentForm {
+#addCommentForm {
     display: flex;
     gap: 0.5rem;
 }
 
-#sendCommentForm textarea {
+#addCommentForm textarea {
     width: 100%;
     height: 3rem;
     min-height: 3rem;

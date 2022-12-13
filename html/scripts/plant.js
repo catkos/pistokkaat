@@ -9,9 +9,9 @@ const heartIcon = document.querySelector('#heartIcon');
 const title = document.querySelector('#title');
 const infoPrice = document.querySelector('#infoPrice');
 const infoLocation = document.querySelector('#infoLocation');
-const infoMailing = document.querySelector('#infoMailing');
+const infoDelivery = document.querySelector('#infoDelivery');
 const infoDate = document.querySelector('#infoDate');
-const infoLikes = document.querySelector('#infoLikes');
+const infoFavourites = document.querySelector('#infoFavourites');
 const description = document.querySelector('#description');
 const instruction = document.querySelector('#instruction');
 const userLink = document.querySelectorAll('.username a');
@@ -19,10 +19,10 @@ const userEmail = document.querySelectorAll('.userEmail');
 const userEmailList = document.querySelectorAll('.userEmailList');
 const userLocation = document.querySelectorAll('.userLocation');
 const commentsDiv = document.querySelector('.comments');
-const sendCommentForm = document.querySelector('#sendCommentForm');
+const addCommentForm = document.querySelector('#addCommentForm');
 const main = document.querySelector('main');
 
-let liked = false;
+let favourite = false;
 
 // Get query params
 const getQueryParam = (param) => {
@@ -40,8 +40,9 @@ let user;
 const checkLogin = async () => {
     // Check session storage
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-        // Remove comment form
-        sendCommentForm.remove();
+        // Remove comment form and favourite button
+        addCommentForm.remove();
+        likeButton.remove();
         return;
     }
     // Check if token is valid
@@ -53,14 +54,17 @@ const checkLogin = async () => {
         };
         const response = await fetch(url + '/user/token', options);
         if (!response.ok) {
-            // Remove comment form
-            sendCommentForm.remove();
+            // Remove comment form and favourite button
+            addCommentForm.remove();
+            likeButton.remove();
             return;
         }
         const json = await response.json();
         sessionStorage.setItem('user', JSON.stringify(json.user));
         // Set user data
         user = JSON.parse(sessionStorage.getItem('user'));
+        // Set favourite
+        await setFavourite();
     } catch (e) {
         console.log(e);
     }
@@ -133,7 +137,7 @@ const getComments = async () => {
 
 const addComment = async () => {
     // Get data from form
-    const formData = new FormData(sendCommentForm);
+    const formData = new FormData(addCommentForm);
     // Create obj for json data and loop form's data to obj
     const obj = {};
     formData.forEach((value, key) => obj[key] = value);
@@ -161,8 +165,77 @@ const addComment = async () => {
         // Empty comment textarea
         document.querySelector('#commentTextArea').value = '';
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     };
+};
+
+const getFavourites = async () => {
+    try {
+        // Fetch options
+        const options = {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token')
+            }
+        };
+        // Fetch and check if status is not OK
+        const response = await fetch(url + '/user/favourite', options);
+        const favourites = await response.json();
+        if (!response.ok) {
+            return;
+        }
+        return favourites;
+    } catch (e) {
+        console.log(e.message);
+    }
+};
+
+const addFavourite = async () => {
+    try {
+        // Fetch options
+        const options = {
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token')
+            }
+        };
+        // Fetch and check if status is not OK
+        const response = await fetch(url + /plant/ + plant_id + '/favourite', options);
+        const json = await response.json();
+        if (!response.ok) {
+            createDialog(json.message, '');
+            return;
+        }
+        favourite = true;
+        changeHeartIcon();
+        getPlant();
+    } catch (e) {
+        console.log(e.message);
+    }
+};
+
+const deleteFavourite = async () => {
+    try {
+        // Fetch options
+        const options = {
+            method: 'DELETE',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token')
+            }
+        };
+        // Fetch and check if status is not OK
+        const response = await fetch(url + /plant/ + plant_id + '/favourite', options);
+        const json = await response.json();
+        if (!response.ok) {
+            createDialog(json.message, '');
+            return;
+        }
+        favourite = false;
+        changeHeartIcon();
+        getPlant();
+    } catch (e) {
+        console.log(e.message);
+    }
 };
 
 // Create plant
@@ -190,9 +263,9 @@ const createPlant = (plant) => {
         infoLocation.innerHTML += plant.seller.location;
     }
     if (!plant.delivery) {
-        infoMailing.innerHTML += '-';
+        infoDelivery.innerHTML += '-';
     } else {
-        infoMailing.innerHTML += plant.delivery;
+        infoDelivery.innerHTML += plant.delivery;
     }
     if (!plant.created) {
         infoDate.innerHTML += '-';
@@ -205,9 +278,9 @@ const createPlant = (plant) => {
         infoDate.innerHTML += ' | Muokattu ' + editedDate.slice(0, editedDate.length-3);
     }
     if (!plant.favourites) {
-        infoLikes.innerHTML += '0';
+        infoFavourites.innerHTML += '0';
     } else {
-        infoLikes.innerHTML += plant.favourites;
+        infoFavourites.innerHTML += plant.favourites;
     }
     if (!plant.description) {
         description.innerHTML = '-';
@@ -340,6 +413,15 @@ const createDialogToDeletePlant = () => {
     dialog.showModal();
 };
 
+// Check if user has plant already in favourites
+const setFavourite = async () => {
+    const favourites = await getFavourites();
+    if(favourites.filter(favourite => favourite && favourite.plant_id === plant_id)) {
+        favourite = true;
+        changeHeartIcon();
+    }
+};
+
 // Resize comment textarea
 const resizeCommentTextArea = () => {
     // If textarea doens't have any value, height = 3rem
@@ -352,22 +434,29 @@ const resizeCommentTextArea = () => {
 
 // Change heart icon
 const changeHeartIcon = () => {
-    // If liked is false change heart icons's class and color
-    if (!liked) {
+    // If favourite is true change heart icons's class and color
+    if (favourite) {
         heartIcon.className = 'fa-solid fa-heart fa-lg';
-        heartIcon.style.color = 'rgb(58, 116, 87)'
-        liked = true;
+        heartIcon.style.color = 'rgb(58, 116, 87)';
     } else {
         heartIcon.className = 'fa-regular fa-heart fa-lg';
-        heartIcon.style.color = 'rgb(38, 32, 28)'
-        liked = false;
+        heartIcon.style.color = 'rgb(38, 32, 28)';
     }
 };
 
 commentTextArea.addEventListener('keyup', resizeCommentTextArea);
+
 commentTextArea.addEventListener('keydown', resizeCommentTextArea);
-likeButton.addEventListener('click', changeHeartIcon);
-sendCommentForm.addEventListener('submit', async (e) => {
+
+likeButton.addEventListener('click', () => {
+    if (!favourite) {
+        addFavourite();
+    } else {
+        deleteFavourite();
+    }
+});
+
+addCommentForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     addComment();
 });
