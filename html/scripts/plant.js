@@ -6,6 +6,7 @@ const url = 'http://localhost:3000';
 const commentTextArea = document.querySelector('#commentTextArea');
 const favouriteButton = document.querySelector('#favouriteButton');
 const heartIcon = document.querySelector('#heartIcon');
+const imgWrapper = document.querySelector('.imgWrapper');
 const img = document.querySelector('#plantImg');
 const title = document.querySelector('#title');
 const infoPrice = document.querySelector('#infoPrice');
@@ -23,6 +24,7 @@ const commentsDiv = document.querySelector('.comments');
 const addCommentForm = document.querySelector('#addCommentForm');
 const main = document.querySelector('main');
 
+let user;
 let favourite = false;
 
 // Get query params
@@ -35,13 +37,9 @@ const getQueryParam = (param) => {
 // Get id from address
 const plant_id = getQueryParam('id');
 
-// Create user
-let user;
-
 const checkLogin = async () => {
     // Check session storage
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-        // Remove comment form and favourite button
         addCommentForm.remove();
         favouriteButton.remove();
         return;
@@ -55,23 +53,14 @@ const checkLogin = async () => {
         };
         const response = await fetch(url + '/user/token', options);
         if (!response.ok) {
-            // Remove comment form and favourite button
             addCommentForm.remove();
             favouriteButton.remove();
             return;
         }
         const json = await response.json();
         sessionStorage.setItem('user', JSON.stringify(json.user));
-        // Set user data
         user = JSON.parse(sessionStorage.getItem('user'));
-        // Check if user's id matches with plant's seller's id or the user is admin 
-        if (plant.seller.user_id === user.user_id || user.role === 0) {
-            createEditDelButtons();
-            favouriteButton.remove();
-        } else {
-            // Set favourite
-            await setFavourite();
-        }
+        setFavourite();
     } catch (e) {
         console.log(e);
     }
@@ -86,9 +75,8 @@ const getPlant = async () => {
             },
         };
         const response = await fetch(url + /plant/ + plant_id, options);
-        // TODO: Redirect to not-found.html
         if (!response.ok) {
-            location.href = 'index.html';
+            location.href = 'not-found.html';
             return;
         }
         const plant = await response.json();
@@ -118,12 +106,9 @@ const deletePlant = async () => {
     }
 };
 
-// Get comments and render them to comments
 const getComments = async () => {
     try {
-        const options = {
-            method: 'GET',
-        };
+        const options = {method: 'GET'};
         const response = await fetch(url + /plant/ + plant_id + '/comment', options);
         if (!response.ok) {
             const paragraph = document.createElement('p');
@@ -132,7 +117,6 @@ const getComments = async () => {
             return;
         }
         const comments = await response.json();
-        // Empty commentsDiv before adding comments
         commentsDiv.innerHTML = '';
         comments.forEach(comment => {
             createComment(comment);
@@ -151,7 +135,6 @@ const addComment = async () => {
     // Create json data from obj
     const jsonData = JSON.stringify(obj);
     try {
-        // Fetch options
         const options = {
             method: 'POST',
             headers: {
@@ -167,10 +150,9 @@ const addComment = async () => {
             createDialog(json.message, '');
             return;
         }
-        // Get comments
         getComments();
-        // Empty comment textarea
-        document.querySelector('#commentTextArea').value = '';
+        commentTextArea.value = '';
+        resizeCommentTextArea();
     } catch (e) {
         console.log(e.message);
     };
@@ -178,7 +160,6 @@ const addComment = async () => {
 
 const getFavourites = async () => {
     try {
-        // Fetch options
         const options = {
             method: 'GET',
             headers: {
@@ -189,7 +170,7 @@ const getFavourites = async () => {
         const response = await fetch(url + '/user/favourite', options);
         const favourites = await response.json();
         if (!response.ok) {
-            return;
+            return [];
         }
         return favourites;
     } catch (e) {
@@ -199,14 +180,12 @@ const getFavourites = async () => {
 
 const addFavourite = async () => {
     try {
-        // Fetch options
         const options = {
             method: 'POST',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token')
             }
         };
-        // Fetch and check if status is not OK
         const response = await fetch(url + /plant/ + plant_id + '/favourite', options);
         const json = await response.json();
         if (!response.ok) {
@@ -223,14 +202,12 @@ const addFavourite = async () => {
 
 const deleteFavourite = async () => {
     try {
-        // Fetch options
         const options = {
             method: 'DELETE',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token')
             }
         };
-        // Fetch and check if status is not OK
         const response = await fetch(url + /plant/ + plant_id + '/favourite', options);
         const json = await response.json();
         if (!response.ok) {
@@ -245,10 +222,28 @@ const deleteFavourite = async () => {
     }
 };
 
-// Create plant
 const createPlant = (plant) => {
-    img.src = url + '/' + plant.imagename;
+    // If user is logged
+    if (user) {
+        // Check if user's id matches with plant's seller's id or the user is admin 
+        if (plant.seller.user_id === user.user_id || user.role === 0) {
+            createEditDelButtons();
+        }
+        // If user is same as seller, remove favourite button
+        if (plant.seller.user_id === user.user_id) {
+            favouriteButton.remove();
+        }
+    }
+
+    img.src = url + '/resizes/' + plant.imagename;
     img.alt = plant.name;
+
+    // Add placeholder image if img error
+    img.onerror = (e) => {
+        img.src = './assets/img/placeholder.png';
+        img.alt = 'Väliaikainen kuva';
+    };
+
     title.innerHTML = plant.name;
     infoPrice.innerHTML = plant.price + ' €';
     infoLocation.innerHTML = plant.seller.location;
@@ -281,7 +276,6 @@ const createPlant = (plant) => {
     userLocation[1].innerHTML = plant.seller.location;
 };
 
-// Create comment
 const createComment = (comment) => {
     const article = document.createElement('article');
     article.className = 'comment';
@@ -311,7 +305,6 @@ const createComment = (comment) => {
     commentsDiv.appendChild(article);
 };
 
-// Create buttons for edit and delete
 const createEditDelButtons = () => {
     // If editDeleteButtonDiv already exists, remove it
     if (document.querySelector('.editDeleteButtonWrapper')) {
@@ -405,13 +398,11 @@ const resizeCommentTextArea = () => {
 
 // Change heart icon
 const changeHeartIcon = () => {
-    // If favourite is true change heart icons's class and color
+    // If favourite is true change heart icons's class
     if (favourite) {
         heartIcon.className = 'fa-solid fa-heart fa-lg';
-        heartIcon.style.color = 'rgb(58, 116, 87)';
     } else {
         heartIcon.className = 'fa-regular fa-heart fa-lg';
-        heartIcon.style.color = 'rgb(38, 32, 28)';
     }
 };
 

@@ -9,6 +9,14 @@ const dropdownIcon = document.querySelector('#dropdownIcon');
 const dropdownWrapper = document.querySelector('#dropdownWrapper');
 const registerForm = document.querySelector('#registerForm');
 
+const checkLogged = async () => {
+    // Check session storage
+    if (sessionStorage.getItem('token') && sessionStorage.getItem('user')) {
+        location.href = 'index.html';
+        return;
+    }
+};
+
 // Get municipalities
 const getMunicipalities = async () => {
     try {
@@ -95,4 +103,5 @@ registerForm.addEventListener('submit', async (e) => {
     }
 });
 
+checkLogged();
 getMunicipalities();

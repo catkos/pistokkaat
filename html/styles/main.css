@@ -378,3 +378,13 @@ dialog form button {width: 50%;}
 @media only screen and (min-width: 400px) {
     dialog {max-width: 400px;}
 }
+
+.notFoundSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notfoundSection h2 {padding: 1rem 0;}
+
+.notfoundSection img {max-width: 100%;}
