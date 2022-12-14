@@ -97,7 +97,8 @@ function printListing(id, imgSrc, name, price, location, mailing, date) {
 
     //make listing clickable
     article.addEventListener("click",function(){
-        window.location = url+"/plant.html?id="+id;
+        //TODO: change this when switching servers
+        window.location = "/pistokkaat/html/plant.html?id="+id;
     });
 
     // create elements inside listing/article
@@ -105,7 +106,7 @@ function printListing(id, imgSrc, name, price, location, mailing, date) {
     figure.classList.add("listingImg");
     const image = document.createElement("img");
     image.src="assets/img/plant.jpg";
-    //TODO: use this -> image.src = url+"/"+imgSrc;
+    //TODO: use this -> image.src = url+"/thumbnails/"+imgSrc;
     //ul li element creation
     const ul = document.createElement("ul");
     ul.classList.add("listingInfo");

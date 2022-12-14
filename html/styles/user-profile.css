@@ -21,6 +21,8 @@ h2{
     padding:0;
     justify-content: center;
     text-align: center;
+    align-items: baseline;
+
 }
 
 .profInfoList li{
