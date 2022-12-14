@@ -4,6 +4,14 @@ const url = 'http://localhost:3000';
 
 const loginForm = document.querySelector('#loginForm');
 
+const checkLogged = async () => {
+  // Check session storage
+  if (sessionStorage.getItem('token') && sessionStorage.getItem('user')) {
+      location.href = 'index.html';
+      return;
+  }
+};
+
 // Login
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -37,3 +45,5 @@ loginForm.addEventListener('submit', async (e) => {
     console.log(e.message);
   }
 });
+
+checkLogged();
