@@ -10,8 +10,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="scripts/search-listings.js" defer></script>
+    <script src="scripts/listings.js" defer></script>
     <script src="scripts/search.js" defer></script>
+    <script src="scripts/autocomplete-dropdown.js" defer></script>
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
 
 </head>
@@ -40,23 +41,19 @@
 
             <div class="inputWrapper">
                 <label for="searchtxt">Kasvilajin nimi</label>
-                <input class="inputField" type="text" id="searchtxt" name="nimi" placeholder="Nimi" title="Hae pistokkaita (Vain kirjaimet sallittu)">
+                <input class="inputField" type="text" id="searchtxt" name="nimi" minlength="3" pattern="^[a-zA-ZäåöÄÅÖ]+$" title="Vain kirjaimet sallittu, min 3 kirjainta">
             </div>
-            <div class="inputWrapper">
-                <label for="maakunnat">Valitse maakunta</label>
-                <!-- TODO: use same autocomplete input field from register form -->
-                <select class="inputField" id="maakunnat" name="maakunnat">
-                    <option value="" disabled selected>Sijainti</option>
-                    <option value="uusimaa">Uusimaa</option>
-                    <option value="lappi">Lappi</option>
-                </select>
+            <div id="dropdownWrapper" class="inputWrapper">
+                <label for="municipality">Sijainti</label>
+                <i id="dropdownIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
+                <input id="dropdownInput" class="inputField municipality" type="text" name="sijainti">
             </div>
 
             <div class="priceMailingInputWrapper">
                 <div id="priceWrapper" class="inputWrapper">
                     <label for="price">Max hinta</label>
                     <p class="symbolOnInput">€</p>
-                    <input class="inputField" type="number" name="hinta" min="0">
+                    <input class="inputField" id="price" type="number" name="hinta" min="0" pattern="^[0-9]*$'" title="Vain numerot sallittu.">
                 </div>
                 <div id="dropdownWrapper" class="inputWrapper">
                     <label for="mailing">Valitse toimitustapa</label>
@@ -71,10 +68,9 @@
 
     </section>
 
-    <!-- TODO: hide this section until search-->
     <section class="searchResults">
 
-        <h2 id="searchResultsText">Hakutuloksia: <span id="searchResultsCounter"></span></h2>
+        <h2 id="searchResultsText">Hakutuloksia: <span id="searchResultsCounter">0</span></h2>
 
         <div class="listings">
 
@@ -83,7 +79,5 @@
     </section>
 
 </main>
-
-<footer></footer>
 </body>
 </html>

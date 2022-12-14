@@ -1,3 +1,5 @@
-/* script for index, get max 2 listings */
+'use strict';
 
-getNewestData();
+/* script for index */
+
+getNewestData(3);
