@@ -57,7 +57,7 @@ p {font-size: 0.875rem;}
     background-color: rgb(252, 252, 252);
     font-size: 1.25rem;
     border-radius: 5rem;
-    box-shadow: 0 0 8px rgba(26, 26, 26, 0.2);
+    box-shadow: 2px 2px 6px rgba(38, 32, 28, 0.2);
     transition: font-size 75ms;
 }
 

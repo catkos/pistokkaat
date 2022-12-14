@@ -26,7 +26,7 @@ loginForm.addEventListener('submit', async (e) => {
     const response = await fetch(url + '/auth/login', options);
     const json = await response.json();
     if (!json.user) {
-      createDialog(json.message);
+      createDialog(json.message, '');
     } else {
       // Save token and user info
       sessionStorage.setItem('token', json.token);

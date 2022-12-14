@@ -12,7 +12,7 @@ const dropdownInput = document.querySelector('#dropdownInput');
 const dropdownIcon = document.querySelector('#dropdownIcon');
 const dropdownWrapper = document.querySelector('#dropdownWrapper');
 const modifyForm = document.querySelector('#modifyForm');
-const cancelButton = document.querySelector('#cancel');
+const cancelButton = document.querySelector('#cancelButton');
 
 // Get query params
 const getQueryParam = (param) => {
@@ -114,9 +114,9 @@ dropdownInput.addEventListener('focusin',  () => {
     onInputChange(dropdownInput, dropdownWrapper, deliveryOptions, selectedDeliveryOptions);
 });
 
-// Go back to plant's own page when clicking cancel button
+// Open dialog when clicking cancel button
 cancelButton.addEventListener('click', () => {
-    location.href = 'plant.html?id=' + plant_id;
+    createDialogWithCancel('Haluatko peruuttaa?');
 });
 
 // Remove list when clicking dropdown icon, if the list exists
@@ -158,15 +158,11 @@ modifyForm.addEventListener('submit', async (e) => {
         const response = await fetch(url + /plant/ + plant_id, options);
         const json = await response.json();
         if (!response.ok) {
-            createDialog(json.message);
+            createDialog(json.message, '');
             return;
         }
         // Create dialog and redirect to plant.html when user clicks button
-        createDialog(json.message);
-        const button = document.querySelector('dialog form button');
-        button.addEventListener('click', () => {
-            location.href = 'plant.html?id=' + plant_id;
-        });
+        createDialog(json.message, 'plant.html?id=' + plant_id);
     } catch (e) {
         console.log(e);
     }

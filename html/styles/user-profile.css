@@ -6,7 +6,7 @@
     flex-direction: column;
     padding-top: 150px;
     padding-bottom: 150px;
-    background: #F5ECE3;
+    background: rgb(245, 236, 227);
     height:350px;
 }
 
@@ -32,7 +32,7 @@ h2{
 }
 
 #giveLike, #mailLink{
-    color: #3A7457;
+    color: rgb(58, 116, 87);
     text-decoration: underline;
     cursor: pointer;
 }

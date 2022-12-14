@@ -1,23 +1,19 @@
 /***
  Main stylesheet, includes fontface, body, text, navigation, form style
- ***/
+***/
 
 @font-face {
     font-family: FredokaOne;
     src: url(../assets/fonts/FredokaOne-Regular.ttf);
 }
 
-* {
-    box-sizing: border-box;
-}
+* {box-sizing: border-box;}
 
-*:focus {
-    outline: 2px solid rgb(58, 116, 87);
-}
+*:focus {outline: 2px solid rgb(58, 116, 87);}
 
 *,*:before,*:after { -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box; }
 
-body,html{
+body,html {
     margin:0;
     padding:0;
     font-family: "Open Sans", sans-serif;
@@ -26,84 +22,100 @@ body,html{
     background-color: rgb(252, 252, 252);
 }
 
-body{
+body {
     position: relative; /* for footer */
     min-height: 100vh;
 }
 
 h1{font-family: "FredokaOne", serif; font-size: 1.5rem; margin:0; padding-top: 35px; padding-bottom: 35px;}
 h2{font-family: "FredokaOne", serif; font-size: 1rem; margin:0; padding-top: 35px; padding-bottom: 35px; font-size: 1.5rem;}
-h3{margin: 0; font-size: 1rem;}
+h3{margin: 0; font-size: 1rem; line-height: 1.5rem;}
 
 a {color: rgb(58, 116, 87);}
 
-main{
+main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.contentPadding{
-    padding: 1rem 1rem 2rem 1rem;
-}
+.contentPadding {padding: 2rem 1rem 2rem 1rem;}
 
 /* MAIN NAVIGATION STYLE */
-#mainNav{
+#mainNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #3A7457;
+    background-color: rgb(58, 116, 87);
     padding: 1rem;
-    height:10vh;
+    height: 60px;
     width: auto;
 }
-#mainNav a{
-    color: #FCFCFC;
+
+#mainNav a {
+    color: rgb(252, 252, 252);
     text-decoration: none;
     transition: 200ms ease-out 200ms;
 }
 
-#logo{font-family: "FredokaOne", serif; font-size: 30px;margin:0;padding:0;}
+#logo {
+    font-family: "FredokaOne", serif; 
+    font-size: 30px;
+    margin:0;
+    padding:0;
+}
 
 .navlinks{
     display: flex;
     width: 100%;
     justify-content: flex-end;
-    gap:20px;
+    gap: 20px;
+    align-items: center;
 }
 
-.BtnNav{
+.navButton {
+    display: flex;
+    align-items: center;
     color:rgb(252, 252, 252);
     border: none;
     background: none;
-    font-size: 16px;
+    font-size: 1rem;
+    transition: 200ms ease-out 200ms;
+    height: 36px;
+}
+
+.navButton i {
+    font-size: 20px;
     transition: 200ms ease-out 200ms;
 }
 
-.BtnNav i{
-    font-size:20px;
-    transition: 200ms ease-out 200ms;
+.desktopNavText {
+    display: none;
+    content: "";
+    padding-left: 0.75rem;
+    font-size: 1rem;
+    font-family: "Open Sans", sans-serif;
+    font-weight: normal;
 }
-.BtnNav:hover{
-    border-bottom: 4px solid rgb(26,26,26);
-}
+
+#mainNav a:hover {border-bottom: 4px solid rgb(38, 32, 28);}
 
 /* active/selected page nav indication */
-.active i{
-    color:rgb(26,26,26);
-}
+.active {color:rgb(38, 32, 28);}
+
+#loginLink {display: none;}
 
 /* OR: White bg with green border?
 #mainNav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FCFCFC;
+    background-color: rgb(252, 252, 252);
     height:65px;
-    border-top: 10px solid #3A7457;
+    border-top: 10px solid rgb(58, 116, 87);
 }
 #mainNav a{
-    color: #3A7457;
+    color: rgb(58, 116, 87);
     text-decoration: none;
     padding:20px;
     transition: 200ms ease-out 200ms;
@@ -112,34 +124,9 @@ main{
 
 /* add txt for larger screen */
 @media only screen and (min-width: 820px){
-    #hakuicon::after{
-        content: " Haku";
-        padding-left:10px;
-        font-size: 16px;
-        font-family: "Open Sans", sans-serif;
-        font-weight: normal;
-    }
-    #uusiIlmoitus::after{
-        content: " Uusi ilmoitus";
-        padding-left:10px;
-        font-size: 16px;
-        font-family: "Open Sans", sans-serif;
-        font-weight: normal;
-    }
-    #suosikit::after{
-        content: " Suosikit";
-        padding-left:10px;font-size: 16px;
-        font-family: "Open Sans", sans-serif;
-        font-weight: normal;
+    .desktopNavText {display: inline;}
 
-    }
-    #profiili::after{
-        content: " username23";
-        padding-left:10px;font-size: 16px;
-        font-family: "Open Sans", sans-serif;
-        font-weight: normal;
-
-    }
+    #mainNav {padding: 1rem 2rem};
 }
 
 
@@ -152,8 +139,7 @@ main{
 
 #loginForm, #registerForm, #searchForm {
     width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -230,12 +216,9 @@ input[type=number] {
 }
 
 /* TODO: fix issue if screen smaller than 400px */
-#dropdownPriceWrapper{
-    width:100px;
-}
-#dropdownMailingWrapper{
-    width:300px;
-}
+#dropdownPriceWrapper {width:100px;}
+
+#dropdownMailingWrapper {width:300px;}
 
 .formButton {
     width: 100%;
@@ -262,9 +245,9 @@ input[type=number] {
     background-color: rgb(252, 252, 252);
 }
 
-.dropdownList:hover{display: block;}
+.dropdownList:hover {display: block;}
 
-.dropdownList li{border-top: unset;}
+.dropdownList li {border-top: unset;}
 
 .dropdownList button{
     height: 2.5rem;
@@ -277,22 +260,22 @@ input[type=number] {
     font-size: 0.875rem;
 }
 
-.dropdownList button.selected{background-color: rgb(187, 221, 204);}
+.dropdownList button.selected {background-color: rgb(187, 221, 204);}
 
-.dropdownList button:hover{background-color: rgb(187, 221, 204);}
+.dropdownList button:hover {background-color: rgb(187, 221, 204);}
 
-.dropdownList button:focus{
+.dropdownList button:focus {
     background-color: rgb(187, 221, 204);
     outline: 1px solid rgb(187, 221, 204);
 }
 
-.dropdownList button:active{background-color: rgb(187, 221, 204);}
+.dropdownList button:active {background-color: rgb(187, 221, 204);}
 
 .helpText {font-size: 0.875rem;}
 
-#dropdownWrapper, #priceWrapper{position: relative;}
+#dropdownWrapper, #priceWrapper {position: relative;}
 
-#dropdownWrapper:focus-within .dropdownList{display: block;}
+#dropdownWrapper:focus-within .dropdownList {display: block;}
 
 #priceWrapper p {
     right: 1rem;
@@ -302,12 +285,9 @@ input[type=number] {
 }
 
 /* hide the default marker from detail summary */
-details > summary {
-    list-style: none;
-}
-details > summary::-webkit-details-marker {
-    display: none;
-}
+details > summary {list-style: none;}
+
+details > summary::-webkit-details-marker {display: none;}
 
 /* BUTTON STYLE */
 
@@ -339,10 +319,7 @@ button {
 
 .primaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
 
-
-.primaryButton a{
-    color:#FCFCFC;
-}
+.primaryButton a {color:rgb(252, 252, 252);}
 
 .secondaryButton {
     background-color: rgb(252, 252, 252);
@@ -367,22 +344,37 @@ button {
 .secondaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
 
 /* FOOTER STYLE */
-footer{
+footer {
     position: absolute;
     width: 100%;
     bottom: 0;
-    background: rgb(26,26,26);
+    background: rgb(38, 32, 28);
     padding:0.5rem;
 }
 
 /* DIALOG STYLE */
 dialog {
     border: 0;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 8px rgba(26, 26, 26, 0.2);
-    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(38, 32, 28, 0.2);
+    width: 100%;
+    max-width: 300px;
+    padding: 1.5rem;
 }
 
 dialog p {
-    margin: 0 0 2rem 0;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+dialog form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+dialog form button {width: 50%;}
+
+@media only screen and (min-width: 400px) {
+    dialog {max-width: 400px;}
 }
