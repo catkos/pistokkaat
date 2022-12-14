@@ -7,6 +7,8 @@
     <title>Pistokkaat - Lisää pistokas</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/add-modify-plant.css">
+    <script src="scripts/check-login.js"></script>
+    <script src="scripts/dialog.js" defer></script>
     <script src="scripts/multiselect-dropdown.js" defer></script>
     <script src="scripts/add-plant.js" defer></script>
     <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous" defer></script>
@@ -28,7 +30,7 @@
 <main class="contentPadding">
     <section class="addNewSection">
         <h2>Lisää uusi pistokas</h2>
-        <form id="addNewForm" action="" method="post" autocomplete="off">
+        <form id="addNewForm" action="" method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="inputWrapper">
                 <label for="image">Kuva: *</label>
                 <input id="fileInput" type="file" name="image" accept="image/*" hidden required>
@@ -38,7 +40,7 @@
                 </label>
             </div>
             <div class="inputWrapper">
-                <label for="name">Kasvin nimi: *</label>
+                <label for="name">Kasvilajin nimi: *</label>
                 <input class="inputField" type="text" name="name" minlength="3" required>
                 <small>Vähintään 3 merkkiä.</small>
             </div>
@@ -49,9 +51,9 @@
                     <input class="inputField" type="number" name="price" min="0" required>
                 </div>
                 <div id="dropdownWrapper" class="inputWrapper">
-                    <label for="mailing">Toimitustapa: *</label>
+                    <label for="delivery">Toimitustapa: *</label>
                     <i id="dropdownIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
-                    <input id="dropdownInput" class="inputField" type="text" name="mailing" readonly required>
+                    <input id="dropdownInput" class="inputField" type="text" name="delivery" readonly required>
                 </div>
             </div>
             <div class="textAreaWrapper">
@@ -72,11 +74,10 @@
             </div>
             <div class="buttonWrapper">
                 <button class="primaryButton" type="submit">Tallenna</button>
-                <button class="secondaryButton" type="button" action="#">Peruuta</button>
+                <button id="cancel" class="secondaryButton" type="button" action="#">Peruuta</button>
             </div>
         </form>
     </section>
 </main>
-<footer></footer>
 </body>
 </html>

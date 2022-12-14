@@ -44,7 +44,7 @@ main{
 }
 
 .contentPadding{
-    padding:1rem;
+    padding: 1rem 1rem 2rem 1rem;
 }
 
 /* MAIN NAVIGATION STYLE */
@@ -373,4 +373,16 @@ footer{
     bottom: 0;
     background: rgb(26,26,26);
     padding:0.5rem;
+}
+
+/* DIALOG STYLE */
+dialog {
+    border: 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 8px rgba(26, 26, 26, 0.2);
+    padding: 2rem;
+}
+
+dialog p {
+    margin: 0 0 2rem 0;
 }
