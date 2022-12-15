@@ -9,8 +9,6 @@
 
 * {box-sizing: border-box;}
 
-*:focus {outline: 2px solid rgb(58, 116, 87);}
-
 *,*:before,*:after { -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box; }
 
 body,html {
@@ -28,7 +26,7 @@ body {
 }
 
 h1{font-family: "FredokaOne", serif; font-size: 1.5rem; margin:0; padding-top: 35px; padding-bottom: 35px;}
-h2{font-family: "FredokaOne", serif; font-size: 1rem; margin:0; padding-top: 35px; padding-bottom: 35px; font-size: 1.5rem;}
+h2{font-family: "FredokaOne", serif; font-size: 1rem; margin:0; padding-top: 35px; padding-bottom: 35px; font-size: 1.5rem; text-align: center;}
 h3{margin: 0; font-size: 1rem; line-height: 1.5rem;}
 
 a {color: rgb(58, 116, 87);}
@@ -186,20 +184,20 @@ input[type=number] {
 
 .inputField, .textArea {
     font-size: 0.875rem;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     border: 1px solid rgb(209, 204, 199);
     background-color: rgb(252, 252, 252);
     font-family: "Open Sans", sans-serif;
 }
 
 .inputField:focus, .textArea:focus {
-    border: 1px solid rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
+    border: 1px solid rgb(230, 112, 57);
+    outline: 3px solid rgb(244, 189, 164);
 }
 
 .inputField:focus-visible, .textArea:focus-visible {
-    border: 1px solid rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
+    border: 1px solid rgb(230, 112, 57);
+    outline: 3px solid rgb(244, 189, 164);
 }
 
 .symbolOnInput {
@@ -240,7 +238,7 @@ input[type=number] {
     max-height: 12.6rem;
     overflow-y: auto;
     border: 1px solid rgb(209, 204, 199);
-    border-radius: 0.25rem;
+    border-radius: 4px;
     display: none;
     background-color: rgb(252, 252, 252);
 }
@@ -304,7 +302,7 @@ button {
     border: 0;
     color: rgb(252, 252, 252);
     font-size: 1rem;
-    border-radius: 0.25rem;
+    border-radius: 4px;
     transition: background-color 200ms ease-out 200ms;
     transition: transform 75ms;
     padding: 0 2rem;
@@ -317,7 +315,7 @@ button {
     transform: scale(0.95);
 }
 
-.primaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
+.primaryButton:focus {outline: 3px solid rgb(244, 189, 164);}
 
 .primaryButton a {color:rgb(252, 252, 252);}
 
@@ -328,7 +326,7 @@ button {
     border: 2px solid rgb(58, 116, 87);
     font-size: 1rem;
     color: rgb(58, 116, 87);
-    border-radius: 0.25rem;
+    border-radius: 4px;
     transition: background-color 200ms ease-out 200ms;
     transition: transform 75ms;
     padding: 0 2rem;
@@ -337,11 +335,11 @@ button {
 .secondaryButton:hover {background-color: rgb(160, 207, 184);}
 
 .secondaryButton:active {
-    background-color: rgb(160, 207, 184);
+    background-color: rgb(244, 189, 164);
     transform: scale(0.95);
 }
 
-.secondaryButton:focus {outline: 3px solid rgb(160, 207, 184);}
+.secondaryButton:focus {outline: 3px solid rgb(244, 189, 164);}
 
 /* FOOTER STYLE */
 footer {

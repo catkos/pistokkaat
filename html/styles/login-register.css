@@ -23,7 +23,7 @@
     .loginRegisterSection {
         width: 30rem;
         padding: 2.5rem;
-        border-radius: 0.5rem;
+        border-radius: 8px;
         box-shadow: 2px 2px 6px rgba(38, 32, 28, 0.2);
     }
 
