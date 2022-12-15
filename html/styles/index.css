@@ -3,9 +3,9 @@
 .search {
     display: flex;
     justify-content: center;
-    background: url("../assets/img/hero_img.jpg");
-    background-position-y: 65%;
-    height:350px;
+    background: url("../assets/img/hero_img_tablet.png");
+    background-position-x: center;
+    height: 400px;
 }
 
 .searchFrontInputWrapper {
@@ -25,5 +25,12 @@
 }
 
 #uusimmatIlmoituksetTxt{
-text-align: center;
+    text-align: center;
+}
+
+@media only screen and (min-width: 1081px) {
+    .search {
+        background: url("../assets/img/hero_img.png");
+        background-position-x: center;
+    }    
 }
