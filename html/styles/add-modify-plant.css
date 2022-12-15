@@ -19,25 +19,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     cursor: pointer;
 }
 
 .addFile:hover {
-    border: 2px dashed rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
+    border: 2px dashed rgb(230, 112, 57);
+    outline: 3px solid rgb(244, 189, 164);
     background-color: rgb(228, 241, 235);
 }
 
 .addFile:focus {
-    border: 2px dashed rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
+    border: 2px dashed rgb(230, 112, 57);
+    outline: 3px solid rgb(244, 189, 164);
     background-color: rgb(228, 241, 235);
 }
 
 .addFile:focus-visible {
-    border: 2px dashed rgb(58, 116, 87);
-    outline: 3px solid rgb(160, 207, 184);
+    border: 2px dashed rgb(230, 112, 57);
+    outline: 3px solid rgb(244, 189, 164);
     background-color: rgb(228, 241, 235);
 }
 
@@ -105,7 +105,7 @@
     .addNewSection, .modifySection {
         width: 800px;
         padding: 2.5rem;
-        border-radius: 0.5rem;
+        border-radius: 8px;
         background-color: rgb(252, 252, 252);
         box-shadow: 2px 2px 6px rgba(38, 32, 28, 0.2);
     }

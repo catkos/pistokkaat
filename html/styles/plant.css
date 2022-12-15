@@ -1,9 +1,10 @@
 details {
     width: 100%;
     border: 0;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     padding: 1rem;
     background-color: rgb(245, 236, 227);
+    border: 1px solid rgb(209, 204, 199);
 }
 
 details summary {
@@ -39,7 +40,7 @@ p {font-size: 0.875rem;}
     margin: 0;
     clear: both;
     position: relative;
-    border-radius: 0.5rem;
+    border-radius: 8px;
 }
 
 .plantImg {
@@ -58,7 +59,7 @@ p {font-size: 0.875rem;}
     border: 0;
     background-color: rgb(252, 252, 252);
     font-size: 1.25rem;
-    border-radius: 5rem;
+    border-radius: 25px;
     box-shadow: 2px 2px 6px rgba(38, 32, 28, 0.2);
     transition: font-size 75ms;
     color: rgb(58, 116, 87);
@@ -76,9 +77,10 @@ p {font-size: 0.875rem;}
 .infoSection h2 {padding: 0;}
 
 .userSection {
-    border-radius: 0.5rem;
+    border-radius: 8px;
     padding: 1rem;
     background-color: rgb(245, 236, 227);
+    border: 1px solid rgb(209, 204, 199);
 }
 
 .infoList, .userInfoList {
@@ -110,8 +112,9 @@ p {font-size: 0.875rem;}
 .comment {
     background-color: rgb(187, 221, 204);
     padding: 1rem;
-    border-radius: 0.5rem  0.5rem 0.5rem 0;
+    border-radius: 8px;
     margin: 1rem 0;
+    border: 1px solid rgb(209, 204, 199);
 }
 
 .comment p {margin: 0.5rem 0;}

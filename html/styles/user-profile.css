@@ -22,15 +22,18 @@ h1,h2{
     justify-content: center;
     text-align: center;
     align-items: baseline;
-
 }
 
-.profInfoList li{
+.profInfoList li {
     padding:0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.profInfoList li i{
-    font-size:25px;
+.profInfoList li i {
+    color: rgb(58, 116, 87);
+    font-size: 24px;
 }
 
 #giveLike, #mailLink{
@@ -46,6 +49,7 @@ h1,h2{
     padding-top:35px;
     padding-bottom: 35px;
 }
+
 #btnWrapper{
     display: flex;
     flex-direction: row;
