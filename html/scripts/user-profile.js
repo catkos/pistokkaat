@@ -36,18 +36,15 @@ function printUserProfile(name, loca, mail){
     liEmail.innerHTML = "<i class=\'fa-solid fa-envelope fa-xl\'></i> <a href='mailto: "+mail+"'>"+mail+"</a>";
 }
 
-//TODO: add link to setting button
 const createSettings = (user) => {
     // If user is logged
     if (user) {
         // Check if user's id matches with user's page id or the user is admin
         if (user.user_id.toString() === userProfileId || user.role === 0) {
-            console.log("OK")
             createEditLogoutButtons();
         }
     }
 }
-
 const createEditLogoutButtons = () =>{
     const section = document.querySelector(".profileSettings");
 
@@ -60,16 +57,19 @@ const createEditLogoutButtons = () =>{
     logout.classList.add("secondaryButton");
     logout.setAttribute("id","logout");
 
+    const editLink = document.createElement("a");
     const logoutLink = document.createElement("a");
 
+    editLink.appendChild(edit);
     logoutLink.appendChild(logout);
 
     edit.innerHTML="<i class=\'fa-solid fa-gear\'></i>";
+    editLink.href="./user-settings.html";
     logout.innerHTML="<i class=\'fa-solid fa-right-from-bracket\'></i>";
     logoutLink.href="\logout.html";
 
     section.appendChild(div);
-    div.appendChild(edit);
+    div.appendChild(editLink);
     div.appendChild(logoutLink);
 }
 

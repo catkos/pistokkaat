@@ -1,4 +1,3 @@
-<!-- TODO: don't show this page to non-logged in users -->
 <!DOCTYPE html>
 <html lang="fi">
 <head>
@@ -10,6 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <script src="scripts/navigation.js" defer></script>
+  <script src="scripts/dialog.js" defer></script>
+  <script src="scripts/autocomplete-dropdown.js" defer></script>
   <script src="scripts/user-settings.js" defer></script>
   <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
 
@@ -58,39 +59,35 @@
 
     <h1>Käyttäjäasetukset</h1>
 
-    <!-- TODO: change to post ? -->
-    <form method="get" id="settingsForm">
-
+    <form method="post" id="settingsForm">
       <div class="inputWrapper">
         <label for="username">Käyttäjätunnus</label>
-        <input class="inputField" type="text" id="username" name="username" placeholder="username23">
+        <input class="inputField" type="text" id="username" name="username" placeholder="Tunnus">
       </div>
       <div class="inputWrapper">
         <label for="email">Sähköposti</label>
-        <input class="inputField" type="text" id="email" name="email" placeholder="sahkoposti@mail.fi">
+        <input class="inputField" type="text" id="email" name="email" placeholder="Sähköposti">
       </div>
-      <!-- TODO: fix location dropdown -->
-      <div id="dropdownWrapper" class="inputWrapper">
-        <label for="location">Sijainti</label>
-        <i id="dropdownLocationIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
-        <input id="dropdownInput" class="inputField" type="text" name="location">
-      </div>
+        <div id="dropdownWrapper" class="inputWrapper">
+            <label for="municipality">Kunta</label>
+            <i id="dropdownIcon" class="fa-solid fa-chevron-down symbolOnInput"></i>
+            <input id="dropdownInput" class="inputField" type="text" name="municipality" placeholder="Tunnus">
+        </div>
       <div class="inputWrapper">
         <details>
           <summary>
           <div class="inputWrapper" id="changePasswordTxtWrapper">
-            <span><i id="dropdownIcon" class="fa-solid fa-chevron-down"></i>  Vaihda salasana</span>
+            <span id="changePassTxt">Vaihda salasana <i id="dropdownIcon" class="fa-solid fa-chevron-down"></i></span>
           </div>
           </summary>
           <div class="changePasswordShow">
             <div class="inputWrapper">
-              <!-- TODO: make inputting old password a requirement -->
               <label for="oldPass">Vanha salasana</label>
-              <input class="inputField" type="password" id="oldPass" name="oldPass">
+              <input class="inputField" type="password" id="oldpassword" name="oldPass">
             </div>
             <div class="inputWrapper">
               <label for="newPass">Uusi salasana</label>
-              <input class="inputField" type="password" id="newPass" name="newPass">
+              <input class="inputField" type="password" id="newpassword" name="newPass">
             </div>
           </details>
         </div>
@@ -99,7 +96,7 @@
         <button class="primaryButton" type="submit" id="save">
           Tallenna
         </button>
-        <button class="secondaryButton" type="submit" id="back">
+        <button class="secondaryButton" type="button" id="back">
           Peruuta
         </button>
       </div>

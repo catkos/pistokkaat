@@ -1,21 +1,49 @@
 /* Styling for user settings html */
 
+.settings{
+    width: 100%;
+    background-color: rgb(252, 252, 252);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;}
+
 .settings h1{
     text-align: center;
 }
 
-#settingsForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 details{
     background: rgb(245,236,227);
-    padding:2rem 0.5rem 0 0.5rem;
+    padding:2rem 1rem 0 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(209, 204, 199);
 }
 
-#btnWrapper{
+#changePassTxt{
     display: flex;
-    gap: 3rem;
+    justify-content: space-between;
+}
+
+@media only screen and (min-width: 768px) {
+
+    body {background-color: rgb(58, 116, 87);}
+
+    main {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .settings {
+        width: 30rem;
+        padding: 2.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 2px 2px 6px rgba(38, 32, 28, 0.2);
+    }
+
+    .formButton {
+        width: auto;
+        margin: auto;
+        display: block;
+    }
 }
