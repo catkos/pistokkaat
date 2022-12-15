@@ -2,22 +2,12 @@
 // TODO: Change url when uploading to server
 const url = 'http://localhost:3000';
 
-let deliveryOptions = [];
-let selectedDeliveryOptions = [];
-
 let user;
 
 //If cancelled, alert user and if yes go back to previous page
-const btnBack = document.getElementById("back");
-const goBack=()=>{
-    if (confirm("Haluatko peruuttaa?")) {
-        history.back();
-    }
-}
-
-btnBack.addEventListener("click",goBack);
-
-//new stuff
+document.getElementById("back").addEventListener("click", function goBack(){
+    createDialogWithCancel("Haluatko peruuttaa?");
+});
 
 let municipalities = [];
 
@@ -77,7 +67,6 @@ dropdownIcon.addEventListener('click', () => {
     addFocusToInputEl(dropdownInput);
 });
 
-
 const getUserInfo = async () => {
     try {
         const options = {
@@ -88,7 +77,6 @@ const getUserInfo = async () => {
         };
         const response = await fetch(url +"/user/"+user.user_id, options);
         if (!response.ok) {
-            console.log("notok")
             location.href = 'not-found.html';
             return;
         }
@@ -99,11 +87,15 @@ const getUserInfo = async () => {
     }
 };
 
-//add placeholders
+//add placeholders & values
 function printUserInfo(name, location, email){
     document.getElementById("username").placeholder=name;
     document.getElementById("email").placeholder=email;
     document.getElementById("dropdownInput").placeholder=location;
+
+    document.getElementById("username").value=name;
+    document.getElementById("email").value=email;
+    document.getElementById("dropdownInput").value=location;
 }
 
 // Settings form
@@ -115,6 +107,10 @@ settingsForm.addEventListener('submit', async (e) => {
     const oldpassword = formData.get('oldpassword');
     if (!oldpassword) {
         formData.delete('oldpassword');
+    }
+    const newpassword = formData.get('newpassword');
+    if (!newpassword) {
+        formData.delete('newpassword');
     }
     //
     formData.set('municipality', selectedID);
@@ -136,15 +132,11 @@ settingsForm.addEventListener('submit', async (e) => {
         // Fetch and check if status is not OK
         const response = await fetch(url + /user/, options);
         const json = await response.json();
-        console.log("response: "+response)
-        console.log("json: "+json)
         if (!response.ok) {
             createDialog(json.message, '');
             return;
         }
-        //TODO: make a dialog and redirect back to user's profile
-        alert("Tiedot tallennettu");
-        //createDialog(json.message, 'plant.html?id=' + plant_id);
+        createDialog(json.message, 'user-profile.html?id='+user.user_id);
     } catch (e) {
         console.log(e);
     }
@@ -153,7 +145,7 @@ settingsForm.addEventListener('submit', async (e) => {
 const checkLogin = async () => {
     // Check session storage
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-        liEmail.remove();
+        location.href = 'not-found.html';
         return;
     }
     // Check if token is valid
@@ -165,7 +157,7 @@ const checkLogin = async () => {
         };
         const response = await fetch(url + '/user/token', options);
         if (!response.ok) {
-            liEmail.remove();
+            location.href = 'index.html';
             return;
         }
         const json = await response.json();
