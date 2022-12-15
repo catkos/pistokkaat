@@ -4,33 +4,40 @@
     display: flex;
     justify-content: center;
     background: url("../assets/img/hero_img_tablet.png");
-    background-position-x: center;
+    background-position-x: 25%;
     height: 400px;
 }
 
 .searchFrontInputWrapper {
-    max-width: 400px;
-    width: 100%;
+    width: inherit;
 }
 
 #searchFrontForm{
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 600px;
+    justify-content: center;
 }
 
-#searchFormDiv{
+#searchFormDiv {
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    width: inherit;
+    justify-content: center;
+    padding: 1rem;
 }
 
 #uusimmatIlmoituksetTxt {
     text-align: center;
 }
 
+.inputField {width: 100%;}
+
 @media only screen and (min-width: 1081px) {
     .search {
         background: url("../assets/img/hero_img.png");
-        background-position-x: center;
+        background-position-x: 25%;
     }    
 }
