@@ -23,7 +23,6 @@ body,html {
 }
 
 body {
-    position: relative; /* for footer */
     min-height: 100vh;
 }
 
@@ -213,11 +212,6 @@ input[type=number] {
     width:100%;
     justify-content: center;
 }
-
-/* TODO: fix issue if screen smaller than 400px */
-#dropdownPriceWrapper {width:100px;}
-
-#dropdownMailingWrapper {width:300px;}
 
 .formButton {
     width: 100%;

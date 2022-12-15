@@ -96,6 +96,12 @@ function printUserInfo(name, location, email){
     document.getElementById("username").value=name;
     document.getElementById("email").value=email;
     document.getElementById("dropdownInput").value=location;
+
+    municipalities.forEach(item=>{
+        if(item.name===location){
+            selectedID = item.id;
+        }
+    });
 }
 
 // Settings form

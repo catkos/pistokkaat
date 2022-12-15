@@ -1,10 +1,10 @@
 'use strict';
 
 let user;
-
+/*
 const getUserFavourites = async () => {
-    getUserFavouriteData();
-};
+    await getUserFavouriteData();
+};*/
 
 const checkLogin = async () => {
     // Check session storage
@@ -34,6 +34,6 @@ const checkLogin = async () => {
 
 const start = async () => {
     await checkLogin();
-    await getUserFavourites();
+    await getUserFavouriteData();
 };
 start();
