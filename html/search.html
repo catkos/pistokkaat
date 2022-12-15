@@ -80,9 +80,14 @@
                     <p class="symbolOnInput">€</p>
                     <input class="inputField" id="price" type="number" name="hinta" min="0" pattern="^[0-9]*$'" title="Vain numerot sallittu.">
                 </div>
-                <div id="dropdownWrapper" class="inputWrapper">
+                <div id="mailingWrapper" class="inputWrapper">
                     <label for="mailing">Valitse toimitustapa</label>
-                    <input class="inputField" type="text" name="toimitus" id="mailing">
+                    <!-- <input class="inputField" type="text" name="toimitus" id="mailing"> -->
+                    <select class="inputField" id="mailing" name="toimitus">
+                        <option value="">Nouto tai postitus</option>
+                        <option value="nouto">Nouto</option>
+                        <option value="postitus">Postitus</option>
+                    </select>
                 </div>
             </div>
             <button class="primaryButton formButton" type="submit" id="searchSubmit">

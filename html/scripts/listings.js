@@ -117,7 +117,7 @@ const getUserFavouriteData = async () => {
         const response = await fetch(url +"/user/favourite", options);
         const data = await response.json();
         //if favourite list empty, print out message
-        if(!data.ok){
+        if(!response.ok){
             noListings(data.message);
             return;
         }
@@ -149,8 +149,13 @@ function printListing(id, imgSrc, name, price, location, mailing, date) {
     const figure = document.createElement("figure");
     figure.classList.add("listingImg");
     const image = document.createElement("img");
-    //TODO: add default img if image fails to load?
-    image.src = url+"/thumbnails/"+imgSrc;
+    image.src = url+"/resizes/"+imgSrc;
+    image.alt = name;
+    // Add placeholder image if img error
+    image.onerror = (e) => {
+        image.src = './assets/img/placeholder.png';
+        image.alt = 'Väliaikainen kuva';
+    };
     //ul li element creation
     const ul = document.createElement("ul");
     ul.classList.add("listingInfo");
@@ -179,18 +184,19 @@ function printListing(id, imgSrc, name, price, location, mailing, date) {
     liDate.innerHTML = "<i class=\'fa-solid fa-calendar-days\'></i> " + date.substring(0,10);
 }
 
-//print counter number
+//print counter number (for search page)
 function printListingCounter(dataLength){
     const text = document.querySelector("#searchResultsCounter");
     text.innerHTML= dataLength;
-    unHideText();
+    const title = document.querySelector("#searchResultsText");
+    title.style.display="block";
 }
 function unHideText(){
     const title = document.querySelector("#searchResultsText");
     title.style.display="block";
 }
 
-//print text if no listings
+//print backend json message if no listings
 function noListings(jsonMessage){
     const listings = document.querySelector(".listings");
     const textBlock = document.createElement("p");
