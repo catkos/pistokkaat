@@ -22,7 +22,6 @@ body{
         background-size: cover;
         background-position-x: center;
         width: 100%;
-        position: fixed;
         bottom: 0;
     }
 }
