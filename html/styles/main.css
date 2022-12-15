@@ -129,7 +129,6 @@ main {
     #mainNav {padding: 1rem 2rem;}
 }
 
-
 /* Mobile rule, smaller logo */
 @media only screen and (max-width: 600px) {
     #logo{font-size: 25px;}

@@ -174,5 +174,3 @@ const start = async () => {
 };
 getMunicipalities();
 start();
-
-

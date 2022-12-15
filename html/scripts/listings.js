@@ -62,7 +62,7 @@ function getFilteredData(queryParams){
 
 }
 
-//get 3 newest listings (for index/frontpage)
+//get newests listings (for index/frontpage)
 function getNewestData(maxAmount){
 
     const getJSON = async url => {
@@ -87,28 +87,47 @@ function getNewestData(maxAmount){
 }
 
 //get listings from user (for user-profile)
-function getUserData(userID){
-    const getJSON = async url => {
-        const response = await fetch(url);
-        if(!response.ok) { // check if response worked
-            throw new Error(response.statusText);
+const getUserData = async (userID) => {
+    try {
+        const response = await fetch(url +"/user/"+userID+"/plant");
+        const data = await response.json();
+        //if list empty, print out message
+        if(!response.ok){
+            noListings(data.message);
+            return;
         }
-
-        const db = response.json(); // get JSON from the response
-        return db; // returns a promise, which resolves to this data value
-    }
-
-    getJSON(url+"/user/"+userID+"/plant").then(data => {
-
         //print out data
         for(const i in data) {
             printListing(data[i].plant_id, data[i].imagename, data[i].name, data[i].price, data[i].seller.location, data[i].delivery, data[i].created);
         }
+    } catch (e) {
+        console.log(e);
+    }
+}
 
-    }).catch(error => {
-        console.log(error);
-        noListings();
-    });
+//get user's favourite plants
+const getUserFavouriteData = async () => {
+    try {
+        const options = {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url +"/user/favourite", options);
+        const data = await response.json();
+        //if favourite list empty, print out message
+        if(!data.ok){
+            noListings(data.message);
+            return;
+        }
+        //print out data
+        for(const i in data) {
+            printListing(data[i].plant_id, data[i].imagename, data[i].name, data[i].price, data[i].seller.location, data[i].delivery, data[i].created);
+        }
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 /* dom manipulation */
@@ -172,12 +191,11 @@ function unHideText(){
 }
 
 //print text if no listings
-function noListings(){
+function noListings(jsonMessage){
     const listings = document.querySelector(".listings");
     const textBlock = document.createElement("p");
 
-    //TODO: if visiting own page, add link to add a new plant?
-    textBlock.innerHTML = "Ei pistokkaita myytävänä.";
+    textBlock.innerHTML = jsonMessage;
 
     listings.append(textBlock);
 }

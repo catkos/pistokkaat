@@ -1,5 +1,28 @@
 /* style for user favourites html */
 
-.userFavourites h2{
+.userFavourites h1{
     text-align: center;
+}
+
+body{
+    background-image: url("../assets/img/gardening.svg");
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+}
+/* Mobile rule, smaller background image */
+@media only screen and (max-width: 600px) {
+    body{
+        background-image: none;
+    }
+    .bottomImage{
+        height: 300px;
+        background-image: url("../assets/img/gardening.svg");
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-size: cover;
+        background-position-x: center;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+    }
 }
