@@ -1,59 +1,65 @@
 /* Style for single listing */
 
-figure {
-    margin:0;
-}
+figure {margin:0;}
 
-.listings{
+.listings {
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
 }
 
 .listing {
     width: 400px;
+    max-height: 200px;
     display: flex;
     align-content: center;
     transition: 200ms ease-out 200ms;
-    border: 1px solid #3A7457;
-    border-radius: 5px;
-    overflow:hidden;
-    background-color: #FCFCFC;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    border: 1px solid rgb(58, 116, 87);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgb(252, 252, 252);
     cursor: pointer;
+    font-size: 0.875rem;
+    margin-bottom:1rem;
 }
+
 /* desktop rule, add left-right margins */
 @media only screen and (min-width: 600px) {
-    .listing{margin-left:1rem; margin-right:1rem;}
 }
 
-
-.listingImg img{
-    width: 150px;
-    height:100%;
+.listingImg img {
+    width: 160px;
+    height: 100%;
     object-fit: cover;
 }
 
 .listingInfo {
-    border-radius: 0 5px 5px 0;
-    padding: 10px 10px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0 8px 8px 0;
+    padding: 20px;
+    margin: 0;
     width: 100%;
-    list-style:none;
+    list-style: none;
     line-height: 30px;
 }
 
-.listingName{
-    padding-bottom: 5%;
+.listingInfo li {
+    display: flex;
+    align-items: center;
 }
 
-.listing:hover{
-    border: 1px solid #E67039;
-}
-.listingInfo:hover{
-    border: 0 solid;
+.listingInfo i {
+    font-size: 1rem;
+    width: 1.5rem;
 }
 
-.listingInfo i{
-    color:#3A7457;
-}
+.listingName {padding-bottom: 5%;}
+
+.listing:hover {border: 1px solid rgb(230, 112, 57);}
+
+.listingInfo:hover {border: 0 solid;}
+
+.listingInfo i {color:rgb(58, 116, 87);}
