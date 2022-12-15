@@ -5,23 +5,17 @@
 }
 
 body{
-    background-image: url("../assets/img/gardening.svg");
+    background-image: url("../assets/img/illustration1.png");
+    background-position-x: 25%;
+    background-position-y: 98%;
     background-repeat: no-repeat;
-    background-position-y: bottom;
 }
+
 /* Mobile rule, smaller background image */
 @media only screen and (max-width: 600px) {
-    body{
-        background-image: none;
-    }
-    .bottomImage{
-        height: 300px;
-        background-image: url("../assets/img/gardening.svg");
-        background-repeat: no-repeat;
-        background-position-y: bottom;
-        background-size: cover;
-        background-position-x: center;
-        width: 100%;
-        bottom: 0;
+    body {
+        background-position-x: 35%;
+        background-position-y: 98%;
+        background-size: 150%;
     }
 }

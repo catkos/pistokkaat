@@ -27,7 +27,7 @@ section h2 {text-align: center;}
 
 p {font-size: 0.875rem;}
 
-.contentPadding {padding: 1rem;}
+.contentPadding {padding: 76px 1rem 2rem 1rem;}
 
 .editDeleteButtonWrapper {
     float: right;
@@ -72,7 +72,9 @@ p {font-size: 0.875rem;}
     font-size: 1rem;
 }
 
-.infoSection, .instructionSection, .userSection, .commentsSection {margin: 2rem 0;}
+.infoSection, .instructionSection, .userSection {margin: 2rem 0;}
+
+.commentsSection {margin: 2rem 0 0 0;}
 
 .infoSection h2 {padding: 0;}
 
