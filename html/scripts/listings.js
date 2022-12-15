@@ -86,6 +86,31 @@ function getNewestData(maxAmount){
     });
 }
 
+//get listings from user (for user-profile)
+function getUserData(userID){
+    const getJSON = async url => {
+        const response = await fetch(url);
+        if(!response.ok) { // check if response worked
+            throw new Error(response.statusText);
+        }
+
+        const db = response.json(); // get JSON from the response
+        return db; // returns a promise, which resolves to this data value
+    }
+
+    getJSON(url+"/user/"+userID+"/plant").then(data => {
+
+        //print out data
+        for(const i in data) {
+            printListing(data[i].plant_id, data[i].imagename, data[i].name, data[i].price, data[i].seller.location, data[i].delivery, data[i].created);
+        }
+
+    }).catch(error => {
+        console.log(error);
+        noListings();
+    });
+}
+
 /* dom manipulation */
 function printListing(id, imgSrc, name, price, location, mailing, date) {
 
@@ -97,16 +122,16 @@ function printListing(id, imgSrc, name, price, location, mailing, date) {
 
     //make listing clickable
     article.addEventListener("click",function(){
-        //TODO: change this when switching servers
-        window.location = "/pistokkaat/html/plant.html?id="+id;
+        //TODO: change this when switching servers?
+        window.location = "\plant.html?id="+id;
     });
 
     // create elements inside listing/article
     const figure = document.createElement("figure");
     figure.classList.add("listingImg");
     const image = document.createElement("img");
-    image.src="assets/img/plant.jpg";
-    //TODO: use this -> image.src = url+"/thumbnails/"+imgSrc;
+    //TODO: add default img if image fails to load?
+    image.src = url+"/thumbnails/"+imgSrc;
     //ul li element creation
     const ul = document.createElement("ul");
     ul.classList.add("listingInfo");
@@ -131,7 +156,7 @@ function printListing(id, imgSrc, name, price, location, mailing, date) {
     liPrice.innerHTML = "<i class=\'fa-solid fa-tag\'></i> " + price + " €";
     liLocation.innerHTML = "<i class=\'fa-solid fa-location-dot\'></i> " + location;
     liMailing.innerHTML = "<i class=\'fa-solid fa-truck\'></i> " + mailing;
-    //TODO: delete string trim
+    //TODO: delete string trim?
     liDate.innerHTML = "<i class=\'fa-solid fa-calendar-days\'></i> " + date.substring(0,10);
 }
 
@@ -144,4 +169,15 @@ function printListingCounter(dataLength){
 function unHideText(){
     const title = document.querySelector("#searchResultsText");
     title.style.display="block";
+}
+
+//print text if no listings
+function noListings(){
+    const listings = document.querySelector(".listings");
+    const textBlock = document.createElement("p");
+
+    //TODO: if visiting own page, add link to add a new plant?
+    textBlock.innerHTML = "Ei pistokkaita myytävänä.";
+
+    listings.append(textBlock);
 }

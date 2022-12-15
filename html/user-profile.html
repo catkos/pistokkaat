@@ -10,9 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <script src="scripts/navigation.js" defer></script>
+  <script src="scripts/listings.js" defer></script>
   <script src="scripts/user-profile.js" defer></script>
   <script src="https://kit.fontawesome.com/382c26a77d.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
 
@@ -56,50 +56,23 @@
 
   <section class="profile">
 
-    <h2 id="profileName">username23</h2>
+    <h1>Profiili</h1>
+    <h2 id="profileName"></h2>
     <div class="profInfo">
       <ul class="profInfoList">
-        <li><span id="likes"><i class="fa-regular fa-thumbs-up" id="likeIcon"></i> <p>2 (<span id="giveLike">Tykkää!</span>)</p></span></li>
-        <li><span id="location"><i class="fa-solid fa-location-dot"></i> <p>Helsinki</p></span></li>
-        <li><span id="email"><i class="fa-solid fa-envelope fa-xl"></i> <p><a href="mailto:sahkoposti@mail.fi" id="mailLink">sahkoposti@mail.fi</a></p></span></li>
+        <li><span id="location"></li>
+        <li><span id="email"></li>
       </ul>
     </div>
-    <!-- TODO: hide/delete element if not user's own profile -->
     <section class="profileSettings">
-
-      <div id="btnWrapper">
-        <button class="primaryButton" type="submit" id="edit">
-          <i class="fa-solid fa-gear"></i>
-        </button>
-        <button class="secondaryButton" type="submit" id="logout">
-          <i class="fa-solid fa-right-from-bracket"></i>
-        </button>
-      </div>
 
     </section>
   </section>
 
   <section class="newestListings contentPadding">
     <h2>Käyttäjän ilmoitukset</h2>
-    <!-- TODO: print listings from js -->
+
     <div class="listings">
-
-      <article class="listing">
-
-
-        <figure class="listingImg">
-          <img src="assets/img/plant.jpg" alt="Myyjän kuva kasvista">
-        </figure>
-        <ul class="listingInfo">
-          <li class="listingName"><h3>Peikonlehti</h3></li>
-          <li class="listingPrice"><i class="fa-solid fa-tag"></i> 10 €</li>
-          <li class="listingLocation"><i class="fa-solid fa-location-dot"></i> Helsinki</li>
-          <li class="listingMailing"><i class="fa-solid fa-truck"></i> Postitus, Nouto</li>
-          <li class="listingDate"><i class="fa-solid fa-calendar-days"></i> 28.11.2022</li>
-        </ul>
-
-
-      </article>
 
     </div>
 
