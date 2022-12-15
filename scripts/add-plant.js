@@ -73,7 +73,6 @@ const charCounter = (input, counterText) => {
 
 // Click file input when clicking addFileEl
 addFileEl.addEventListener('click', () => {
-    console.log(fileInput);
     fileInput.click();
 });
 

@@ -80,7 +80,7 @@ const getPlant = async (id) => {
         const deliveryArr = plant.delivery.split(', ');
         selectedDeliveryOptions = deliveryOptions.filter(item => deliveryArr.find(del => item.name === del));
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 };
 
@@ -164,7 +164,7 @@ modifyForm.addEventListener('submit', async (e) => {
         // Create dialog and redirect to plant.html when user clicks button
         createDialog(json.message, 'plant.html?id=' + plant_id);
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 });
 

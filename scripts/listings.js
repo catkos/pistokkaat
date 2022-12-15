@@ -17,11 +17,7 @@ function getData(){
         return db; // returns a promise, which resolves to this data value
     }
 
-    console.log("Fetching data...");
-
     getJSON(url+"/plant").then(data => {
-
-        console.log(data); //todo: delete
 
         //print out data
         for(const i in data) {
@@ -56,7 +52,7 @@ function getFilteredData(queryParams){
         printListingCounter(data.length);
 
     }).catch(error => {
-        console.log(error);
+        console.log(error.message);
         unHideText();
     });
 
@@ -101,7 +97,7 @@ const getUserData = async (userID) => {
             printListing(data[i].plant_id, data[i].imagename, data[i].name, data[i].price, data[i].seller.location, data[i].delivery, data[i].created);
         }
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 }
 
@@ -126,7 +122,7 @@ const getUserFavouriteData = async () => {
             printListing(data[i].plant_id, data[i].imagename, data[i].name, data[i].price, data[i].seller.location, data[i].delivery, data[i].created);
         }
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 }
 

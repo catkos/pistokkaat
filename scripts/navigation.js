@@ -42,6 +42,6 @@
             span.innerHTML = user.username;
         }
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 })();

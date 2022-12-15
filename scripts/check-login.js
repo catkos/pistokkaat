@@ -23,6 +23,6 @@
             sessionStorage.setItem('user', JSON.stringify(json.user));
         }
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 })();

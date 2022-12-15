@@ -62,7 +62,7 @@ const checkLogin = async () => {
         user = JSON.parse(sessionStorage.getItem('user'));
         setFavourite();
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 };
 
@@ -82,7 +82,7 @@ const getPlant = async () => {
         const plant = await response.json();
         createPlant(plant);
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 };
 
@@ -102,7 +102,7 @@ const deletePlant = async () => {
         }
         location.href = 'index.html';
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 };
 
@@ -122,7 +122,7 @@ const getComments = async () => {
             createComment(comment);
         });
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 };
 

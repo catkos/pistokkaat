@@ -28,7 +28,7 @@ const checkLogin = async () => {
         sessionStorage.setItem('user', JSON.stringify(json.user));
         user = JSON.parse(sessionStorage.getItem('user'));
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 };
 
