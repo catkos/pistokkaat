@@ -361,7 +361,7 @@ const createDialogToDeletePlant = () => {
     cancelButton.className = 'secondaryButton';
     cancelButton.innerHTML = 'Peruuta';
 
-    // Redirect to given url when clicking okButton
+    // Delete plant when clicking okButton
     okButton.addEventListener('click', () => {
         deletePlant();
     });

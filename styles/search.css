@@ -28,4 +28,10 @@
         gap: 1rem;
         max-width: 600px;
     }
+
+    .formButton {
+        width: 130px;
+        margin: auto;
+        display: block;
+    }
 }

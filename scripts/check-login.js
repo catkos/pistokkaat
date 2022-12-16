@@ -16,7 +16,6 @@
         };
         const response = await fetch(url + '/user/token', options);
         if (!response.ok) {
-            // TODO: Maybe this should to redirect to logout.html?
             location.href = 'index.html';
         } else {
             const json = await response.json();

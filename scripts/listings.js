@@ -25,7 +25,7 @@ function getData(){
         }
 
     }).catch(error => {
-        console.error(error); //todo: change
+        console.error(error.message);
     });
 }
 
@@ -78,7 +78,7 @@ function getNewestData(maxAmount){
         }
 
     }).catch(error => {
-        console.error(error); //todo: change
+        console.error(error.message);
     });
 }
 
@@ -137,7 +137,6 @@ function printListing(id, imgSrc, name, price, location, mailing, date) {
 
     //make listing clickable
     article.addEventListener("click",function(){
-        //TODO: change this when switching servers?
         window.location = "\plant.html?id="+id;
     });
 
@@ -176,8 +175,9 @@ function printListing(id, imgSrc, name, price, location, mailing, date) {
     liPrice.innerHTML = "<i class=\'fa-solid fa-tag\'></i> " + price + " €";
     liLocation.innerHTML = "<i class=\'fa-solid fa-location-dot\'></i> " + location;
     liMailing.innerHTML = "<i class=\'fa-solid fa-truck\'></i> " + mailing;
-    //TODO: delete string trim?
-    liDate.innerHTML = "<i class=\'fa-solid fa-calendar-days\'></i> " + date.substring(0,10);
+
+    const createdDate = new Date(date).toLocaleString('fi-FI');
+    liDate.innerHTML = "<i class=\'fa-solid fa-calendar-days\'></i> " + createdDate.slice(0, createdDate.length-3);;
 }
 
 //print counter number (for search page)

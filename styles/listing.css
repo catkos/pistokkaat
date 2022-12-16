@@ -48,6 +48,8 @@ figure {margin:0;}
 .listingInfo li {
     display: flex;
     align-items: center;
+    line-height: 1.2;
+    padding-top: 0.5rem;
 }
 
 .listingInfo i {

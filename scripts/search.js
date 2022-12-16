@@ -7,14 +7,13 @@ let queryParams = new URLSearchParams(window.location.search);
 if(queryParams.has('nimi') || queryParams.has('sijainti') || queryParams.has('hinta') || queryParams.has('toimitus') ){
     //insert previous typed value into form inputs
     document.getElementById('searchtxt').value = queryParams.get('nimi');
-    document.getElementsByClassName('municipality').value = queryParams.get('sijainti'); //TODO: delete, doesnt work
+    document.getElementById('dropdownInput').value = queryParams.get('sijainti');
     document.getElementById('price').value = queryParams.get('hinta');
     document.getElementById('mailing').value = queryParams.get('toimitus');
 
     getFilteredData(queryParams);
 }
 
-/* get municipalities */
 const urlLocation = 'http://localhost:3000'; // TODO: Change url when uploading to server
 let provinces = [];
 const dropdownInput = document.querySelector('#dropdownInput');
@@ -34,7 +33,7 @@ const getProvinces = async () => {
             provinces.push({id: item.province_id, name: item.province});
         })
 
-        // Sort municipalities by name
+        // Sort provinces by name
         provinces.sort((a, b) => {
             const nameA = a.name.toUpperCase(); // Ignore upper and lowercase
             const nameB = b.name.toUpperCase(); // Ignore upper and lowercase

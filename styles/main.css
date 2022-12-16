@@ -37,7 +37,9 @@ main {
     padding-top: 60px;
 }
 
-.contentPadding {padding: 60px 1rem 2rem 1rem;}
+.contentPadding {padding: 2rem 1rem 2rem 1rem;}
+
+.biggerTopPadding {padding-top: 76px}
 
 /* MAIN NAVIGATION STYLE */
 #mainNav {
@@ -372,6 +374,10 @@ dialog form button {width: 50%;}
 
 @media only screen and (min-width: 400px) {
     dialog {max-width: 400px;}
+}
+
+.option {
+    height: 2.5rem;
 }
 
 .notFoundSection {
